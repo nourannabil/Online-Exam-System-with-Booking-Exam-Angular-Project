@@ -20,6 +20,7 @@ import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toas
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import{HttpClientModule}from  '@angular/common/http';
+import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.component';
 
 
 
@@ -37,6 +38,7 @@ import{HttpClientModule}from  '@angular/common/http';
     TestimonialCardsComponent,
     TestimonialComponent,
     CourseExamsComponent,
+    EaxamInfoCardComponent,
  
   
    
