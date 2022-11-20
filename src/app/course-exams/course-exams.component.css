@@ -1,0 +1,14 @@
+.searchbutton {
+    background-color: #005555;
+    color: white !important;
+    padding: 4px 23px !important;
+    position: relative !important;
+    top: 0px !important;
+    left: 10px !important;
+    height: 42px !important;
+}
+.searchbutton:hover {
+    background-color: white;
+    color: #005555 !important;
+    border: 2px solid #005555;
+}

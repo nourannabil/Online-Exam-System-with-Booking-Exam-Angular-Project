@@ -1,0 +1,152 @@
+body {
+  min-height: 1000vh;
+}
+
+form {
+  height: 500px;
+  width: 401px;
+  background: linear-gradient(#00555563, #4a4e52);
+  position: absolute;
+  transform: translate(-50%, 9%);
+  left: 50%;
+  top: 70px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgb(8 7 16 / 60%);
+  padding: 18px 41px;
+  ;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  letter-spacing: 0.5px;
+  margin-bottom: 50px;
+}
+
+label {
+  display: block;
+  margin-top: 13px;
+  ;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgb(253 253 253 / 88%);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+}
+
+::placeholder {
+  color: black;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #005555;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.login-form {
+  margin-top: -62px;
+  padding-top: 0px;
+  min-height: 120vh;
+  position: relative;
+  background: url(https://2.bp.blogspot.com/-x17AAMmDPiM/W8strwcotPI/AAAAAAAAAFY/6bPaZIBQTSsnQtbkZ5fOPa5OqWBMVUXBwCEwYBhgL/s1600/pexels-photo-374720.jpeg) no-repeat center;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+  z-index: -1;
+}
+
+.overlay {
+  background-color: #000000a6;
+  height: 120vh;
+}
+
+.foot-lnk {
+  position: relative;
+  top: 13px;
+  text-align: center;
+}
+
+.foot-lnk p {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding-top: 15px;
+}
+
+@media(max-width: 567px) {
+  form {
+    height: 500px;
+    width: 348px;
+  }
+}
+
+.check {
+  position: absolute;
+  width: 16px;
+  bottom: 26%;
+}
+
+.checkLabel {
+  color: white;
+  font-family: serif;
+  font-size: 16px;
+  position: relative;
+  left: 24px;
+}
+
+/* ========================================= */
+
+.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+  right: 8px !important;
+}
+
+.mat-form-field-infix {
+  margin-top: -53px !important;
+  margin-bottom: -6px !important;
+}
+
+.mat-form-field-appearance-legacy {
+  padding: 0px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.4375em 0;
+  margin-top: 20px;
+}
+
+.mat-form-field-infix {
+  padding: 0.5em 0;
+  border-top: 7px solid rgba(0, 0, 0, 0);
+}

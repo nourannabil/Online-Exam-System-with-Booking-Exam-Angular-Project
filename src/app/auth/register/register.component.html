@@ -1,0 +1,98 @@
+<div class="overlay">
+  <div class="login-form">
+  </div>
+  <form [formGroup]="registerForm">
+    <div class="sign-in-htm">
+      <h3>Sign Up</h3>
+      <div class="group">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+            <input type="text" matInput class="input" formControlName="firstname" required placeholder="First Name" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['firstname'].hasError('required')">
+            firstname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+            <input type="text" matInput class="input" formControlName="lastname" required placeholder="Last Name" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['lastname'].hasError('required')">
+            lastname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group ">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+            <input type="text" matInput class="input" formControlName="username" required placeholder="Username" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
+            username is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group ">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+            <input type="email" matInput class="input" formControlName="email" placeholder="Email" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+            <input type="password" matInput class="input" placeholder="Password" formControlName="password"
+              (change)="matchError()" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
+            Please enter at least 8 charecters
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group">
+        <mat-form-field class="example-full-width
+                      mat-form-field-appearance-legacy ">
+          <div class="example-full-width
+                        mat-form-field-wrapper mat-form-field-infix ">
+            <input type="password" matInput class="input" placeholder="Confirm Password"
+              formControlName="confirmPassword" (change)="matchError()" />
+          </div>
+          <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('minlength')">
+            Please enter at least 8 charecters
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('mismatch')">
+            <strong>Passwords don't match</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="group">
+        <button class="button" type="submit" (click)="submit()" [disabled]="!registerForm.valid">Register</button>
+      </div>
+      <div class="hr"></div>
+      <div class="foot-lnk">
+        <p (click)="goToLogin()">Already have an account?</p>
+      </div>
+    </div>
+  </form>
+</div>

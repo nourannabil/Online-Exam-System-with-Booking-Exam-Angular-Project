@@ -1,0 +1,17 @@
+.logoname{
+    color: white;
+    FONT-WEIGHT: bold;
+    font-size: 35px;
+    position: relative;
+    top: 18px;
+    FONT-FAMILY: 'Poppins';
+}
+.logoimage{
+    padding-top: 23px;
+    width: 58px;
+    height: 62px;
+
+}
+section#menu {
+    background-color: #005555;
+  }

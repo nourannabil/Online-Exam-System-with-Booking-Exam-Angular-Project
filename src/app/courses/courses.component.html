@@ -1,0 +1,5 @@
+
+<div class="news-card news-card-pb-25">
+    <div class="row">
+        <app-course-card *ngFor="let obj of home.courses" [courseid]="obj.courseid" [name]="obj.name" [description]="obj.description"  [imagepath]="obj.imagepath" (courseExam)="ShowCourseExams()"></app-course-card></div>
+</div>

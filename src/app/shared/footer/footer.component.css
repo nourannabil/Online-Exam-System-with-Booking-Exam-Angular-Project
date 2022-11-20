@@ -1,0 +1,39 @@
+.hm-footer , .footer-copyright {
+    background: #181818;
+  }
+  
+  
+  .foot-email-box .form-control , .hm-foot-icon ul li {
+    background: #fffffff2;
+  
+  
+  }
+  .hoverlink ul li:hover {
+     background:rgba(0, 85, 85, 0.90); 
+  
+  }
+  
+  .hm-foot-para p.para-news , .hm-para-news a , .footer-menu li a ,.hm-foot-para p ,
+  .hm-para-news span , .foot-copyright , .foot-menu li a{
+    color: #f1eaeaf2;
+  }
+  
+  .foot-email-subscribe button  {
+    background: #005555;
+  }
+  
+  #scroll-Top .return-to-top {
+    color: #f1eaeaf2;
+    background: #005555;
+    border: 1px solid #005555;
+  }
+  .logoname{
+    color: white;
+    FONT-WEIGHT: bold;
+    font-size: 35px;
+  color: #005555;}
+  .emaillink a:hover{
+    color: #005555;
+    font-weight: bold;
+  
+  }

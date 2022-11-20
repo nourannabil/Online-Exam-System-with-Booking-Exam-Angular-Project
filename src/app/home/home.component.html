@@ -1,0 +1,376 @@
+<app-navbar></app-navbar>
+
+
+<!-- header-slider-area start -->
+<section class="header-slider-area">
+  <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <div class="single-slide-item slide-1" style="background-image:url({{home.homeinfo.imagepath}});">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="single-slide-item-content">
+                  <h2> {{home.homeinfo.title}} <br>  {{home.homeinfo.description1}}</h2>
+                  <p>
+                    {{home.homeinfo.description2}}
+                  </p>
+
+                  <button type="button" class="slide-btn
+                  ">
+                    <a href="#courses"> explore more</a>
+
+                  </button>
+
+                </div><!-- /.single-slide-item-content-->
+              </div><!-- /.col-->
+            </div><!-- /.row-->
+          </div><!-- /.container-->
+        </div><!-- /.single-slide-item-->
+      </div><!-- /.item .active-->
+      <div class="item">
+        <div class="single-slide-item slide-2"  style="background-image:url({{home.homeinfo.description3}});">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="single-slide-item-content">
+                  <h2>{{home.homeinfo.title}} <br>{{home.homeinfo.description1}}</h2>
+                  <p>
+                    {{home.homeinfo.description2}}
+                  </p>
+
+                  <button type="button" class="slide-btn
+											">
+                    <a href="#courses"> explore more</a>
+
+                  </button>
+                </div><!-- /.single-slide-item-content-->
+
+              </div><!-- /.col-->
+            </div><!-- /.row-->
+          </div><!-- /.container-->
+        </div><!-- /.single-slide-item-->
+      </div><!-- /.item .active-->
+    </div><!-- /.carousel-inner-->
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="lnr lnr-chevron-left"></span>
+    </a>
+
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="lnr lnr-chevron-right"></span>
+    </a>
+
+  </div><!-- /.carousel-->
+
+</section><!-- /.header-slider-area-->
+<!-- header-slider-area end -->
+
+<!--about-us start -->
+<section class="about-us">
+  <div class="container">
+    <div class="about-us-content">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="single-about-us">
+            <div class="about-us-txt">
+              <h2 style="font-size: 25px;font-family:'Poppins';">{{home.aboutinfo.title}}</h2>
+              <p>
+                {{home.aboutinfo.description1}}
+              </p>
+              <div class="project-btn">
+                <a routerLink="/about" class="project-view">learn more
+                </a>
+              </div>
+              <!--/.project-btn-->
+            </div>
+            <!--/.about-us-txt-->
+          </div>
+          <!--/.single-about-us-->
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6">
+          <div class="single-about-us">
+            <div class="about-us-img">
+              <img src="{{home.aboutinfo.description2}}" alt="about images" width="570px" height="394px">
+            </div>
+            <!--/.about-us-img-->
+          </div>
+          <!--/.single-about-us-->
+        </div>
+        <!--/.col-->
+      </div>
+      <!--/.row-->
+    </div>
+    <!--/.about-us-content-->
+  </div>
+  <!--/.container-->
+
+</section>
+<!--/.about-us-->
+<!--about-us end -->
+
+<!--statistics start-->
+<section class="statistics">
+  <div class="container">
+    <div class="statistics-counter ">
+      <div class="col-md-3 col-sm-6">
+        <div class="single-ststistics-box">
+          <div class="statistics-img">
+            <img src="./assets/images/counter/counter1.png" alt="counter-icon" />
+          </div>
+          <!--/.statistics-img-->
+          <div class="statistics-content">
+            <div class="counter">{{home.statistics.numOfExams}}</div>
+            <h3>#website exams</h3>
+          </div>
+          <!--/.statistics-content-->
+        </div>
+        <!--/.single-ststistics-box-->
+      </div>
+      <!--/.col-->
+      <div class="col-md-3 col-sm-6">
+        <div class="single-ststistics-box">
+          <div class="statistics-img">
+            <img src="./assets/images/counter/counter2.png" alt="counter-icon" />
+          </div>
+          <!--/.statistics-img-->
+          <div class="statistics-content">
+            <div class="counter">{{home.statistics.numOfBooking}}</div>
+            <!-- <h3>#website courses</h3> -->
+            <h3>#Exams Booked</h3>
+          </div>
+          <!--/.statistics-content-->
+        </div>
+        <!--/.single-ststistics-box-->
+      </div>
+      <!--/.col-->
+      <div class="col-md-3 col-sm-6">
+        <div class="single-ststistics-box">
+          <div class="statistics-img">
+            <img src="./assets/images/counter/usres.png" alt="counter-icon" style="width: 106px;
+             height: 103px;
+             position: relative;
+             top: -19px;" />
+          </div>
+          <!--/.statistics-img-->
+
+          <div class="statistics-content">
+            <div class="counter">{{home.statistics.numOfUser}}</div>
+            <h3>#website users</h3>
+          </div>
+
+          <!--/.statistics-content-->
+        </div>
+        <!--/.single-ststistics-box-->
+      </div>
+      <!--/.col-->
+      <div class="col-md-3 col-sm-6">
+        <div class="single-ststistics-box">
+          <div class="statistics-img">
+            <img src="./assets/images/counter/counter4.png" alt="counter-icon" />
+          </div>
+          <!--/.statistics-img-->
+          <div class="statistics-content">
+            <div class="counter">{{home.statistics.numOfUserBooked}}</div>
+            <h3>#user Booked exams</h3>
+          </div>
+          <!--/.statistics-content-->
+        </div>
+        <!--/.single-ststistics-box-->
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.statistics-counter-->
+  </div>
+  <!--/.container-->
+
+</section>
+<!--/.statistics-->
+<!--statistics end-->
+
+<!--nwes start -->
+<section class="news" id="courses">
+  <div class="container">
+    <div class="news-details">
+      <div class="section-header text-center">
+        <h2 style="padding-top:22px;">Courses</h2>
+
+      </div>
+      <!-- /.section-header -->
+      <div class="news-card news-card-pb-25">
+        <div class="row">
+        <app-courses></app-courses>
+        </div>
+        <!--/.row-->
+        <div class="project-btn text-center">
+          <a href="blog.html" class="project-view">read more
+          </a>
+        </div>
+        <!--/.project-btn-->
+      </div>
+      <!--/.news-card-->
+
+    </div>
+    <!--/news-details-->
+  </div>
+  <!--/.container-->
+
+</section>
+<!--/news-->
+<!--news end-->
+
+
+<!-- testemonial Start -->
+
+<section class="testemonial">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>
+        <span>
+          what our client say about us
+        </span>
+      </h2>
+    </div>
+
+  <app-testimonial></app-testimonial>
+  </div>
+
+</section>
+
+<!---------------- New - Contact us ---------------->
+<section class="contact">
+  <div class="container">
+    <div class="contact-details">
+      <div class="section-header contact-head  text-center">
+        <h2>Get In Touch</h2>
+        <p>
+          Thanks for visiting! We hope that you have found what you needed on our website.
+          If not, please feel free to contact us using any of the methods below.
+        </p>
+      </div>
+      <!--/.section-header-->
+      <div class="contact-content">
+        <div class="row">
+          <div class="col-sm-offset-1 col-sm-5">
+            <div class="single-contact-box">
+              <div class="contact-right">
+                <div class="contact-adress">
+                  <div class="contact-office-address">
+                    <h2>contact info</h2><br>
+                    <div class="single-online-address">
+                      <i class="fa fa-map-marker"></i>
+                      Amman, Jordan
+                    </div>
+                    <div class="contact-online-address">
+                      <div class="single-online-address">
+                        <i class="fa fa-phone"></i>
+                        +962786543293
+                      </div>
+                      <div class="single-online-address">
+                        <i class="fa fa-envelope-o"></i>
+                        exam.booking@outlook.com
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contact-office-address">
+                    <h2>social partner</h2>
+                    <div class="contact-icon">
+                      <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="single-contact-box">
+              <div class="contact-form">
+                <h2>Leave us a Message Here !</h2>
+                <form [formGroup]="home.contactForm">
+
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy  ">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <input type="text" matInput formControlName="fullname" class="form-control" id="fullname"
+                              placeholder="Full Name" name="fullname">
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['fullname'].hasError('required')">
+                            Fullname is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <input type="email" matInput formControlName="email" class="form-control" id="email"
+                              placeholder="Email" name="email">
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['email'].hasError('email')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="home.contactForm.controls['email'].hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <textarea class="form-control" matInput formControlName="message" rows="5" id="comment"
+                              placeholder="Message"></textarea>
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['fullname'].hasError('required')">
+                            Message is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="single-contact-btn pull-right">
+                        <button class="contact-btn" type="submit" (click)="home.submit()"
+                          [disabled]="!home.contactForm.valid">
+                          send message</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact end -->
+<app-footer></app-footer>

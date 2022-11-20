@@ -1,0 +1,109 @@
+li {
+  list-style-type: none;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+li .card:hover {
+  border: 1px solid blue;
+}
+
+ol {
+  padding: 0;
+}
+
+.card {
+  max-width: 700px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 26px;
+  background: #ffffff;
+  border: 2px solid #005555;
+  border-radius: 10px;
+}
+
+.options {
+  border: 1px solid #00000038;
+  border-radius: 10px;
+  padding: 9px;
+  height: 40px;
+  ;
+}
+
+.btn,
+.submitBtn {
+  padding: 14px 30px;
+  background-color: #005555;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  border-radius: 10px;
+  transition: all .3s ease-in-out;
+}
+
+.next {
+  position: relative;
+  left: 84%;
+  top: 10px;
+}
+
+.submit {
+  position: relative;
+  left: 62%;
+  top: 10px;
+}
+
+.previous {
+  position: relative;
+  right: -11px;
+  top: 10px;
+}
+
+.time_left_txt {
+  float: right;
+  margin-top: -14px;
+  margin-right: 6px;
+  background-color: #ff000030;
+  padding: 7px;
+}
+
+.userCard {
+  max-width: 700px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 26px;
+  background: #043e390d;
+  border: 2px solid #005555;
+  border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+  .submit {
+    position: relative;
+    left: 16%;
+    top: 10px;
+  }
+
+  .next {
+    position: relative;
+    left: 59%;
+    top: 10px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 760px) {
+  .submit {
+    position: relative;
+    left: 54%;
+    top: 10px;
+  }
+
+  .next {
+    position: relative;
+    left: 80%;
+    top: 10px;
+  }
+}

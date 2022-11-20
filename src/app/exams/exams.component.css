@@ -1,0 +1,23 @@
+.searchbutton{
+    background-color: #005555;
+    color: white !important;
+    padding: 4px 23px  !important;
+    /* border: 1px black; */
+    position: relative  !important;
+    top: 10px  !important;
+    left: 10px  !important;
+    height: 42px !important;
+}
+.searchinput{
+    padding: 6px 4px;
+}
+/* .middleinput{
+    display: inline-flex;
+    justify-content: center;
+} */
+
+.searchbutton:hover{
+    background-color: white;
+    color:#005555 !important;
+    border:2px solid #005555
+}

@@ -1,0 +1,143 @@
+<app-navbar></app-navbar>
+
+<!--contact-part start-->
+<section class="about-part">
+  <div class="container">
+    <div class="about-part-details text-center">
+      <h2>contact us</h2>
+      <div class="about-part-content">
+        <div class="breadcrumbs">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--contact start-->
+<section class="contact">
+  <div class="container">
+    <div class="contact-details">
+      <div class="section-header contact-head  text-center">
+        <h2>Get In Touch</h2>
+        <p>
+          Thanks for visiting! We hope that you have found what you needed on our website.
+          If not, please feel free to contact us using any of the methods below.
+        </p>
+      </div>
+      <!--/.section-header-->
+      <div class="contact-content">
+        <div class="row">
+          <div class="col-sm-offset-1 col-sm-5">
+            <div class="single-contact-box">
+              <div class="contact-right">
+                <div class="contact-adress">
+                  <div class="contact-office-address">
+                    <h2>contact info</h2><br>
+                    <div class="single-online-address">
+                      <i class="fa fa-map-marker"></i>
+                      Amman, Jordan
+                    </div>
+                    <div class="contact-online-address">
+                      <div class="single-online-address">
+                        <i class="fa fa-phone"></i>
+                        +962786543293
+                      </div>
+                      <div class="single-online-address">
+                        <i class="fa fa-envelope-o"></i>
+                        exam.booking@outlook.com
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contact-office-address">
+                    <h2>social partner</h2>
+                    <div class="contact-icon">
+                      <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-5">
+            <div class="single-contact-box">
+              <div class="contact-form">
+                <h2>Leave us a Message Here !</h2>
+                <form [formGroup]="home.contactForm">
+
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy  ">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <input type="text" matInput formControlName="fullname" class="form-control" id="fullname"
+                              placeholder="Full Name" name="fullname">
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['fullname'].hasError('required')">
+                            Fullname is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <input type="email" matInput formControlName="email" class="form-control" id="email"
+                              placeholder="Email" name="email">
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['email'].hasError('email')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="home.contactForm.controls['email'].hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                            <textarea class="form-control" matInput formControlName="message" rows="5" id="comment"
+                              placeholder="Message"></textarea>
+                          </div>
+                          <mat-error *ngIf="home.contactForm.controls['fullname'].hasError('required')">
+                            Message is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="single-contact-btn pull-right">
+                        <button class="contact-btn" type="submit" (click)="home.submit()"
+                          [disabled]="!home.contactForm.valid">
+                          send message</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,48 @@
+<div class="overlay">
+  <div class="login-form">
+  </div>
+  <form>
+    <div class="sign-in-htm">
+      <h3>Sign In</h3>
+      <div class="group">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy ">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix "
+            style="color:white ;     font-size: 17px;">User Name
+            <input matInput id="user" type="text" class="input" [formControl]="username">
+          </div>
+          <mat-error *ngIf="username.hasError('required')">
+            username is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="group">
+        <mat-form-field class="example-full-width mat-form-field-appearance-legacy ">
+          <div class="example-full-width mat-form-field-wrapper mat-form-field-infix "
+            style="color:white ;    font-size: 17px; ">Password
+            <input matInput id="pass" type="password" class="input" data-type="password" [formControl]="password">
+          </div>
+          <mat-error *ngIf="password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">
+            password must be at least 8 charecters
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="group">
+        <span>
+          <input id="check" type="checkbox" class="check" checked [formControl]="rememberMe" value="yes">
+          <label for="check" class="checkLabel"> Keep me Signed in</label>
+        </span>
+      </div>
+      <div class="group">
+        <button (click)="submit()" [disabled]="!username.valid || !password.valid" type="submit"
+          class="button">Login</button>
+      </div>
+      <div class="hr"></div>
+      <div class="foot-lnk">
+        <p (click)="goToRegister()">Don't have an account?</p>
+      </div>
+    </div>
+  </form>
+</div>

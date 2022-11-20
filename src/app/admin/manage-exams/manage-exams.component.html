@@ -1,0 +1,62 @@
+<app-sidebar></app-sidebar>
+<div class="tbl">
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
+    Exam</button>
+  <table mat-table [dataSource]="Home.ExamCourse" class="mat-elevation-z8">
+    <tbody>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.examid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Exam Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="examduration">
+        <th mat-header-cell *matHeaderCellDef> Duration </th>
+        <td mat-cell *matCellDef="let element"> {{element.examduration}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="examprice">
+        <th mat-header-cell *matHeaderCellDef> Exam Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.examprice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="passmark">
+        <th mat-header-cell *matHeaderCellDef> Pass Mark </th>
+        <td mat-cell *matCellDef="let element"> {{element.passmark}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="coursename">
+        <th mat-header-cell *matHeaderCellDef> Course Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.coursename}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element">
+          <img src="../../../assets/images/{{element.imagepath}}" [ngStyle]="{'width.px':250,'hight.px':200}">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary">Update</button>
+          <button mat-raised-button color="warn">Delete</button>
+        </td>
+      </ng-container>
+
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

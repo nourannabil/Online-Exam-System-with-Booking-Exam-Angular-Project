@@ -1,0 +1,19 @@
+
+
+  <div class="card col-sm-4" (click)="goToExams()" style="cursor: pointer;">
+    <div class="cardTop">
+      <img src="{{imagepath}}"  width="350px"  height="250px" class="cardhover"/>
+    </div>
+    <div class="cardBottom">
+      <div class="cardText">
+      <!--       Title and description will always show -->
+      <h3 class="cardTitle">{{name}} Course</h3>
+      <h4 class="cardInfo" style="color:black">Click for {{name}} exams</h4>
+
+      <button (click)="StartExam(courseid)" >Start Exam</button>
+
+      </div>
+    </div>
+    </div>
+
+

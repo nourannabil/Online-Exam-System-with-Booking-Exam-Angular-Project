@@ -1,0 +1,59 @@
+.about-part:before {
+  background: rgb(11 11 11 / 54%);
+}
+
+.contact {
+  background: none;
+}
+
+.contact:before {
+  background: rgb(255 255 255 / 85%);
+}
+
+.section-header.contact-head h2,
+.section-header.contact-head p,
+.contact-office-address h3,
+.contact-office-address p,
+.contact-online-address,
+.contact-icon ul li>a,
+.contact-form h3 {
+  color: black;
+}
+
+.contact-form .single-contact-btn button {
+  background: #005555;
+  border: 1px solid #005555;
+  margin-bottom: 50px;
+}
+
+.contact-content {
+  background: #4f7b7b9c;
+}
+
+/* ------------------------- Contact us New Styles ---------------- */
+
+.contact-form .form-control{
+  padding: 20px 20px !important;
+  margin: 3px;
+}
+
+.mat-form-field-infix {
+  width: 100% !important;
+  position: static !important;
+}
+
+.mat-form-field{
+  display: block !important;
+}
+
+.mat-input-element{
+  box-sizing: border-box !important;
+}
+
+.single-online-address{
+  font-size: 16px;
+}
+
+.contact-office-address{
+  margin-bottom: 30px !important;
+}

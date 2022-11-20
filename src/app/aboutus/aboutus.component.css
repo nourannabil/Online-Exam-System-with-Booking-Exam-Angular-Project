@@ -1,0 +1,21 @@
+.about-part:before {
+  background: rgb(11 11 11 / 54%);
+}
+
+.project-view {
+  background: #005555;
+  border: 1px solid #005555;
+}
+
+.about-us {
+  background: #6a979714;
+}
+
+.about-us h2 {
+  color: #0d0e10;
+  font-family: 'Playfair Display', serif;
+}
+
+.statistics:before {
+  background: rgb(0 0 0 / 79%);
+}
