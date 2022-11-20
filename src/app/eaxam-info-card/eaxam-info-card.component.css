@@ -1,0 +1,61 @@
+body {
+   		background: linear-gradient(90deg, #ded4d4 50%, #005555 50%) !important; 
+  }
+  .portfolio {
+    padding: 6%;
+    text-align: center;
+  }
+  .heading {
+    background: #fff;
+    padding: 1%;
+    text-align: left;
+    box-shadow: 0px 0px 4px 0px #545b62;
+  }
+  .heading img {
+    width: 10%;
+  }
+  .bio-info {
+    padding: 5%;
+    background: #fff;
+    box-shadow: 0px 0px 4px 0px #b0b3b7;
+  }
+  .name {
+    font-family: "Charmonman", cursive;
+    font-weight: 600;
+  }
+  .bio-image {
+    text-align: center;
+  }
+  .bio-image img {
+    border-radius: 50%;
+  }
+  .bio-content {
+    text-align: left;
+  }
+  .bio-content p {
+    font-weight: 600;
+    font-size: 30px;
+  }
+  .examname{
+    
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
+    font-size: 40px !important;
+    color: #005555;
+    text-transform: uppercase;
+  }
+  .h3style{
+    font-size: 22px;
+    letter-spacing: 0.5px;
+  }
+  .bookbutton{
+    background-color: #005555;
+    color: white;
+    border-color: #005555;
+    padding: 11px 29px;
+    font-size: 20px;
+    border-radius: 9px;
+    position: relative;
+    bottom: -22px;
+    left: 135px;
+  }

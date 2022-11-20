@@ -1,1 +1,44 @@
-<p>eaxam-info-card works!</p>
+<app-navbar></app-navbar>
+<div class="container portfolio">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <!-- <img src="https://image.ibb.co/cbCMvA/logo.png" /> -->
+          <i class="fa fa-circle" aria-hidden="true" style=" color: #005555;font-size: 18px;"></i>
+          <i class="fa fa-circle" aria-hidden="true" style=" color: #069A8E;font-size: 18px; padding: 0px 5px;"></i>
+          <i class="fa fa-circle" aria-hidden="true" style=" color: #A1E3D8;font-size: 18px;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="bio-info">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="bio-image">
+                <img src="{{home.examById.imagepath}}" alt="image" width="350px" height="300px"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="bio-content">
+            <h1 class="examname">{{home.examById.name}} Exam</h1>
+            <h3 style="text-transform: none;font-size: 20px;">{{home.examById.description}}</h3>
+            <h3 style="text-transform: none;font-size: 20px;"><span style="font-weight:bold;" class="h3style">Duration:</span> {{home.examById.examduration}} minutes</h3>
+            <h3 style="text-transform: none;font-size: 20px;"><span style="font-weight:bold;" class="h3style">Price:</span> ${{home.examById.examprice}}</h3>
+            <h3 style="text-transform: none;font-size: 20px;"><span style="font-weight:bold;" class="h3style">Pass Mark: </span>{{home.examById.passmark}}%</h3>
+            <h3 *ngIf="home.examavailabletime.length==0" style="font-weight:bold;color: red;font-size: 20px;" class="h3style">  Exam dosnt have any available time yet !  </h3>
+            <h3 *ngIf="home.examavailabletime.length>0" style="font-weight:bold;" class="h3style"> Available Time:  </h3>
+            <ul>
+                <li *ngFor="let obj of home.examavailabletime" style="text-transform: none;font-size: 20px;position: relative;left: 26px;list-style: outside;">{{obj.examstartdate| date: 'dd/MMM/yyyy hh:mm a' }}</li>
+            </ul>
+            <button class="bookbutton" (click)="goToLogin()">Book Now</button>
+        </div>
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>

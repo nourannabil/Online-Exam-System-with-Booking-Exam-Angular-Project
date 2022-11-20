@@ -14,7 +14,10 @@ export class HomeService {
   homeinfo: any = {};
   statistics: any = {};
   aboutinfo: any = {};
-
+  examById: any = {};
+  allAvailableTime:any[]=[];
+  examavailabletime:any[]=[];
+  contactusinfo:any[]=[];
   contactForm: FormGroup = new FormGroup ({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -22,6 +25,24 @@ export class HomeService {
   });
 
   constructor(private http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
+
+  getAllContact() {//setps to hit on  data from api
+    //1.show spinner
+    //2.hit on api
+    //3.hide spinner
+    //4. resp =>toastr
+
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/contactus').subscribe((resp: any) => {
+      this.contactusinfo = resp;
+      console.log(this.contactusinfo);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
 
   getAllCourses() {//setps to hit on  data from api
     //1.show spinner
@@ -37,7 +58,7 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
+      this.toastr.error(err.message, err.status)
     })
   }
 
@@ -63,7 +84,7 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
+      this.toastr.error(err.message, err.status)
     })
   }
 
@@ -78,7 +99,7 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
+      this.toastr.error(err.message, err.status)
     })
   }
 
@@ -106,9 +127,40 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
+      this.toastr.error(err.message, err.status)
+    })
+
+    
+  }
+
+  getExamById(id:number) {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/exam/getbyid/'+id).subscribe((resp: any) => {
+      this.examById = resp;
+      console.log(this.examById);
+
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
     })
   }
+
+  getAllAvailable() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/available').subscribe((resp: any) => {
+      this.allAvailableTime = resp;
+      console.log(this.allAvailableTime);
+
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+ 
 
   /* new - Contact us*/
   submit() {

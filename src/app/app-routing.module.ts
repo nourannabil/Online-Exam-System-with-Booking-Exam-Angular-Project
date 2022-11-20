@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CourseExamsComponent } from './course-exams/course-exams.component';
 import { CoursesComponent } from './courses/courses.component';
+import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.component';
 import { ExamsComponent } from './exams/exams.component';
 import { HomeComponent } from './home/home.component';
 import { QuizModule } from './quiz/quiz.module';
@@ -28,6 +29,9 @@ const routes: Routes = [
   }, {
     path: 'test',
     component: TestimonialComponent
+  },{
+    path: 'examinfo',
+    component: EaxamInfoCardComponent
   },
   //////////////////////////////////////
   {
@@ -59,6 +63,10 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => UserModule
+  },
+  {
+    path: 'contactinfo',
+    loadChildren: () => AdminModule
   },
 
 

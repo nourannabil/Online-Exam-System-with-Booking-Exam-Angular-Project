@@ -25,6 +25,7 @@ import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.compon
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.compon
     TestimonialComponent,
     CourseExamsComponent,
     EaxamInfoCardComponent,
- 
+  
   
    
   ],

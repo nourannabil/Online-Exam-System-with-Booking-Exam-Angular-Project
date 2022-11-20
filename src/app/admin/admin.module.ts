@@ -6,13 +6,15 @@ import { SharedModule } from '../shared/shared.module';
 import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ManageExamsComponent } from './manage-exams/manage-exams.component';
+import { ManageContactUsComponent } from './manage-contact-us/manage-contact-us.component';
 
 
 @NgModule({
   declarations: [
     ManageCoursesComponent,
     SidebarComponent,
-    ManageExamsComponent
+    ManageExamsComponent,
+    ManageContactUsComponent
   ],
   imports: [
     CommonModule,

@@ -9,12 +9,13 @@ import { HomeService } from '../Services/home.service';
   styleUrls: ['./exams.component.css']
 })
 export class ExamsComponent implements OnInit {
-
+ 
   constructor(private router:Router,public home:HomeService) { }
   examName: FormControl = new FormControl('');
 
   ngOnInit(): void {
     this.home.getAllExams();
+    this.home.getAllAvailable();
   }
 
 }
