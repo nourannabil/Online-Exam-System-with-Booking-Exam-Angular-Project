@@ -1,5 +1,7 @@
 body {
   min-height: 1000vh;
+  
+  overflow: hidden !important;
 }
 
 form {
@@ -9,7 +11,7 @@ form {
   position: absolute;
   transform: translate(-50%, 9%);
   left: 50%;
-  top: 70px;
+  top: 65px;
   border-radius: 10px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);

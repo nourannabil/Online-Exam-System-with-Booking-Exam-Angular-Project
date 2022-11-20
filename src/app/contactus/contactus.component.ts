@@ -11,7 +11,9 @@ export class ContactusComponent implements OnInit {
 
   constructor(private spinner:NgxSpinnerService,public home:HomeService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.home.getAllContact();
+  }
 
 }
 

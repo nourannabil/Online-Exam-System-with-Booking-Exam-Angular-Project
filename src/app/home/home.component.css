@@ -106,3 +106,43 @@
 .contact-office-address{
   margin-bottom: 30px !important;
 }
+.parstyle {
+  position: relative !important;
+  left: 54px;
+}
+@media (max-width: 1180px) {
+  .parstyle {
+    position: relative !important;
+    left: 0px;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media (max-width: 992px) {
+  .parstyle {
+    position: relative !important;
+    left: 12px;
+  }
+}
+@media (max-width: 720px) {
+  .parstyle {
+    position: relative !important;
+    left: 2px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media(max-width: 600px) {
+  .parstyle {
+    position: relative !important;
+    left: -1px;
+  }}
+
+  .usersimg{
+    width: 100px;
+    height: 99px;
+    position: relative;
+    top: -19px;
+    left: -28px;
+}
+  
