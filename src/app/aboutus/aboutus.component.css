@@ -19,3 +19,10 @@
 .statistics:before {
   background: rgb(0 0 0 / 79%);
 }
+.titlestyle{
+  
+  text-transform: capitalize;
+  font-family: 'Poppins';
+  font-size: 36px;
+  letter-spacing: 1.5px;
+}

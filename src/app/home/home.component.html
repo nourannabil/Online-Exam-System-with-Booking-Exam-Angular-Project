@@ -80,7 +80,7 @@
   <div class="container">
     <div class="about-us-content">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="top: -82px;">
           <div class="single-about-us">
             <div class="about-us-txt">
               <h2 style="font-size: 25px;font-family:'Poppins';">{{home.aboutinfo.title}}</h2>
@@ -157,16 +157,13 @@
       <div class="col-md-3 col-sm-6">
         <div class="single-ststistics-box">
           <div class="statistics-img">
-            <img src="./assets/images/counter/usres.png" alt="counter-icon" style="width: 106px;
-             height: 103px;
-             position: relative;
-             top: -19px;" />
+            <img src="./assets/images/counter/usres.png" alt="counter-icon" class="usersimg"/>
           </div>
           <!--/.statistics-img-->
 
           <div class="statistics-content">
-            <div class="counter">{{home.statistics.numOfUser}}</div>
-            <h3>#website users</h3>
+            <div class="counter" style="left: -42px;position: relative;">{{home.statistics.numOfUser}}</div>
+            <h3 style="left:-45px; position: relative;">#website users</h3>
           </div>
 
           <!--/.statistics-content-->
@@ -253,9 +250,8 @@
     <div class="contact-details">
       <div class="section-header contact-head  text-center">
         <h2>Get In Touch</h2>
-        <p>
-          Thanks for visiting! We hope that you have found what you needed on our website.
-          If not, please feel free to contact us using any of the methods below.
+        <p  *ngFor="let obj of home.contactusinfo" style="text-align:center;" class="parstyle">
+          {{obj.description1}}
         </p>
       </div>
       <!--/.section-header-->
@@ -267,18 +263,18 @@
                 <div class="contact-adress">
                   <div class="contact-office-address">
                     <h2>contact info</h2><br>
-                    <div class="single-online-address">
+                    <div class="single-online-address"  *ngFor="let obj of home.contactusinfo">
                       <i class="fa fa-map-marker"></i>
-                      Amman, Jordan
+                      {{obj.title}}
                     </div>
                     <div class="contact-online-address">
-                      <div class="single-online-address">
+                      <div class="single-online-address" *ngFor="let obj of home.contactusinfo">
                         <i class="fa fa-phone"></i>
-                        +962786543293
+                        {{obj.description2}}
                       </div>
-                      <div class="single-online-address">
+                      <div class="single-online-address"  *ngFor="let obj of home.contactusinfo">
                         <i class="fa fa-envelope-o"></i>
-                        exam.booking@outlook.com
+                        {{obj.description3}}
                       </div>
                     </div>
                   </div>

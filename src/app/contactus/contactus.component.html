@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 
 <!--contact-part start-->
-<section class="about-part">
+<section *ngFor="let obj of home.contactusinfo" class="about-part"  style="background-image:url({{obj.imagepath}}); height: 350px;">
   <div class="container">
     <div class="about-part-details text-center">
-      <h2>contact us</h2>
+      <h2 *ngFor="let obj of home.contactusinfo" class="titlestyle">{{obj.title}}</h2>
       <div class="about-part-content">
         <div class="breadcrumbs">
         </div>
@@ -20,9 +20,8 @@
     <div class="contact-details">
       <div class="section-header contact-head  text-center">
         <h2>Get In Touch</h2>
-        <p>
-          Thanks for visiting! We hope that you have found what you needed on our website.
-          If not, please feel free to contact us using any of the methods below.
+        <p *ngFor="let obj of home.contactusinfo" class="parstyle">
+          {{obj.description1}}
         </p>
       </div>
       <!--/.section-header-->
@@ -34,18 +33,18 @@
                 <div class="contact-adress">
                   <div class="contact-office-address">
                     <h2>contact info</h2><br>
-                    <div class="single-online-address">
+                    <div class="single-online-address" *ngFor="let obj of home.contactusinfo">
                       <i class="fa fa-map-marker"></i>
-                      Amman, Jordan
+                      {{obj.map}}
                     </div>
                     <div class="contact-online-address">
-                      <div class="single-online-address">
+                      <div class="single-online-address" *ngFor="let obj of home.contactusinfo">
                         <i class="fa fa-phone"></i>
-                        +962786543293
+                        {{obj.description2}}
                       </div>
-                      <div class="single-online-address">
+                      <div class="single-online-address" *ngFor="let obj of home.contactusinfo">
                         <i class="fa fa-envelope-o"></i>
-                        exam.booking@outlook.com
+                        {{obj.description3}}
                       </div>
                     </div>
                   </div>
@@ -140,4 +139,10 @@
   </div>
 </section>
 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d433870.8267820615!2d35.66744106019396!3d31.835453335154707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5fb85d7981af%3A0x631c30c0f8dc65e8!2sAmman!5e0!3m2!1sen!2sjo!4v1668977437972!5m2!1sen!2sjo" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="iframclass"></iframe>
+<!-- 
+<iframe *ngFor="let obj of home.contactusinfo"class=" w-100 "  style="object-fit: cover;"
+[src]="obj.map"
+                  height="500"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+             </iframe> -->
 <app-footer></app-footer>

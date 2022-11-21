@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.home.getStatistics();
     this.home.getHomeSlider();
     this.home.getAboutInfo();
+    this.home.getAllContact();
 
   }
 
