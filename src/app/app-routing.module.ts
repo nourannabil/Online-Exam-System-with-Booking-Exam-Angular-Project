@@ -68,7 +68,18 @@ const routes: Routes = [
     path: 'contactinfo',
     loadChildren: () => AdminModule
   },
-
+  {
+    path: 'aboutinfo',
+    loadChildren: () => AdminModule
+  },
+  {
+    path: 'homeinfo',
+    loadChildren: () => AdminModule
+  },
+  {
+    path: 'testimonialinfo',
+    loadChildren: () => AdminModule
+  },
 
 ];
 

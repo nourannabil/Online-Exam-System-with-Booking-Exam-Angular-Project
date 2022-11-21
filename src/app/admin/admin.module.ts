@@ -7,6 +7,9 @@ import { ManageCoursesComponent } from './manage-courses/manage-courses.componen
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ManageExamsComponent } from './manage-exams/manage-exams.component';
 import { ManageContactUsComponent } from './manage-contact-us/manage-contact-us.component';
+import { ManageAboutUsComponent } from './manage-about-us/manage-about-us.component';
+import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { ManageContactUsComponent } from './manage-contact-us/manage-contact-us.
     ManageCoursesComponent,
     SidebarComponent,
     ManageExamsComponent,
-    ManageContactUsComponent
+    ManageContactUsComponent,
+    ManageAboutUsComponent,
+    ManageHomeComponent,
+    ManageTestimonialComponent
   ],
   imports: [
     CommonModule,

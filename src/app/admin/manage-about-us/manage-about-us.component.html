@@ -2,12 +2,15 @@
 <div class="tbl">
   <!-- <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
     Course</button> -->
-  <table mat-table [dataSource]="home.contactusinfo" class="mat-elevation-z8 responsive">
+    <div class="scrollit">
+  <table mat-table [dataSource]="home.allaboutinfo" class="mat-elevation-z8 responsive">
     <tbody>
-      <ng-container matColumnDef="contacttableid">
+      <ng-container matColumnDef="aboutid">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.contacttableid}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.aboutid}} </td>
       </ng-container>
+
+     
 
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef> Title </th>
@@ -24,19 +27,6 @@
         <td mat-cell *matCellDef="let element"> {{element.description2}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="description3">
-        <th mat-header-cell *matHeaderCellDef> Third Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.description3}} </td>
-      </ng-container>
-      <ng-container matColumnDef="map">
-        <th mat-header-cell *matHeaderCellDef> Map </th>
-        <td mat-cell *matCellDef="let element"> {{element.map}} </td>
-      </ng-container>
-      <ng-container matColumnDef="homeid">
-        <th mat-header-cell *matHeaderCellDef> home No </th>
-        <td mat-cell *matCellDef="let element"> {{element.homeid}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="imagepath">
         <th mat-header-cell *matHeaderCellDef> Image </th>
         <td mat-cell *matCellDef="let element">
@@ -44,10 +34,15 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="homeid">
+        <th mat-header-cell *matHeaderCellDef> home No </th>
+        <td mat-cell *matCellDef="let element"> {{element.homeid}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="Options">
         <th mat-header-cell *matHeaderCellDef> Options </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary">Update</button>
+          <button mat-raised-button  style=" background-color: #005555; color: white;">Update</button>
           <button mat-raised-button color="warn">Delete</button>
         </td>
       </ng-container>
@@ -56,7 +51,6 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-  </table>
+  </table></div>
 </div>
 

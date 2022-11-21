@@ -18,6 +18,9 @@ export class HomeService {
   allAvailableTime:any[]=[];
   examavailabletime:any[]=[];
   contactusinfo:any[]=[];
+  allaboutinfo:any[]=[];
+  allhomeinfo:any[]=[];
+ testimonialinfo:any[]=[];
   contactForm: FormGroup = new FormGroup ({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -36,6 +39,43 @@ export class HomeService {
     this.http.get('https://localhost:44371/api/contactus').subscribe((resp: any) => {
       this.contactusinfo = resp;
       console.log(this.contactusinfo);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+  getAllabout() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/about').subscribe((resp: any) => {
+      this.allaboutinfo = resp;
+      console.log(this.allaboutinfo);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+
+  getAllhome() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/home').subscribe((resp: any) => {
+      this.allhomeinfo = resp;
+      console.log(this.allhomeinfo);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+  gettestimonialinfo() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/testimonial').subscribe((resp: any) => {
+      this.testimonialinfo = resp;
+      console.log(this.testimonialinfo);
       this.spinner.hide();
       this.toastr.success('Data Retrieved!')
     }, err => {
