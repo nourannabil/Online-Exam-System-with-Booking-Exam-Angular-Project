@@ -5,7 +5,9 @@ import { ManageContactUsComponent } from './manage-contact-us/manage-contact-us.
 import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
 import { ManageExamsComponent } from './manage-exams/manage-exams.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { ManageQuestionBankComponent } from './manage-question-bank/manage-question-bank.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
+import { ManageTimesComponent } from './manage-times/manage-times.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'manageExams',
     component: ManageExamsComponent
+  },
+  {
+    path: 'manageTimes',
+    component: ManageTimesComponent
+  },
+  {
+    path: 'manageQuestionBank',
+    component: ManageQuestionBankComponent
   },
   {
     path: 'contactinfo',

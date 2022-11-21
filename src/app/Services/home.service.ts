@@ -21,6 +21,13 @@ export class HomeService {
   allaboutinfo:any[]=[];
   allhomeinfo:any[]=[];
  testimonialinfo:any[]=[];
+ availableTime: any[] = [];
+  status: any[] = [];
+  ExamTime: any[] = [];
+  questionBank: any[] = [];
+  CourseBank: any[] = [];
+
+
   contactForm: FormGroup = new FormGroup ({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -127,6 +134,68 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
   }
+
+  getAllStatus() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/status').subscribe((resp: any) => {
+      this.status = resp;
+      console.log(this.status);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.statuse)
+    })
+  }
+
+  getAllAvailableTime() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/Api/available').subscribe((resp: any) => {
+      this.availableTime = resp;
+
+      this.ExamTime = this.availableTime.map(available => ({
+        avaliableid: available.avaliableid,
+        examstartdate: available.examstartdate,
+        examname: this.exams.find(exam => exam.examid === available.examid).name,
+        statusname: this.status.find( status => status.statusid === available.statusid).statusname
+      }));
+
+      console.log(this.availableTime);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.statuse)
+    })
+  }
+
+  getAllQuestionBank() {
+    this.spinner.show();
+    this.http.get('https://localhost:44371/Api/QuestionBank').subscribe((resp: any) => {
+      this.questionBank = resp;
+
+      this.CourseBank = this.questionBank.map(bank => ({
+        questionid: bank.questionid,
+        questiontitle: bank.questiontitle,
+        correctanswer: bank.correctanswer,
+        answeroption1: bank.answeroption1,
+        answeroption2: bank.answeroption2,
+        answeroption3: bank.answeroption3,
+        answeroption4: bank.answeroption4,
+        questionmark: bank.questionmark,
+        coursename: this.courses.find(course => course.courseid === bank.courseid).name
+
+      }));
+
+      console.log(this.questionBank);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.statuse)
+    })
+  }
+  
 
 
   /////////////////////////////////////////////////////////////////////////////////

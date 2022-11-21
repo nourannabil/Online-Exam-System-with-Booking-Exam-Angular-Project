@@ -1,0 +1,67 @@
+<app-sidebar></app-sidebar>
+<div class="tbl">
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
+    Course</button>
+  <div class="scrollit">
+    <table mat-table [dataSource]="Home.CourseBank" class="mat-elevation-z8">
+      <tbody>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.questionid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Question Title </th>
+          <td mat-cell *matCellDef="let element"> {{element.questiontitle}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Correct Answer </th>
+          <td mat-cell *matCellDef="let element"> {{element.correctanswer}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description1">
+          <th mat-header-cell *matHeaderCellDef> Option1 </th>
+          <td mat-cell *matCellDef="let element"> {{element.answeroption1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description2">
+          <th mat-header-cell *matHeaderCellDef> Option2 </th>
+          <td mat-cell *matCellDef="let element"> {{element.answeroption2}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description3">
+          <th mat-header-cell *matHeaderCellDef> Option3 </th>
+          <td mat-cell *matCellDef="let element"> {{element.answeroption3}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description4">
+          <th mat-header-cell *matHeaderCellDef> Option4 </th>
+          <td mat-cell *matCellDef="let element"> {{element.answeroption4}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Mark </th>
+          <td mat-cell *matCellDef="let element"> {{element.questionmark}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef> Course</th>
+          <td mat-cell *matCellDef="let element"> {{element.coursename}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Options">
+          <th mat-header-cell *matHeaderCellDef> Options </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary">Update</button>
+            <button mat-raised-button color="warn">Delete</button>
+          </td>
+        </ng-container>
+
+      </tbody>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

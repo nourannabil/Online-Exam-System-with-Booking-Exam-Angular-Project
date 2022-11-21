@@ -11,6 +11,8 @@ import { ManageAboutUsComponent } from './manage-about-us/manage-about-us.compon
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
+import { ManageTimesComponent } from './manage-times/manage-times.component';
+import { ManageQuestionBankComponent } from './manage-question-bank/manage-question-bank.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ManageBookingComponent } from './manage-booking/manage-booking.componen
     ManageAboutUsComponent,
     ManageHomeComponent,
     ManageTestimonialComponent,
-    ManageBookingComponent
+    ManageBookingComponent,
+    ManageTimesComponent,
+    ManageQuestionBankComponent
   ],
   imports: [
     CommonModule,
