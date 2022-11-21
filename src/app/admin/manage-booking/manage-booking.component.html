@@ -1,1 +1,58 @@
-<p>manage-booking works!</p>
+<app-sidebar></app-sidebar>
+<div class="tbl">
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
+    Booking</button>
+  <table mat-table [dataSource]="home.AllBookingArray" class="mat-elevation-z8 responsive">
+    <tbody>
+      <ng-container matColumnDef="bookingid">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.bookingid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="examdateuser">
+        <th mat-header-cell *matHeaderCellDef> Exam Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.examdateuser |date: 'dd/MMM/yyyy hh:mm a'}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="bookingdate">
+        <th mat-header-cell *matHeaderCellDef> Booking Date  </th>
+        <td mat-cell *matCellDef="let element"> {{element.bookingdate | date: 'dd/MMM/yyyy hh:mm a'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exampassword">
+        <th mat-header-cell *matHeaderCellDef> Exam Password  </th>
+        <td mat-cell *matCellDef="let element"> {{element.exampassword}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="examid">
+        <th mat-header-cell *matHeaderCellDef> Exam Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.examid}} </td>
+      </ng-container>
+      <ng-container matColumnDef="userid">
+        <th mat-header-cell *matHeaderCellDef> User No </th>
+        <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+      </ng-container>
+      <ng-container matColumnDef="statusid">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.statusid}} </td>
+      </ng-container>
+
+ 
+
+      <ng-container matColumnDef="Options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary">Update</button>
+          <button mat-raised-button color="warn">Delete</button>
+        </td>
+      </ng-container>
+
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+</div>
+
+

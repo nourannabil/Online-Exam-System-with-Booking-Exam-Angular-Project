@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManageAboutUsComponent } from './manage-about-us/manage-about-us.component';
+import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 import { ManageContactUsComponent } from './manage-contact-us/manage-contact-us.component';
 import { ManageCoursesComponent } from './manage-courses/manage-courses.component';
 import { ManageExamsComponent } from './manage-exams/manage-exams.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'testimonialinfo',
     component: ManageTestimonialComponent
+  },
+  {
+    path: 'bookinginfo',
+    component: ManageBookingComponent
   },
 ];
 

@@ -26,6 +26,8 @@ export class HomeService {
   ExamTime: any[] = [];
   questionBank: any[] = [];
   CourseBank: any[] = [];
+  allBookings:any[]=[];
+  AllBookingArray:any[]=[];
 
 
   contactForm: FormGroup = new FormGroup ({
@@ -270,6 +272,39 @@ export class HomeService {
     })
   }
  
+  getAllBooking() {//setps to hit on  data from api
+    //1.show spinner
+    //2.hit on api
+    //3.hide spinner
+    //4. resp =>toastr
+ 
+
+
+    this.spinner.show();
+    this.http.get('https://localhost:44371/api/booking').subscribe((resp: any) => {
+      this.allBookings = resp;
+
+      this.AllBookingArray = this.allBookings.map(booking => ({
+        bookingid: booking.bookingid,
+        examdateuser: booking.examdateuser,
+        bookingdate: booking.bookingdate,
+        exampassword: booking.exampassword,
+        examid: this.exams.find(exam => exam.examid === booking.examid).name,
+        userid: booking.userid,
+        statusid: this.status.find( status => status.statusid === booking.statusid).statusname
+
+      }));
+
+
+      console.log(this.allBookings);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+
 
   /* new - Contact us*/
   submit() {
