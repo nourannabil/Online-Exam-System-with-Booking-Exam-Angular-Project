@@ -19,6 +19,7 @@ export class ExamsCardsComponent implements OnInit {
   constructor(private router:Router, public home:HomeService) { }
 
   ngOnInit(): void {
+    this.home.getAllAvailable();
   }
   opendetails(examid:number){
     this.home.getAllAvailable();

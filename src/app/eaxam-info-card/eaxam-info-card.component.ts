@@ -13,7 +13,7 @@ export class EaxamInfoCardComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+    this.home.getAllAvailable();
   }
   goToLogin(){
    this.router.navigate(['security/login']);
