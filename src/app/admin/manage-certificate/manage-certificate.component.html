@@ -1,0 +1,193 @@
+<app-sidebar></app-sidebar>
+<!-- ========================================Get All CERTIFICATE Table ======================================= -->
+
+<div class="tbl">
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
+    (click)="openCreateDialog()">Add Certificate</button>
+  <table mat-table [dataSource]="admin.certificates" class="mat-elevation-z8 responsive">
+    <tbody>
+      <ng-container matColumnDef="certificateid">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.certificateid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Titel </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="imagepath">
+        <th mat-header-cell *matHeaderCellDef>Second Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.imagepath}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userid">
+        <th mat-header-cell *matHeaderCellDef> User No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+      </ng-container>
+      <ng-container matColumnDef="bookingid">
+        <th mat-header-cell *matHeaderCellDef> Booking No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.bookingid}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="openUpdateDialog(element)">Update</button>
+          <button mat-raised-button color="warn" (click)="openDeleteDialog(element.certificateid)">Delete</button>
+        </td>
+      </ng-container>
+      <!-- (click)="openUpdateDialog(element)"
+      (click)="openDeleteDialog(element.bookingid)" -->
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+<!-- ======================================== END Get All CERTIFICATE Table======================================= -->
+
+<!-- ========================================  Create CERTIFICATE ======================================= -->
+
+<ng-template #CallCreateDialog>
+    <mat-dialog-content class="mat-typography">
+  
+        <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Certificate</h2>
+          <form class="mat-dialog-container">
+              <mat-form-field [formGroup]="createForm">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="title">
+                <mat-error *ngIf="createForm.controls['title'].hasError('required')">
+                  Title is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field [formGroup]="createForm" >
+                <mat-label>Description</mat-label>
+                <input type="text" matInput formControlName="description">
+                <!-- <mat-error *ngIf="createForm.controls['bookingdate'].hasError('required')">
+                  Booking Date is <strong>required</strong>
+                  </mat-error> -->
+              </mat-form-field>
+              <br>
+            
+              <mat-form-field [formGroup]="createForm" >
+                  <mat-label>Second Description</mat-label>
+                  <input  type="text" matInput formControlName="imagepath">
+                  <!-- <mat-error *ngIf="createForm.controls['exampassword'].hasError('required')">
+                      Exam PassWord is <strong>required</strong>
+                    </mat-error> -->
+                </mat-form-field>
+                <br>
+                <mat-form-field [formGroup]="createForm">
+                  <mat-label>User Id</mat-label>
+                  <input type="number" matInput formControlName="userid">
+                  <mat-error *ngIf="createForm.controls['userid'].hasError('required')">
+                      user id is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [formGroup]="createForm">
+                  <mat-label>Booking Id</mat-label>
+                  <input  type="number" matInput formControlName="bookingid">
+                  <mat-error *ngIf="createForm.controls['bookingid'].hasError('required')">
+                    bookingid is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+
+         <button  (click)="saveData()" class="updatebutton">Create</button>
+         <button class="updatebutton" (click)="closeDialoge()"  style="left: 13px;">Cancel</button>
+        
+        </form>
+      </mat-dialog-content> 
+      
+
+</ng-template>
+<!-- ======================================== END Create CERTIFICATE ======================================= -->
+
+<!-- ======================================== Update CERTIFICATE ======================================= -->
+
+
+<ng-template #callUpdateDailog>
+    <h2 mat-dialog-title style="color:#005555"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update Certificate
+    </h2>
+    <form class="mat-dialog-container">
+      <!-- <mat-form-field [formGroup]="updateForm">
+          <mat-label>booking id</mat-label>
+          <input type="number" matInput formControlName="certificateid" [(ngModel)]="pDataCertificateUpdata.certificateid">
+          <mat-error *ngIf="updateForm.controls['certificateid'].hasError('required')">
+            certificateid is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+      <br> -->
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>title</mat-label>
+        <input type="text" matInput formControlName="title" [(ngModel)]="pDataCertificateUpdata.title">
+        <mat-error *ngIf="updateForm.controls['title'].hasError('required')">
+          title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <br>
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>description</mat-label>
+        <input type="text" matInput formControlName="description" [(ngModel)]="pDataCertificateUpdata.description">
+        <mat-error *ngIf="updateForm.controls['description'].hasError('required')">
+          description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>Second Description</mat-label>
+        <input type="text" matInput formControlName="imagepath" [(ngModel)]="pDataCertificateUpdata.imagepath">
+        <mat-error *ngIf="updateForm.controls['imagepath'].hasError('required')">
+          Second Description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>userid</mat-label>
+        <input type="number" matInput formControlName="userid" [(ngModel)]="pDataCertificateUpdata.userid">
+        <mat-error *ngIf="updateForm.controls['userid'].hasError('required')">
+          userid is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>bookingid</mat-label>
+        <input type="number" matInput formControlName="bookingid" [(ngModel)]="pDataCertificateUpdata.bookingid">
+        <mat-error *ngIf="updateForm.controls['bookingid'].hasError('required')">
+          bookingid is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+     
+      <br>
+      
+      <button (click)="saveUpdateData()" class="updatebutton">Update</button>
+      <button (click)="closeDialoge()" class="updatebutton" style="left: 13px;">Cancel</button>
+  
+    </form>
+  </ng-template>
+
+
+<!-- ======================================== END Update CERTIFICATE ======================================= -->
+
+
+<!-- =====================================Delete Dialog===============================-->
+
+<ng-template #callDeleteDialog>
+    <h2 mat-dialog-title style="color:#005555"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Certificate</h2>
+    <form class="mat-dialog-container" style="width:452px !important;">
+      <h2 style="text-transform:capitalize;">Are you sure you want to delete this item ?</h2>
+      <button mat-dialog-close="yes" class="updatebutton" style="background-color:red; border-color:red;">Yes</button>
+      <button mat-dialog-close="no" class="updatebutton" style="left: 13px;">No</button>
+    </form>
+  </ng-template>
+  <!-- ===================================== END Delete Dialog===============================-->

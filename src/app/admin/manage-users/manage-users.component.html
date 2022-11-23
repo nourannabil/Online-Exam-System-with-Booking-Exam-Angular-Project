@@ -1,0 +1,130 @@
+<app-sidebar></app-sidebar>
+<!-- ========================================Get All Users Table ======================================= -->
+
+<div class="tbl">
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
+  (click)="openCreateDialog()" >Add User</button>
+    
+  <table mat-table [dataSource]="admin.users" class="mat-elevation-z8 responsive">
+    <tbody>
+      <ng-container matColumnDef="userid">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fname">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lname">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phonenumber">
+        <th mat-header-cell *matHeaderCellDef>Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phonenumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+      <ng-container matColumnDef="imagepath">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element"><img src="../../../assets/images/{{element.imagepath}}" width="100px" height="100px">  </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary">Update</button>
+          <button mat-raised-button color="warn">Delete</button>
+        </td>
+      </ng-container>
+      <!-- (click)="openUpdateDialog(element)"
+      (click)="openDeleteDialog(element.bookingid)" -->
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+<!-- ======================================== END Get All Users Table======================================= -->
+
+
+<!-- ========================================  Create User ======================================= -->
+
+<ng-template #CallCreateDialog>
+    <mat-dialog-content class="mat-typography">
+  
+        <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add User</h2>
+          <form class="mat-dialog-container">
+              <mat-form-field [formGroup]="createForm">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput formControlName="fname">
+                <mat-error *ngIf="createForm.controls['fname'].hasError('required')">
+                    First Name is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field [formGroup]="createForm" >
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput formControlName="lname">
+                <mat-error *ngIf="createForm.controls['lname'].hasError('required')">
+                    Last Name is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+              <br>
+            
+              <mat-form-field [formGroup]="createForm" >
+                  <mat-label>Phone Number</mat-label>
+                  <input  type="number" matInput formControlName="phonenumber">
+                  <mat-error *ngIf="createForm.controls['phonenumber'].hasError('required')">
+                    Phone Number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createForm.controls['phonenumber'].hasError('minlength')">
+                        Phone Number must be  <strong>10 numbers</strong>
+                        </mat-error>
+                        <mat-error *ngIf="createForm.controls['phonenumber'].hasError('maxlength')">
+                            Phone Number must be  <strong>10 numbers</strong>
+                            </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [formGroup]="createForm">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email">
+                  <mat-error *ngIf="createForm.controls['email'].hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="createForm.controls['email'].hasError('email')">
+                        Email is <strong>Not Valid</strong>
+                      </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [formGroup]="createForm">
+                  <mat-label>Address</mat-label>
+                  <input  type="text" matInput formControlName="address">
+                  <mat-error *ngIf="createForm.controls['address'].hasError('required')">
+                    Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+       
+                  <br>
+                  <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)" style="position: relative;left: 48px;">
+                  <br>
+         <button  (click)="saveData()" class="updatebutton">Create</button>
+         <button class="updatebutton" (click)="closeDialoge()"  style="left: 13px;">Cancel</button>
+        
+        </form>
+      </mat-dialog-content> 
+      
+
+</ng-template>
+<!-- ======================================== END Create User ======================================= -->

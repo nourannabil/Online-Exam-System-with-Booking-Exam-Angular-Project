@@ -77,6 +77,10 @@
     text-align: center  !important;
     width: 300px  !important;
 }
+.mat-dialog-content{
+    max-height: 400vh !important;
+}
+
 .updatebutton{
   background-color: #005555;
     color: white;

@@ -21,6 +21,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import{HttpClientModule}from  '@angular/common/http';
 import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.component';
+import { NamesPipe } from './Pips/names.pipe';
+
 
 
 
@@ -40,6 +42,8 @@ import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.compon
     TestimonialComponent,
     CourseExamsComponent,
     EaxamInfoCardComponent,
+    NamesPipe,
+   
   
   
    

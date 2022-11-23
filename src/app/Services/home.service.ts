@@ -10,27 +10,24 @@ export class HomeService {
   selectedCourse: any = {};
   courses: any[] = [];
   exams: any[] = [];
-  ExamCourse:any[]=[];
+  ExamCourse: any[] = [];
   homeinfo: any = {};
   statistics: any = {};
   aboutinfo: any = {};
   examById: any = {};
-  allAvailableTime:any[]=[];
-  examavailabletime:any[]=[];
-  contactusinfo:any[]=[];
-  allaboutinfo:any[]=[];
-  allhomeinfo:any[]=[];
- testimonialinfo:any[]=[];
- availableTime: any[] = [];
+  allAvailableTime: any[] = [];
+  examavailabletime: any[] = [];
+  contactusinfo: any[] = [];
+  allaboutinfo: any[] = [];
+  allhomeinfo: any[] = [];
+  testimonialinfo: any[] = [];
+  availableTime: any[] = [];
   status: any[] = [];
   ExamTime: any[] = [];
   questionBank: any[] = [];
   CourseBank: any[] = [];
-  allBookings:any[]=[];
-  AllBookingArray:any[]=[];
-
-
-  contactForm: FormGroup = new FormGroup ({
+  
+  contactForm: FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', [Validators.required])
@@ -118,13 +115,13 @@ export class HomeService {
       this.exams = resp;
 
       this.ExamCourse = this.exams.map(exam => ({
-        examid:exam.examid,
+        examid: exam.examid,
         name: exam.name,
         description: exam.description,
-        imagepath:exam.imagepath,
-        examduration:exam.examduration,
-        examprice:exam.examprice,
-        passmark:exam.passmark,
+        imagepath: exam.imagepath,
+        examduration: exam.examduration,
+        examprice: exam.examprice,
+        passmark: exam.passmark,
         coursename: this.courses.find(course => course.courseid === exam.courseid).name
       }));
 
@@ -159,7 +156,7 @@ export class HomeService {
         avaliableid: available.avaliableid,
         examstartdate: available.examstartdate,
         examname: this.exams.find(exam => exam.examid === available.examid).name,
-        statusname: this.status.find( status => status.statusid === available.statusid).statusname
+        statusname: this.status.find(status => status.statusid === available.statusid).statusname
       }));
 
       console.log(this.availableTime);
@@ -197,7 +194,7 @@ export class HomeService {
       this.toastr.error(err.message, err.statuse)
     })
   }
-  
+
 
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -241,12 +238,12 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
 
-    
+
   }
 
-  getExamById(id:number) {
+  getExamById(id: number) {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/exam/getbyid/'+id).subscribe((resp: any) => {
+    this.http.get('https://localhost:44371/api/exam/getbyid/' + id).subscribe((resp: any) => {
       this.examById = resp;
       console.log(this.examById);
 
@@ -271,39 +268,8 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
   }
- 
-  getAllBooking() {//setps to hit on  data from api
-    //1.show spinner
-    //2.hit on api
-    //3.hide spinner
-    //4. resp =>toastr
- 
 
 
-    this.spinner.show();
-    this.http.get('https://localhost:44371/api/booking').subscribe((resp: any) => {
-      this.allBookings = resp;
-
-      this.AllBookingArray = this.allBookings.map(booking => ({
-        bookingid: booking.bookingid,
-        examdateuser: booking.examdateuser,
-        bookingdate: booking.bookingdate,
-        exampassword: booking.exampassword,
-        examid: this.exams.find(exam => exam.examid === booking.examid).name,
-        userid: booking.userid,
-        statusid: this.status.find( status => status.statusid === booking.statusid).statusname
-
-      }));
-
-
-      console.log(this.allBookings);
-      this.spinner.hide();
-      this.toastr.success('Data Retrieved!')
-    }, err => {
-      this.spinner.hide();
-      this.toastr.error(err.message, err.status)
-    })
-  }
 
 
   /* new - Contact us*/
@@ -316,7 +282,7 @@ export class HomeService {
     )
     this.contactForm.reset();
   }
-  
+
 }
 
 

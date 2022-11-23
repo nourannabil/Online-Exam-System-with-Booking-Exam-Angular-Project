@@ -13,7 +13,11 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 import { ManageTimesComponent } from './manage-times/manage-times.component';
 import { ManageQuestionBankComponent } from './manage-question-bank/manage-question-bank.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreateBookingComponent } from './create-booking/create-booking.component';
+import { ManageCertificateComponent } from './manage-certificate/manage-certificate.component';
+import { ManageRoleComponent } from './manage-role/manage-role.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,17 @@ import { ManageQuestionBankComponent } from './manage-question-bank/manage-quest
     ManageTestimonialComponent,
     ManageBookingComponent,
     ManageTimesComponent,
-    ManageQuestionBankComponent
+    ManageQuestionBankComponent,
+    CreateBookingComponent,
+    ManageCertificateComponent,
+    ManageRoleComponent,
+    ManageUsersComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

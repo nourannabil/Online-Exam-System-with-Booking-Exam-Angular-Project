@@ -84,6 +84,18 @@ const routes: Routes = [
     path: 'bookinginfo',
     loadChildren: () => AdminModule
   },
+  {
+    path: 'certificate',
+    loadChildren: () => AdminModule
+  },
+  {
+    path: 'role',
+    loadChildren: () => AdminModule
+  },
+  {
+    path: 'users',
+    loadChildren: () => AdminModule
+  },
 
 ];
 

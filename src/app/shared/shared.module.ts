@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {​​MatSidenavModule}​​ from '@angular/material/sidenav';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -31,6 +31,7 @@ import {​​MatSidenavModule}​​ from '@angular/material/sidenav';
     MatButtonModule,
     MatTableModule,
     ​​MatSidenavModule,
+    MatDialogModule
   ],
   exports: [
     NavbarComponent,
@@ -43,6 +44,7 @@ import {​​MatSidenavModule}​​ from '@angular/material/sidenav';
     MatButtonModule,
     MatTableModule,
     ​​MatSidenavModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,60 @@
+ 
+<mat-dialog-content class="mat-typography">
+  
+  <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Booking</h2>
+    <form class="mat-dialog-container">
+        <mat-form-field [formGroup]="createForm">
+          <mat-label>Exam Date</mat-label>
+          <input type="date" matInput formControlName="examdateuser">
+          <!-- <mat-error *ngIf="createForm.controls['examdateuser'].hasError('required')">
+            Exam Date is <strong>required</strong>
+            </mat-error> -->
+        </mat-form-field>
+        <br>
+        <mat-form-field [formGroup]="createForm" >
+          <mat-label>Booking Date</mat-label>
+          <input type="date" matInput formControlName="bookingdate">
+          <!-- <mat-error *ngIf="createForm.controls['bookingdate'].hasError('required')">
+            Booking Date is <strong>required</strong>
+            </mat-error> -->
+        </mat-form-field>
+        <br>
+      
+        <mat-form-field [formGroup]="createForm" >
+            <mat-label>Exam PassWord</mat-label>
+            <input  type="text" matInput formControlName="exampassword">
+            <!-- <mat-error *ngIf="createForm.controls['exampassword'].hasError('required')">
+                Exam PassWord is <strong>required</strong>
+              </mat-error> -->
+          </mat-form-field>
+          <br>
+          <mat-form-field [formGroup]="createForm">
+            <mat-label>Exam Id</mat-label>
+            <input type="number" matInput formControlName="examid">
+            <mat-error *ngIf="createForm.controls['examid'].hasError('required')">
+                Exam Id is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field [formGroup]="createForm">
+            <mat-label>User</mat-label>
+            <input  type="number" matInput formControlName="userid">
+            <mat-error *ngIf="createForm.controls['userid'].hasError('required')">
+                User is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field [formGroup]="createForm">
+            <mat-label>Status</mat-label>
+            <input  type="number" matInput formControlName="statusid">
+            <!-- <mat-error *ngIf="createForm.controls['statusid'].hasError('required')">
+                Status is <strong>required</strong>
+              </mat-error> -->
+          </mat-form-field>
+          <br>
+      
+   <button  (click)="saveData()" class="createbutton">Create</button>
+   <button class="createbutton" (click)="closedialoge()"  style="left: 13px;">Cancel</button>
+  
+  </form>
+</mat-dialog-content> 
