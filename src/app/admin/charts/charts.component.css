@@ -1,0 +1,35 @@
+#divChart {
+    display: block;
+    width: 400px;
+    height: 400px;
+  }
+/* .chartsplace{
+    position: absolute;
+    left: 41%;
+    top: 194px;
+} */
+.firstcanvas{
+    position: absolute;
+    left: 25%;
+    top: 239px;
+}
+.secondcanvas{
+    position: absolute;
+    left: 65%;
+    top: 239px;
+}
+.thirdcanvas{
+    position: absolute;
+    left: 23%;
+    top: 550px;
+}
+.header{
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    color: #005555;
+    font-size: 33px;
+    letter-spacing: 1px;
+    font-family: 'Poppins';
+}

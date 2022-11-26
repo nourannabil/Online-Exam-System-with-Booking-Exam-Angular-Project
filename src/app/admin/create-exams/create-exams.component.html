@@ -1,0 +1,60 @@
+<h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  Create Exam</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form mat-dialog-container" [formGroup]="CreateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Exam Name</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="CreateForm.controls['name'].hasError('required')">
+        Exam Name is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Exam Description</mat-label>
+      <textarea type="text" matInput formControlName="description"></textarea>
+      <mat-error *ngIf="CreateForm.controls['description'].hasError('required')">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Exam Duration</mat-label>
+      <input type="number" matInput formControlName="examduration">
+      <mat-error *ngIf="CreateForm.controls['examduration'].hasError('required')">
+        Duration is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Price</mat-label>
+      <input type="number" matInput formControlName="examprice">
+      <mat-error *ngIf="CreateForm.controls['examprice'].hasError('required')">
+        Price is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Pass Mark</mat-label>
+      <input type="number" matInput formControlName="passmark">
+      <mat-error *ngIf="CreateForm.controls['passmark'].hasError('required')">
+        Pass Mark is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Course Id</mat-label>
+      <input type="number" matInput formControlName="courseid">
+      <mat-error *ngIf="CreateForm.controls['courseid'].hasError('required')">
+        Course Id is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">
+    <br>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="createbutton">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="createbutton" (click)="SaveData()">save</button>
+</mat-dialog-actions>

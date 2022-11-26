@@ -5,8 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a routerLink="/">Home</a></li>
         <li class="active"><a routerLink="/exams">Exams</a></li>
-        <li class="active"><a routerLink="/about">About</a></li>
-        <li class="active"><a routerLink="/contact">Contact Us</a></li>
+        <li class="active" (click)="LogOut()"><a>LogOut</a></li>
       </ul>
     </div>
   </header>
@@ -16,12 +15,15 @@
       <a class="sidenav__brand-link" href="#">HNSs<span class="text-light"> Exam</span></a>
     </div>
     <div class="sidenav__profile">
-      <div class="sidenav__profile-avatar"></div>
-      <div class="sidenav__profile-title text-light"> User Name</div>
+      <div class="sidenav__profile">
+        <img class="sidenav__profile-avatar" [src]="user.Image">
+        <div class="sidenav__profile-title text-light">
+          {{user.FirstName|titlecase}} {{user.LastName|titlecase}}</div>
+      </div>
     </div>
     <div class="row row--align-v-center row--align-h-center">
       <ul class="navList">
-        <li class="navList__heading timeLine">TimeLine<i class="fa fa-file-alt"></i></li>
+        <li class="navList__heading timeLine" routerLink="/admin/">TimeLine<i class="fa fa-file-alt"></i></li>
         <hr>
         <li class="navList__heading">Manage Exam<i class="fa fa-file-alt"></i></li>
         <li>
@@ -99,7 +101,7 @@
         <li>
           <div class="navList__subheading row row--align-v-center">
             <span class="navList__subheading-icon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
-            <span class="navList__subheading-title">Charts</span>
+            <span class="navList__subheading-title" routerLink="/admin/charts" (click)="callCharts()">Charts</span>
           </div>
         </li>
         <li class="navList__heading">Manage Users</li>

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  Create Course</h2>
+<div mat-dialog-content>
+  <form class="example-form mat-dialog-container" [formGroup]="CreateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Course Name</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="CreateForm.controls['name'].hasError('required')">
+        Course Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Course Description</mat-label>
+      <input type="text" matInput formControlName="description">
+      <mat-error *ngIf="CreateForm.controls['description'].hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files)">
+    <br>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close class="createbutton">Cancel</button>
+  <button mat-button mat-dialog-close cdkFocusInitial class="createbutton" (click)="SaveData()">Save</button>
+</div>

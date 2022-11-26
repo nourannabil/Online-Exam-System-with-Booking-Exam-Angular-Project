@@ -26,7 +26,7 @@ export class HomeService {
   ExamTime: any[] = [];
   questionBank: any[] = [];
   CourseBank: any[] = [];
-  
+
   contactForm: FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -42,7 +42,7 @@ export class HomeService {
     //4. resp =>toastr
 
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/contactus').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/contactus').subscribe((resp: any) => {
       this.contactusinfo = resp;
       console.log(this.contactusinfo);
       this.spinner.hide();
@@ -54,7 +54,7 @@ export class HomeService {
   }
   getAllabout() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/about').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/about').subscribe((resp: any) => {
       this.allaboutinfo = resp;
       console.log(this.allaboutinfo);
       this.spinner.hide();
@@ -67,7 +67,7 @@ export class HomeService {
 
   getAllhome() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/home').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/home').subscribe((resp: any) => {
       this.allhomeinfo = resp;
       console.log(this.allhomeinfo);
       this.spinner.hide();
@@ -79,7 +79,7 @@ export class HomeService {
   }
   gettestimonialinfo() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/testimonial').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/testimonial').subscribe((resp: any) => {
       this.testimonialinfo = resp;
       console.log(this.testimonialinfo);
       this.spinner.hide();
@@ -97,7 +97,7 @@ export class HomeService {
     //4. resp =>toastr
 
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/course').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/course').subscribe((resp: any) => {
       this.courses = resp;
       console.log(this.courses);
       this.spinner.hide();
@@ -110,7 +110,7 @@ export class HomeService {
 
   getAllExams() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/exam').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/exam').subscribe((resp: any) => {
 
       this.exams = resp;
 
@@ -136,7 +136,7 @@ export class HomeService {
 
   getAllStatus() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/status').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/status').subscribe((resp: any) => {
       this.status = resp;
       console.log(this.status);
       this.spinner.hide();
@@ -149,7 +149,7 @@ export class HomeService {
 
   getAllAvailableTime() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/Api/available').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/Api/available').subscribe((resp: any) => {
       this.availableTime = resp;
 
       this.ExamTime = this.availableTime.map(available => ({
@@ -170,7 +170,7 @@ export class HomeService {
 
   getAllQuestionBank() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/Api/QuestionBank').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/Api/QuestionBank').subscribe((resp: any) => {
       this.questionBank = resp;
 
       this.CourseBank = this.questionBank.map(bank => ({
@@ -200,7 +200,7 @@ export class HomeService {
   /////////////////////////////////////////////////////////////////////////////////
   getStatistics() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/Statistics/getstatistics').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/Statistics/getstatistics').subscribe((resp: any) => {
       this.statistics = resp;
       console.log(this.statistics);
       this.spinner.hide();
@@ -213,7 +213,7 @@ export class HomeService {
 
   getAboutInfo() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/about/GetById/1').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/about/GetById/1').subscribe((resp: any) => {
       this.aboutinfo = resp;
       console.log(this.aboutinfo);
 
@@ -227,7 +227,7 @@ export class HomeService {
 
   getHomeSlider() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/home/GetById/41').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/home/GetById/41').subscribe((resp: any) => {
       this.homeinfo = resp;
       console.log(this.homeinfo);
 
@@ -243,7 +243,7 @@ export class HomeService {
 
   getExamById(id: number) {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/exam/getbyid/' + id).subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/exam/getbyid/' + id).subscribe((resp: any) => {
       this.examById = resp;
       console.log(this.examById);
 
@@ -257,7 +257,7 @@ export class HomeService {
 
   getAllAvailable() {
     this.spinner.show();
-    this.http.get('https://localhost:44371/api/available').subscribe((resp: any) => {
+    this.http.get('https://localhost:44324/api/available').subscribe((resp: any) => {
       this.allAvailableTime = resp;
       console.log(this.allAvailableTime);
 
@@ -268,6 +268,41 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
   }
+
+//=================================Search On Exm Name in Home==========================
+
+SearchByExamName(name:string) {
+  console.log(name.length);
+  
+if(name.length>0){
+  debugger
+  this.spinner.show();
+  this.http.get('https://localhost:44324/api/exam/GetExamByName/'+name).subscribe((resp: any) => {
+    this.exams = resp;
+    console.log(this.exams);
+  }, err => {
+    this.toastr.error(err.message, err.status)
+  })
+}else{
+  debugger
+  this.spinner.show();
+  this.http.get('https://localhost:44324/api/exam/GetExamByName/ ').subscribe((resp: any) => {
+    this.exams = resp;
+    console.log(this.exams);
+  }, err => {
+    this.toastr.error(err.message, err.status)
+  })
+
+}}
+
+
+
+
+
+
+
+
+
 
 
 

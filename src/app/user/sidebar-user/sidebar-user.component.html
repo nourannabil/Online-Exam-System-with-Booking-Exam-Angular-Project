@@ -1,0 +1,74 @@
+<div class="grid">
+  <header class="header">
+    <i class="fa fa-bars header__menu"></i>
+    <div class="header__search">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a routerLink="/">Home</a></li>
+        <li class="active"><a routerLink="/exams">Exams</a></li>
+        <li class="active"><a routerLink="/contact">Contact Us</a></li>
+        <li class="active" (click)="LogOut()"><a>LogOut</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <aside class="sidenav">
+    <div class="sidenav__brand">
+      <a class="sidenav__brand-link" href="#">HNSs<span class="text-light"> Exam</span></a>
+    </div>
+    <div class="sidenav__profile">
+      <img class="sidenav__profile-avatar" [src]="user.Image">
+      <div class="sidenav__profile-title text-light">
+        {{user.FirstName|titlecase}} {{user.LastName|titlecase}}</div>
+    </div>
+    <div class="row row--align-v-center row--align-h-center">
+      <ul class="navList">
+        <li class="navList__heading timeLine">TimeLine<i class="fa fa-file-alt"></i></li>
+        <hr>
+        <li class="navList__heading">Profile</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title">My Profile</span>
+          </div>
+        </li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title">Edit Profile</span>
+          </div>
+        </li>
+        <li class="navList__heading">Booking</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title" routerLink="/user/myBooking">
+              My Booking</span>
+          </div>
+        </li>
+        <li class="navList__heading">Certificate</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-graduation-cap"></i></span>
+            <span class="navList__subheading-title" routerLink="/user/myCertificate">
+              My Certificate</span>
+          </div>
+        </li>
+        <li class="navList__heading">Invoice</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title">My Invoice</span>
+          </div>
+        </li>
+        <li class="navList__heading">FeedBack</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-commenting" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title">FeedBack</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+</div>

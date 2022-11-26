@@ -12,8 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {​​MatSidenavModule}​​ from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatTableModule,
     ​​MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    ScrollingModule,
+   
   ],
   exports: [
     NavbarComponent,
@@ -44,7 +47,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatTableModule,
     ​​MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    ScrollingModule,
+ 
   ]
 })
 export class SharedModule { }

@@ -9,12 +9,13 @@
     height: 42px !important;
 }
 .searchinput{
-    padding: 6px 4px;
+    padding: 6px 4px !important;
+    width: 160px !important;
+    border-bottom: 1px solid #00000054 !important;
+    position: relative !important;
+    top: 10px !important;
 }
-/* .middleinput{
-    display: inline-flex;
-    justify-content: center;
-} */
+
 
 .searchbutton:hover{
     background-color: white;

@@ -17,11 +17,14 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
 import { CourseExamsComponent } from './course-exams/course-exams.component';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import{HttpClientModule}from  '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.component';
 import { NamesPipe } from './Pips/names.pipe';
+import { TokenInterceptor } from 'src/interceptor/token.interceptor';
+import { BookingFormComponent } from './booking-form/booking-form.component';
+
 
 
 
@@ -43,10 +46,12 @@ import { NamesPipe } from './Pips/names.pipe';
     CourseExamsComponent,
     EaxamInfoCardComponent,
     NamesPipe,
-   
-  
-  
-   
+    BookingFormComponent,
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,13 @@ import { NamesPipe } from './Pips/names.pipe';
     ToastNoAnimationModule.forRoot(),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,11 @@ import { CreateBookingComponent } from './create-booking/create-booking.componen
 import { ManageCertificateComponent } from './manage-certificate/manage-certificate.component';
 import { ManageRoleComponent } from './manage-role/manage-role.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { ChartsComponent } from './charts/charts.component';
+import { CreateCoursesComponent } from './create-courses/create-courses.component';
+import { CreateExamsComponent } from './create-exams/create-exams.component';
 @NgModule({
   declarations: [
     ManageCoursesComponent,
@@ -34,13 +38,19 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     CreateBookingComponent,
     ManageCertificateComponent,
     ManageRoleComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    StatisticsComponent,
+    ChartsComponent,
+    CreateCoursesComponent,
+    CreateExamsComponent,
+  
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    MatDialogModule
+    MatDialogModule,
+    Ng2SearchPipeModule
   ]
 })
 export class AdminModule { }

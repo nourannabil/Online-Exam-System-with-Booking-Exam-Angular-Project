@@ -1,7 +1,9 @@
 <app-sidebar></app-sidebar>
 <div class="tbl">
-  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
-    Course</button>
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
+    (click)="openDialog()">
+    Add Course</button>
+
   <table mat-table [dataSource]="Home.courses" class="mat-elevation-z8">
     <tbody>
       <ng-container matColumnDef="position">
@@ -22,15 +24,15 @@
       <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef> Image </th>
         <td mat-cell *matCellDef="let element">
-          <img src="../../../assets/images/{{element.imagepath}}" [ngStyle]="{'width.px':250,'hight.px':200}">
+          <img src="../../../assets/images/{{element.imagepath}}" [ngStyle]="{'width.px':100,'hight.px':100}">
         </td>
       </ng-container>
 
       <ng-container matColumnDef="Options">
         <th mat-header-cell *matHeaderCellDef> Options </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary">Update</button>
-          <button mat-raised-button color="warn">Delete</button>
+          <button mat-raised-button color="primary" (click)="OpenUpdateDialog(element)">Update</button>
+          <button mat-raised-button color="warn" (click)="OpenDeleteDialog(element.courseid)">Delete</button>
         </td>
       </ng-container>
 
@@ -40,3 +42,47 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+
+<!-- For Update -->
+<ng-template #CallUpdateDialog>
+  <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    Update Course</h2>
+  <div mat-dialog-content>
+    <form class="example-form mat-dialog-container" [formGroup]="UpdateForm">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Course Name</mat-label>
+        <input type="text" matInput formControlName="name" [(ngModel)]="previous_data.name">
+        <mat-error *ngIf="UpdateForm.controls['name'].hasError('required')">
+          Course Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Course Description</mat-label>
+        <input type="text" matInput formControlName="description" [(ngModel)]="previous_data.description">
+        <mat-error *ngIf="UpdateForm.controls['description'].hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <input type="file" #file formControlName="imagepath" [(ngModel)]="previous_data.imagepath"
+        (change)="uploadFile(file.files)">
+      <br>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close class="updatebutton">Cancel</button>
+    <button mat-button mat-dialog-close cdkFocusInitial class="updatebutton" (click)="SaveData()">Save</button>
+  </div>
+</ng-template>
+
+<!-- Delete Form -->
+<ng-template #CallDeleteDialog>
+  <form class="example-form mat-dialog-container">
+    <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-trash-o" aria-hidden="true"></i>
+      Delete Course</h2>
+    <h1 style="text-transform:capitalize;">Are You Sure You Want To Delete this item ?</h1>
+    <button class="updatebutton" style="background-color:red; border-color:red;" mat-dialog-close="yes">Yes</button>
+    <button class="updatebutton" style="left: 13px;" mat-dialog-close="no">No</button>
+  </form>
+</ng-template>

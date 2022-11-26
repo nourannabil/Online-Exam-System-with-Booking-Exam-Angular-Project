@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsComponent } from './charts/charts.component';
 import { ManageAboutUsComponent } from './manage-about-us/manage-about-us.component';
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 import { ManageCertificateComponent } from './manage-certificate/manage-certificate.component';
@@ -13,6 +14,7 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageTimesComponent } from './manage-times/manage-times.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -66,6 +68,14 @@ const routes: Routes = [
   {
     path: 'users',
     component: ManageUsersComponent
+  },
+  {
+    path: '',
+    component: StatisticsComponent
+  },
+  {
+    path: 'charts',
+    component: ChartsComponent
   },
 ];
 

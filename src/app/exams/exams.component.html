@@ -10,18 +10,18 @@
                 <h2 class="price-head">our Exams</h2>
 
                 <form>
-                    <div class="middleinput" style="    display: flex;
-                    justify-content: center;
-                    margin-top: 7px;">
-                    <mat-form-field class="example-full-width mat-form-field-appearance-legacy ">
+                    <div class="middleinput" style="display: flex;justify-content: center;margin-top: 7px;">
+                    <!-- <mat-form-field class="example-full-width mat-form-field-appearance-legacy "> -->
                     <!-- <label for="site-search">Search the Exam Name:</label>  -->
                 
-                    <input type="search"  matInput class="searchinput" id="site-search" name="q" placeholder="Exam Name" [formControl]="examName">
-                 
-                </mat-form-field> 
+                    <input type="txt"  matInput class="searchinput" placeholder="Exam Name" [value]="examName"  (change)="Search($event)">
+                    
+                 <br>
+
+                <!-- </mat-form-field>  -->
                 
                 <div class="example-button-row"></div>
-                <button mat-raised-button  class="searchbutton">Search</button>
+                <button mat-raised-button  class="searchbutton" (click)="SearchButton()">Search</button>
                 
                 </div>
                 </form> 

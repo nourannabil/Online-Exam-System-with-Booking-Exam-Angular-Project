@@ -20,7 +20,7 @@ export class QuizService {
 
   GetRandomQuestionsByCourseId(courseId: number) {
     this.Spinner.show();
-    this.Http.get('https://localhost:44371/api/QuestionBank/GetRandomQuestionsByCourseId/' + courseId).subscribe((resp: any) => {
+    this.Http.get('https://localhost:44324/api/QuestionBank/GetRandomQuestionsByCourseId/' + courseId).subscribe((resp: any) => {
       this.Exam = resp;
       this.newExam = this.Exam.map((item: any) => {
           return (item.options = [item.answeroption1, item.answeroption2, item.answeroption3, item.answeroption4])
