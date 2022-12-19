@@ -10,29 +10,28 @@ import { HomeService } from '../Services/home.service';
   styleUrls: ['./exams.component.css']
 })
 export class ExamsComponent implements OnInit {
- 
-  constructor(private router:Router,public home:HomeService) { }
+
+  constructor(private router: Router, public home: HomeService) { }
   // examName: FormControl = new FormControl(' ');
-  examName:string="";
-  
+  examName: string = "";
+
   ngOnInit(): void {
     this.home.getAllExams();
     this.home.getAllAvailable();
   }
-  newexams:any[]=this.home.exams;
-  Search(ev:any){
-    debugger
-    this.examName=ev.target.value;
-  // this.home.SearchByExamName(ev.target.value)
+  newexams: any[] = this.home.exams;
+  Search(ev: any) {
+    // debugger
+    this.examName = ev.target.value;
+    // this.home.SearchByExamName(ev.target.value)
   }
 
-  SearchButton(){
-   
-    debugger
-    // const serchInput:string=this.examName.toString();
-    this.home.SearchByExamName(this.examName)
-    console.log(this.home.exams);
-    
+  SearchButton() {
+    if (this.examName == ''){
+      this.home.getAllExams();
+    }else{
+      this.home.SearchByExamName(this.examName)
+      console.log(this.home.exams);
+    }
   }
-  
 }

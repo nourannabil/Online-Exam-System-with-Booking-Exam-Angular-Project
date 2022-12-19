@@ -1,58 +1,52 @@
 <!-- navbar start -->
 <!--menu start-->
-<section id="menu" >
-    <div class="container" >
-      <div class="menubar" >
-        <nav class="navbar navbar-default" >
+<section id="menu">
+  <div class="container">
+    <div class="menubar">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
 
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header" >
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img src="./assets/images/logo/logo1.png" alt="logo" class="logoimage">
+          <span class="logoname">HNSs</span>
 
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-              <img src="./assets/images/logo/logo1.png" alt="logo" class="logoimage">
-              <span class="logoname" >HNSs</span>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a routerLink="/">Home</a></li>
+            <li class="active"><a routerLink="/exams">Exams</a></li>
+            <li class="active"><a routerLink="/about">About</a></li>
+            <li class="active"><a routerLink="/contact">Contact Us</a></li>
+            <!-- <li class="active"><a id="login" (click)="Go()"></a></li>
+            <li class="active"><a id="Register" (click)="start()">Register</a></li> -->
 
-          </div>
-          <!--/.navbar-header -->
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a routerLink="/">Home</a></li>
-              <!-- <li class="active"><a routerLink="/courses">Courses</a></li> -->
-              <li class="active"><a routerLink="/exams">Exams</a></li>
-              <li class="active"><a routerLink="/about">About</a></li>
-              <li class="active"><a routerLink="/contact">Contact Us</a></li>
-              <li class="active"><a routerLink="/security/login">Login</a></li>
-              <li class="active"><a routerLink="/security/register">Register</a></li>
-              <li>
-                <a href="#">
-                  <span class="lnr lnr-cart"></span>
-                </a>
-              </li>
-              <li class="search">
-                <form action="">
-                  <input type="text" name="search" placeholder="Search....">
-                  <a href="#">
-                    <span class="lnr lnr-magnifier"></span>
-                  </a>
-                </form>
-              </li>
-            </ul><!-- / ul -->
-          </div><!-- /.navbar-collapse -->
-        </nav>
-        <!--/nav -->
-      </div>
-      <!--/.menubar -->
-    </div><!-- /.container -->
-
-  </section>
-  <!--/#menu-->
-  <!--menu end-->
-  <!-- navbar end -->
+            <li class="active" *ngIf="userRole == 1">
+              <a class="login" routerLink="/admin/sidebar">My Profile</a>
+            </li>
+            <li class="active" *ngIf="userRole == 2">
+              <a class="login" routerLink="/user/sidebarUser">My Profile</a>
+            </li>
+            <li class="active" *ngIf="userRole == null">
+              <a class="login" routerLink="/security/login">Login</a>
+            </li>
+            <li class="active" *ngIf="userRole == null">
+              <a class="Register" routerLink="/security/register">Register</a>
+            </li>
+            <li class="active" *ngIf="userRole == 1">
+              <a class="Register" (click)="start()">LogOut</a>
+            </li>
+            <li class="active" *ngIf="userRole == 2">
+              <a class="Register" (click)="start()">LogOut</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>

@@ -1,40 +1,147 @@
 <app-sidebar></app-sidebar>
 <div class="tbl">
-  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
-    Course</button>
-  <table mat-table [dataSource]="Home.ExamTime" class="mat-elevation-z8">
-    <tbody>
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.avaliableid}} </td>
-      </ng-container>
+  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
+    (click)="openCreateDailog()">
+    Add Available Time
+  </button>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Exam Start Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.examstartdate}} </td>
-      </ng-container>
+  <div class="scrollit">
+    <table mat-table [dataSource]="Admin.newavailableTime" class="mat-elevation-z8">
+      <tbody>
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.avaliableid}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Exam Name</th>
-        <td mat-cell *matCellDef="let element"> {{element.examname}} </td>
-      </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Exam Start Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.examstartdate}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.statusname}} </td>
-      </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Exam Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.examname}}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Options">
-        <th mat-header-cell *matHeaderCellDef> Options </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary">Update</button>
-          <button mat-raised-button color="warn">Delete</button>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.statusname}}
+          </td>
+        </ng-container>
 
-    </tbody>
+        <ng-container matColumnDef="Options">
+          <th mat-header-cell *matHeaderCellDef> Options </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary" (click)="openUpdateDialog(element)">Update</button>
+            <button mat-raised-button color="warn" (click)="openDeleteDailog(element.avaliableid)">Delete</button>
+          </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      </tbody>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
+
+
+<!-- Create Dialog -->
+<ng-template #callCreateDialog>
+  <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    Add Available Time
+  </h2>
+
+  <form class="example-form" [formGroup]="createForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>exam start date</mat-label>
+      <input type="datetime-local" matInput formControlName="examstartdate">
+      <mat-error *ngIf="createForm.controls['examstartdate'].hasError('required')">
+        exam start date is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>exam name</mat-label>
+      <select matNativeControl matInput formControlName="examid">
+        <option type="number" *ngFor="let x of Home.exams" [ngValue]="x.examid" selected>{{x.name}}</option>
+      </select>
+      <mat-error *ngIf="createForm.controls['examid'].hasError('required')">
+        exam name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>status name</mat-label>
+      <select matNativeControl formControlName="statusid">
+        <option type="number" *ngFor="let x of statusId" [ngValue]="x.statusid" selected>{{x.statusname}}</option>
+      </select>
+      <mat-error *ngIf="createForm.controls['statusid'].hasError('required')">
+        status is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br> -->
+  </form>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="createbutton" (click)="Save()">Save</button>
+    <button mat-button mat-dialog-close class="createbutton">Cancel</button>
+
+  </mat-dialog-actions>
+</ng-template>
+
+
+<!-- Update Dialog -->
+<ng-template #callUpdateDialog>
+  <h2 mat-dialog-title style="color:#005555"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    Update Available Time
+  </h2>
+  <form class="example-form" [formGroup]="updateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>exam start date</mat-label>
+      <input type="datetime-local" matInput formControlName="examstartdate" [(ngModel)]="p_data.examstartdate">
+      <mat-error *ngIf="updateForm.controls['examstartdate'].hasError('required')">
+        exam start date is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Exam name</mat-label>
+      <select matNativeControl formControlName="examid" [(ngModel)]="p_data.examid">
+        <option selected hidden>{{updateForm.controls['examid'].value}}</option>
+        <option type="number" *ngFor="let x of Home.exams" [ngValue]="x.examid">{{x.name}}</option>
+      </select>
+      <mat-error *ngIf="updateForm.controls['examid'].hasError('required')">
+        exam name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>status</mat-label>
+      <select matNativeControl matInput formControlName="statusid" [(ngModel)]="p_data.statusid">
+        <option selected hidden>{{updateForm.controls['statusid'].value}}</option>
+        <option type="number" *ngFor="let x of statusId" [ngValue]="x.statusid">{{x.statusname}}</option>
+      </select>
+      <mat-error *ngIf="updateForm.controls['statusid'].hasError('required')">
+        status name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+  </form>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="updatebutton" (click)="saveData()">Save</button>
+    <button mat-button mat-dialog-close class="updatebutton">Cancel</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<!-- Delete Dailog -->
+<ng-template #callDeleteDailog>
+  <h2 mat-dialog-title style="color:#005555"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Available Time</h2>
+  <form class="mat-dialog-container" style="width:452px !important;">
+    <h2 style="text-transform:capitalize;">Are you sure you want to delete this item ?</h2>
+    <button mat-dialog-close="yes" class="updatebutton" style="background-color:red; border-color:red;">Yes</button>
+    <button mat-dialog-close="no" class="updatebutton" style="left: 13px;">No</button>
+  </form>
+</ng-template>

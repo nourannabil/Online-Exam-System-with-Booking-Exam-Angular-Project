@@ -23,7 +23,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EaxamInfoCardComponent } from './eaxam-info-card/eaxam-info-card.component';
 import { NamesPipe } from './Pips/names.pipe';
 import { TokenInterceptor } from 'src/interceptor/token.interceptor';
-import { BookingFormComponent } from './booking-form/booking-form.component';
+
 
 
 
@@ -46,7 +46,7 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     CourseExamsComponent,
     EaxamInfoCardComponent,
     NamesPipe,
-    BookingFormComponent,
+
 
 
 

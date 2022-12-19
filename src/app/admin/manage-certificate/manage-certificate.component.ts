@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef , ViewChild} from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,94 +8,95 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./manage-certificate.component.css']
 })
 export class ManageCertificateComponent implements OnInit {
-  pDataCertificateUpdata:any={};
-  createForm:FormGroup=new FormGroup({
+  pDataCertificateUpdata: any = {};
+  createForm: FormGroup = new FormGroup({
     // certificateid:new FormControl('',Validators.required),
-    title:new FormControl('',Validators.required),
-    description:new FormControl(''),
-    imagepath:new FormControl(''),
-    userid:new FormControl('',Validators.required),
-    bookingid:new FormControl('',Validators.required),
-    });
+    title: new FormControl('', Validators.required),
+    description: new FormControl(''),
+    imagepath: new FormControl(''),
+    userid: new FormControl('', Validators.required),
+    bookingid: new FormControl('', Validators.required),
+  });
 
-    updateForm:FormGroup=new FormGroup({
-      certificateid:new FormControl(''),
-      title:new FormControl('',Validators.required),
-      description:new FormControl(''),
-      imagepath:new FormControl(''),
-      userid:new FormControl('',Validators.required),
-      bookingid:new FormControl('',Validators.required),
-      });
-  
-    @ViewChild('CallCreateDialog') CallCreateDialog!:TemplateRef<any>
-    @ViewChild('callUpdateDailog') callUpdateDailog!:TemplateRef<any>
-    @ViewChild('callDeleteDialog') callDeleteDialog!:TemplateRef<any>
-  constructor(public admin:AdminService,private dialog:MatDialog) { }
+  updateForm: FormGroup = new FormGroup({
+    certificateid: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    description: new FormControl(''),
+    imagepath: new FormControl(''),
+    userid: new FormControl('', Validators.required),
+    bookingid: new FormControl('', Validators.required),
+  });
+
+  @ViewChild('CallCreateDialog') CallCreateDialog!: TemplateRef<any>
+  @ViewChild('callUpdateDailog') callUpdateDailog!: TemplateRef<any>
+  @ViewChild('callDeleteDialog') callDeleteDialog!: TemplateRef<any>
+  constructor(public admin: AdminService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.admin.GetAllCertificate();
+    this.admin.GetAllUsers();
   }
- // ==========get all array "columns name"=========
-  displayedColumns: string[] = ['certificateid','title','description','imagepath','userid','bookingid','Options'];
+  // ==========get all array "columns name"=========
+  displayedColumns: string[] = ['certificateid', 'title', 'description', 'imagepath', 'userid', 'username', 'bookingid', 'Options'];
   dataSource = '';
 
-// ==========create functions=========
-  openCreateDialog(){
+  // ==========create functions=========
+  openCreateDialog() {
     this.dialog.open(this.CallCreateDialog)
   }
-  saveData(){
+  saveData() {
     this.admin.CreateCertificate(this.createForm.value);
     this.dialog.closeAll();
   }
   // ==========End create functions=========
 
-// ==========Update functions=========
+  // ==========Update functions=========
 
-  openUpdateDialog(obj:any){
+  openUpdateDialog(obj: any) {
 
-    this.pDataCertificateUpdata={
-      certificateid:obj.certificateid,
-      title:obj.title,
-      description:obj.description,
-      imagepath:obj.imagepath,
-      userid:obj.userid,
-      bookingid:obj.bookingid,
+    this.pDataCertificateUpdata = {
+      certificateid: obj.certificateid,
+      title: obj.title,
+      description: obj.description,
+      imagepath: obj.imagepath,
+      userid: obj.userid,
+      bookingid: obj.bookingid,
     }
-    this.updateForm.controls['certificateid'].setValue(this.pDataCertificateUpdata.certificateid); 
+    this.updateForm.controls['certificateid'].setValue(this.pDataCertificateUpdata.certificateid);
+    this.updateForm.controls['userid'].setValue(this.pDataCertificateUpdata.userid);
+    this.updateForm.controls['bookingid'].setValue(this.pDataCertificateUpdata.bookingid);
 
-   this.dialog.open(this.callUpdateDailog);
+    this.dialog.open(this.callUpdateDailog);
   }
-  saveUpdateData(){
+  saveUpdateData() {
     debugger
     this.admin.UpdateCertificate(this.updateForm.value);
     this.dialog.closeAll();
   }
 
-// ==========End Update functions=========
+  // ==========End Update functions=========
 
-// ========== Delete functions=========
-openDeleteDialog(id:number){
+  // ========== Delete functions=========
+  openDeleteDialog(id: number) {
 
-  const dailogRef=this.dialog.open(this.callDeleteDialog);
+    const dailogRef = this.dialog.open(this.callDeleteDialog);
 
-  dailogRef.afterClosed().subscribe((result)=>{
-    if(result!=undefined)
-    {
-      debugger
-      if(result=='yes')
-      {
-      this.admin.DeleteCertificate(id);
+    dailogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        debugger
+        if (result == 'yes') {
+          this.admin.DeleteCertificate(id);
+        }
+        else if (result == 'no')
+          console.log("thank you!");
+
+
       }
-      else if(result=='no')
-      console.log("thank you!");
-      
+    })
+  }
 
-    }
-  })
-}
-
-// ========== End Delete functions=========
-  closeDialoge(){
+  // ========== End Delete functions=========
+  closeDialoge() {
     this.dialog.closeAll();
   }
 }

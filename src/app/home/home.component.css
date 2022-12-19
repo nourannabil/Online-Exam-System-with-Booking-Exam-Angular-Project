@@ -146,3 +146,31 @@
     left: -28px;
 }
   
+.testimg{
+  width: 134px;
+  height: 134px;
+  border-radius: 68px;
+}
+.leftbut{
+  position: absolute !important;
+  top: 293px !important;
+  left: 60px !important;
+  border-radius: 66px !important;
+  width: 43px !important;
+  height: 43px !important;
+  color: white !important;
+  background-color: #005555c2 !important;
+
+}
+
+    .rightbut{
+      position: absolute !important;
+      right: 46px !important;
+      top: 293px !important;
+      border-radius: 66px !important;
+      width: 43px !important;
+      height: 43px !important;
+      color: white !important;
+      background-color: #005555c2 !important;
+    
+    }

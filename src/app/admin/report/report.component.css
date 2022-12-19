@@ -1,0 +1,79 @@
+body {
+  height: 800px;
+}
+
+th,
+td {
+  border: 1px solid rgba(0, 0, 0, 0.297);
+}
+
+.tbl {
+  position: absolute;
+  left: 25%;
+  top: 200px;
+}
+
+.lablestyle {
+  position: relative;
+  top: -31px;
+  left: 103px;
+  letter-spacing: 1px;
+  font-family: 'Poppins';
+}
+
+.lablestyle2 {
+  position: relative;
+  top: -31px;
+  left: 47px;
+  letter-spacing: 1px;
+  font-family: 'Poppins';
+}
+
+.year {
+  position: absolute !important;
+  left: 26% !important;
+  top: 125px !important;
+  width: 143px !important;
+  height: 35px !important;
+}
+
+.yearlable {
+  position: absolute !important;
+  left: 27% !important;
+  top: 100px !important;
+  width: 100px !important;
+  font-family: 'Poppins' !important;
+}
+
+th {
+  text-align: center;
+  padding: 10px;
+  font-family: 'Poppins';
+  font-size: 14px;
+  background-color: #0055554d;
+}
+
+td {
+  text-align: center;
+  font-family: 'Poppins';
+  padding: 6px
+}
+
+.PDFbut {
+  background-color: #0055555e;
+  color: black;
+  height: 35px;
+  width: 107px;
+  border-radius: 6px;
+  border: 1px solid #0055555e;
+  font-weight: bold;
+  font-family: 'Poppins';
+  margin-left: 15px;
+  font-size: 13px;
+  /*color: white;
+     background-color: #005555; */
+}
+
+#table {
+  margin-bottom: 68px;
+}

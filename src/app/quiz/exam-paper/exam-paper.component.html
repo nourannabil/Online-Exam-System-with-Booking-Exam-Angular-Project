@@ -1,11 +1,11 @@
-<div class="container mt-4">
+<div class="container mt-4" *ngFor="let item of userService.mySingleBooking">
   <div class="userCard">
-    <h1>Exam Name</h1>
-    <p>User Email</p>
+    <h1>Exam Name : {{item.examName}}</h1>
+    <p>Username : {{user.FirstName|titlecase }} {{user.LastName|titlecase}}</p>
   </div>
   <div class="card">
     <div class="d-flex justify-content-between p-3">
-      <span class="time_left_txt" >Time Spend  {{displayOnWindow2()}} </span>
+      <span class="time_left_txt">Time Spend {{displayOnWindow2()}} </span>
     </div>
     <ng-container>
       <div class="question">
@@ -29,17 +29,72 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <button class="btn submitBtn previous" *ngIf="Quiz.QuestionNumber == 1" (click)="PreviousQuestion()">Previous</button>
+        <button class="btn submitBtn previous" *ngIf="Quiz.QuestionNumber != 0"
+          (click)="PreviousQuestion()">Previous</button>
         <!--9 / 49 رح يكون للسؤال -->
-        <button class="btn submitBtn next" *ngIf="Quiz.QuestionNumber != 1" (click)="NextQuestion()">Next</button>
+        <button class="btn submitBtn next"
+          *ngIf="Quiz.QuestionNumber != (item.numofquestions-1)"
+          (click)="NextQuestion()">Next</button>
         <!-- 9 / 49 رح يكون للسؤال -->
-        <button id="final" class="btn submitBtn submit" *ngIf="Quiz.QuestionNumber == 1" (click)="FinalSubmit()">Submit</button>
+        <button id="final" class="btn submitBtn submit"
+         *ngIf="Quiz.QuestionNumber == (item.numofquestions-1)"
+          (click)="FinalSubmit()">Submit</button>
       </div>
     </ng-container>
   </div>
 </div>
 
-<!-- just for testing -->
-<!-- <div>
-  <button (click)="see()">click</button>
-</div> -->
+<!--Certificate  -->
+<div hidden>
+  <form class="example-form" [formGroup]="certifiecateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>title</mat-label>
+      <input type="text" matInput formControlName="title" [value]="certifiecateForm.controls['title']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>description</mat-label>
+      <input type="text" matInput formControlName="description" [value]="certifiecateForm.controls['description']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>userid</mat-label>
+      <input type="number" matInput formControlName="userid" [value]="certifiecateForm.controls['userid']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>bookingid</mat-label>
+      <input type="number" matInput formControlName="bookingid" [value]="certifiecateForm.controls['bookingid']">
+    </mat-form-field>
+    <br>
+    <button>save</button>
+  </form>
+</div>
+
+
+<!-- falid Certificate  -->
+<div hidden>
+  <form class="example-form" [formGroup]="FalidForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>title</mat-label>
+      <input type="text" matInput formControlName="title" [value]="FalidForm.controls['title']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>description</mat-label>
+      <input type="text" matInput formControlName="description" [value]="FalidForm.controls['description']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>userid</mat-label>
+      <input type="number" matInput formControlName="userid" [value]="FalidForm.controls['userid']">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>bookingid</mat-label>
+      <input type="number" matInput formControlName="bookingid" [value]="FalidForm.controls['bookingid']">
+    </mat-form-field>
+    <br>
+    <button>save</button>
+  </form>
+</div>

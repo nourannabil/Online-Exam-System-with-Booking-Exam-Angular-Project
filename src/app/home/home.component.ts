@@ -16,15 +16,7 @@ export class HomeComponent implements OnInit {
   @Input()numOfUserBooked:number=0;
   @Input()examNotBooked:number=0;
 
-  //  //home slider inputs
-  //  @Input()homeid:number=0;
-  //  @Input()imagepath:string|undefined;
-  //  @Input()title:string|undefined;
-  //  @Input()description1:string|undefined;
-  //  @Input()description2:string|undefined;
-  //  @Input()description3:string|undefined;
-
-
+  slideNum=0;
   constructor(private spinner:NgxSpinnerService,public home:HomeService) { }
 
   ngOnInit(): void {
@@ -32,7 +24,27 @@ export class HomeComponent implements OnInit {
     this.home.getHomeSlider();
     this.home.getAboutInfo();
     this.home.getAllContact();
+    // this.home.gettestimonialinfo();
+    this.home.GetAllUsers();
+    this.home.getAcceptedTestimonial();
+  }
+
+  PreviousQuestion() {
+    this.slideNum--;
+  }
+
+
+
+  NextQuestion() {
+    this.slideNum++;
+  }
+  ResetSlideNum(){
+    this.slideNum=0;
+  }
+  startSlideNum(){
+    this.slideNum=0;
 
   }
+
 
 }

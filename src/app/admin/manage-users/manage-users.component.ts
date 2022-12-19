@@ -13,7 +13,7 @@ export class ManageUsersComponent implements OnInit {
     // userid:new FormControl('',Validators.required),
     fname:new FormControl('',Validators.required),
     lname:new FormControl('',Validators.required),
-    phonenumber:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    // phonenumber:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     email:new FormControl('',[Validators.required,Validators.email]),
     address:new FormControl('',Validators.required),
     imagepath:new FormControl(''),
@@ -24,7 +24,7 @@ export class ManageUsersComponent implements OnInit {
     userid:new FormControl('',Validators.required),
     fname:new FormControl('',Validators.required),
     lname:new FormControl('',Validators.required),
-    phonenumber:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    phonenumber:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     email:new FormControl('',[Validators.required,Validators.email]),
     address:new FormControl('',Validators.required),
     imagepath:new FormControl(''),
@@ -78,6 +78,7 @@ export class ManageUsersComponent implements OnInit {
     imagepath:obj.imagepath,
   }
   this.updateForm.controls['userid'].setValue(this.pDataUser.userid)
+  this.updateForm.controls['phonenumber'].setValue(this.pDataUser.phonenumber)
   
   this.updateForm.controls['imagepath'].setValue(this.pDataUser.imagepath)
   this.admin.display_image=this.updateForm.controls['imagepath'].value

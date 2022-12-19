@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <!--contact-part start-->
-<section *ngFor="let obj of home.contactusinfo" class="about-part"  style="background-image:url({{obj.imagepath}}); height: 350px;">
+<section *ngFor="let obj of home.contactusinfo" class="about-part"  style="background-image:url(../../assets/images/{{obj.imagepath}}); height: 350px;">
   <div class="container">
     <div class="about-part-details text-center">
       <h2 *ngFor="let obj of home.contactusinfo" class="titlestyle">{{obj.title}}</h2>

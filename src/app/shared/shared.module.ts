@@ -14,11 +14,13 @@ import {​​MatSidenavModule}​​ from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatDialogModule,
     MatSelectModule,
     ScrollingModule,
+
    
   ],
   exports: [
@@ -50,6 +53,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatDialogModule,
     MatSelectModule,
     ScrollingModule,
+    SearchPipe
  
   ]
 })

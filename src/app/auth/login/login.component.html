@@ -29,12 +29,12 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="group">
+      <!-- <div class="group">
         <span>
           <input id="check" type="checkbox" class="check" checked [formControl]="rememberMe" value="yes">
           <label for="check" class="checkLabel"> Keep me Signed in</label>
         </span>
-      </div>
+      </div> -->
       <div class="group">
         <button (click)="submit()" [disabled]="!username.valid || !password.valid" type="submit"
           class="button">Login</button>

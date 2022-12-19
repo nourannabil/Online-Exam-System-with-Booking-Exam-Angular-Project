@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChartsComponent } from './charts/charts.component';
+
 import { ManageAboutUsComponent } from './manage-about-us/manage-about-us.component';
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 import { ManageCertificateComponent } from './manage-certificate/manage-certificate.component';
@@ -14,7 +14,16 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { ManageTimesComponent } from './manage-times/manage-times.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ChartsComponent } from './charts/charts.component';
+import { CreateCoursesComponent } from './create-courses/create-courses.component';
+import { CreateExamsComponent } from './create-exams/create-exams.component';
+import { ManageLoginComponent } from './manage-login/manage-login.component';
+import { ReportComponent } from './report/report.component';
+import { InboxComponent } from './inbox/inbox.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminEditprofileComponent } from './admin-editprofile/admin-editprofile.component';
 
 const routes: Routes = [
   {
@@ -77,6 +86,34 @@ const routes: Routes = [
     path: 'charts',
     component: ChartsComponent
   },
+  {
+    path: 'createCourse',
+    component: CreateCoursesComponent
+  },
+  {
+    path: 'createExams',
+    component: CreateExamsComponent
+  },
+  {
+    path: 'managelogins',
+    component: ManageLoginComponent
+  },
+  {
+    path: 'report',
+    component: ReportComponent
+  },
+  {
+    path: 'inbox',
+    component: InboxComponent
+  },
+  {
+    path: 'adminProfile',
+    component: AdminProfileComponent
+  },
+  {
+    path: 'adminEditProfile',
+    component: AdminEditprofileComponent
+  },
 ];
 
 @NgModule({
@@ -84,3 +121,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AdminRoutingModule { }
+

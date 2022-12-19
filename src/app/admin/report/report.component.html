@@ -1,0 +1,89 @@
+<app-sidebar></app-sidebar>
+
+<div style="position: absolute;left: 35%;top: 100px;">
+  <form class="form-inline" style="margin-top:3%;">
+
+    <div class="form-group mx-sm-3 mb-2">
+
+      <label for="inputText" class="lablestyle">Date From</label>
+
+      <input type="Date" matInput class="form-control" id="inputText" placeholder="DateFrom" [value]="dateFrom"
+        (change)="searchDateFrom($event)" style="position: relative;left: 17px;">
+
+    </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+
+      <label for="inputText" class="lablestyle2">Date To</label>
+
+      <input type="Date" matInput class="form-control" id="inputText" placeholder="DateTo" [value]="dateTo"
+        (change)="searchDateTo($event)" style="position: relative;left: -17px;">
+
+    </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+
+      <label for="inputText" class="lablestyle2" style="left: 26px;">Year</label>
+
+      <input type="text" matInput class="form-control" id="inputText" placeholder="Year" [value]="year"
+        (change)="searchYear($event)" style="position: relative;left: -17px;">
+
+    </div>
+
+    <button type="submit" class="btn btn-success" (click)="submit()" style="  background-color: #0055555e;
+      color: black;  font-weight: bold;">Search</button>
+
+    <button (click)="download()" class="PDFbut">Download PDF</button>
+
+
+  </form>
+</div>
+
+
+
+<!-- ===================================Get all booking Table=================================== -->
+<label class="yearlable">Search</label>
+<input class="form-control year" type="text" placeholder="search" [(ngModel)]="searchText"
+  style="position:absolute;left:30%;top:100px;width:100px;">
+
+<table class="tbl">
+  <div id="table">
+    <tr>
+      <th>Booking No.</th>
+      <th>Exam Date</th>
+      <th>Booking Date</th>
+      <!-- <th>Exam Password</th> -->
+      <th>Exam Name</th>
+      <th>User Name</th>
+      <!-- <th>User NO.</th>-->
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let x of admin.AllBookingArray| search:searchText">
+      <td>{{x.bookingid}} </td>
+      <td>{{x.examdateuser|date: 'dd/MMM/yyyy hh:mm a'}}</td>
+      <td>{{x.bookingdate|date: 'dd/MMM/yyyy hh:mm a'}}</td>
+      <!-- <td>{{x.exampassword}}</td> -->
+      <td> {{x.examname}} </td>
+      <td> {{x.userName}} {{x.userlastName}}</td>
+      <!-- <td>{{x.userid}}</td> -->
+      <td> {{x.statusname}} </td>
+    </tr>
+
+    <tr>
+      <td>Num of Booking:<br> {{this.admin.AllBookingArray.length}}</td>
+      <td>Num of booked exam:<br> {{this.admin.arrayUniqueByexamid.length}}</td>
+      <td>Num of user booked:<br> {{this.admin.arrayUniqueByuserid.length}}</td>
+      <!-- <td>Num of not booked exam:<br> {{this.admin.statistics.examNotBooked}}</td> -->
+      <td>Num of not booked exam:<br>{{this.admin.statistics.numOfExams - this.admin.arrayUniqueByexamid.length}}</td>
+      <td>Num of All Users:<br> {{this.admin.statistics.numOfUser}}</td>
+      <td>Num of All Exams: <br> {{this.admin.statistics.numOfExams}}</td>
+    </tr>
+    <!--
+    <tr>
+      <td colspan="5"></td>
+      <td>
+        <button (click)="download()" class="PDFbut">Download PDF</button>
+      </td>
+    </tr> -->
+  </div>
+</table>

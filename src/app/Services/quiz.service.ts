@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 export class QuizService {
 
   Exam: any[] = [];
-  newExam:any[]=[];
+  newExam: any[] = [];
   QuestionNumber = 0;
   CorrectAnswerCount = 0;
   userAnswer: any[] = [];
@@ -23,8 +23,8 @@ export class QuizService {
     this.Http.get('https://localhost:44324/api/QuestionBank/GetRandomQuestionsByCourseId/' + courseId).subscribe((resp: any) => {
       this.Exam = resp;
       this.newExam = this.Exam.map((item: any) => {
-          return (item.options = [item.answeroption1, item.answeroption2, item.answeroption3, item.answeroption4])
-        })
+        return (item.options = [item.answeroption1, item.answeroption2, item.answeroption3, item.answeroption4])
+      })
       console.log(this.Exam);
 
       this.Spinner.hide();
@@ -61,7 +61,7 @@ export class QuizService {
       const { correctanswer: userOption } = item;
       return { userOption }
     })
-    console.log( this.allCorrectAnswer)
+    console.log(this.allCorrectAnswer)
     // i will use it to get only the value without the key
     Object.keys(this.allCorrectAnswer).forEach((i: any) => {
       // جمل طباعة عشان اشوف الناتج
@@ -82,6 +82,4 @@ export class QuizService {
   isChecked(option: any) {
     return this.answers.get(this.QuestionNumber) === option;
   }
-
-
 }

@@ -4,7 +4,7 @@
 <div class="tbl">
   <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
   (click)="openCreateDialog()" >Add Role</button>
-    
+
   <table mat-table [dataSource]="admin.Roles" class="mat-elevation-z8 responsive">
     <tbody>
       <ng-container matColumnDef="roleid">
@@ -17,17 +17,17 @@
         <td mat-cell *matCellDef="let element"> {{element.rolename}} </td>
       </ng-container>
 
-  
+
       <ng-container matColumnDef="Options">
         <th mat-header-cell *matHeaderCellDef> Options </th>
         <td mat-cell *matCellDef="let element">
           <button mat-raised-button color="primary" (click)="openUpdateDialog(element)">Update</button>
-          
+
           <button mat-raised-button color="warn" (click)="openDeleteDialog(element.roleid)">Delete</button>
-          
+
         </td>
       </ng-container>
-    
+
     </tbody>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -42,7 +42,7 @@
 
 <ng-template #CallCreateDialog>
     <mat-dialog-content class="mat-typography">
-  
+
         <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Role</h2>
           <form class="mat-dialog-container">
              <br>
@@ -57,10 +57,10 @@
 
          <button  (click)="saveData()" class="updatebutton">Create</button>
          <button class="updatebutton" (click)="closeDialoge()"  style="left: 13px;">Cancel</button>
-        
+
         </form>
-      </mat-dialog-content> 
-      
+      </mat-dialog-content>
+
 
 </ng-template>
 <!-- ======================================== END Create Role ======================================= -->
@@ -89,12 +89,12 @@
             Role Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-  
+
       <br>
-  
+
       <button (click)="saveUpdateData()" class="updatebutton">Update</button>
       <button (click)="closeDialoge()" class="updatebutton" style="left: 13px;">Cancel</button>
-  
+
     </form>
   </ng-template>
 

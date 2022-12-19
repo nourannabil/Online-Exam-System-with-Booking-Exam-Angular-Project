@@ -1,19 +1,20 @@
-
-
-  <div class="card col-sm-4" (click)="goToExams()" style="cursor: pointer;">
-    <div class="cardTop">
-      <img src="{{imagepath}}"  width="350px"  height="250px" class="cardhover"/>
+<div class="col-sm-4 col-xs-12">
+  <div class="service-single text-center">
+    <div class="service-img">
+      <img src="../../assets/images/{{imagepath}}" alt="image of service" style="    margin-top: 30px; height: 165px;width: 175px;" />
     </div>
-    <div class="cardBottom">
-      <div class="cardText">
-      <!--       Title and description will always show -->
-      <h3 class="cardTitle">{{name}} Course</h3>
-      <h4 class="cardInfo" style="color:black">Click for {{name}} exams</h4>
-
-      <button (click)="StartExam(courseid)" >Start Exam</button>
-
-      </div>
+    <!--/.service-img-->
+    <div class="service-txt">
+      <h2>
+        <a>{{name|titlecase}} Course </a>
+      </h2>
+      <p>
+        {{description|titlecase}}
+      </p>
+      <a class="service-btn" (click)="goToExams()" style="cursor: pointer;color: #005555;">learn more</a>
     </div>
-    </div>
-
-
+    <!--/.service-txt-->
+  </div>
+  <!--/.service-single-->
+</div>
+<!--/.col-->

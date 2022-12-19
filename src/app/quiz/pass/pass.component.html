@@ -22,39 +22,6 @@
     <div class="bottomHalf">
       <p>Well Done!, You Have Pass The Exam</p>
       <button id="alertMO" (click)="SeeCertificate()">See Certificate</button>
-      <!-- <app-create-certifiecate (GenerateCertificate)="SeeCertificate()">
-        <button id="alertMO">See Certificate</button>
-      </app-create-certifiecate> -->
     </div>
   </div>
-</div>
-<!-- ======== -->
-<div hidden >
-  <form class="example-form" [formGroup]="certifiecateForm">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>title</mat-label>
-      <input type="text" matInput formControlName="title"
-      [value]="certifiecateForm.controls['title']" >
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>description</mat-label>
-      <input type="text" matInput formControlName="description"
-      [value]="certifiecateForm.controls['description']">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>userid</mat-label>
-      <input type="number" matInput formControlName="userid"
-      [value]="certifiecateForm.controls['userid']">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>bookingid</mat-label>
-      <input type="number" matInput formControlName="bookingid"
-      [value]="certifiecateForm.controls['bookingid']">
-    </mat-form-field>
-    <br>
-    <button (click)="Create()">save</button>
-  </form >
 </div>

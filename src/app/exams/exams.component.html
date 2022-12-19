@@ -1,44 +1,44 @@
 <app-navbar></app-navbar>
-
-
 <!--pricing start -->
 <section id="pricing" class="pricing">
-    <div class="container">
-        <div class="pricing-details">
-            <div class="section-header text-center">
-                
-                <h2 class="price-head">our Exams</h2>
+  <div class="container">
+    <div class="pricing-details">
+      <div class="section-header text-center">
 
-                <form>
-                    <div class="middleinput" style="display: flex;justify-content: center;margin-top: 7px;">
-                    <!-- <mat-form-field class="example-full-width mat-form-field-appearance-legacy "> -->
-                    <!-- <label for="site-search">Search the Exam Name:</label>  -->
-                
-                    <input type="txt"  matInput class="searchinput" placeholder="Exam Name" [value]="examName"  (change)="Search($event)">
-                    
-                 <br>
+        <h2 class="price-head">our Exams</h2>
 
-                <!-- </mat-form-field>  -->
-                
-                <div class="example-button-row"></div>
-                <button mat-raised-button  class="searchbutton" (click)="SearchButton()">Search</button>
-                
-                </div>
-                </form> 
+        <form>
+          <div class="middleinput" style="display: flex;justify-content: center;margin-top: 7px;">
 
-            </div><!--/.section-header-->
-             <!-- start card----------------- -->
-    <div class="pricing-content">
+            <input type="txt" matInput class="searchinput" placeholder="Exam Name" [value]="examName" (change)="Search($event)">
+            <br>
+            <!-- </mat-form-field>  -->
+            <div class="example-button-row"></div>
+            <button mat-raised-button class="searchbutton" (click)="SearchButton()">Search</button>
+
+          </div>
+        </form>
+
+      </div>
+      <!--/.section-header-->
+      <!-- start card----------------- -->
+      <div class="pricing-content">
         <div class="row">
-            <app-exams-cards *ngFor="let obj of home.exams" [examid]="obj.examid" [name]="obj.name" [description]="obj.description" [examprice]="obj.examprice" 
-            [imagepath]="obj.imagepath" [examduration]="obj.examduration" [passmark]="obj.passmark" [courseid]="obj.courseid"
-             ></app-exams-cards>          </div><!--/.row-->
-    </div><!--/.pricing-content-->
+          <app-exams-cards *ngFor="let obj of home.exams" [examid]="obj.examid" [name]="obj.name"
+            [description]="obj.description" [examprice]="obj.examprice" [imagepath]="obj.imagepath"
+            [examduration]="obj.examduration" [passmark]="obj.passmark" [courseid]="obj.courseid"></app-exams-cards>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.pricing-content-->
 
-            <!-- end card----------------- -->
-        </div><!--/.pricing-details-->
-    </div><!--/.container-->
+      <!-- end card----------------- -->
+    </div>
+    <!--/.pricing-details-->
+  </div>
+  <!--/.container-->
 
-</section><!--/.pricing-->
+</section>
+<!--/.pricing-->
 <!--pricing end-->
 <app-footer></app-footer>

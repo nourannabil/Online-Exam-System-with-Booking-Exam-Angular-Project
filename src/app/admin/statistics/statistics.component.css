@@ -1,117 +1,144 @@
 body {
-    background-color: #f2f3fa;
-  }
-  .stats {
-    margin: 5px;
-  }
+  background-color: #f2f3fa;
+}
+
+.stats {
+  margin: 5px;
+}
+
+.stats .col {
+
+  margin: 0;
+  padding: 3;
+}
+
+.statContainer {
+  margin: 5px;
+  width: 100%;
+  font-size: 13px;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 0;
+  overflow: hidden;
+}
+
+.statContainer .title {
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.statContainer.blue .title {
+  background-color: #005555;
+}
+
+.statContainer.blue .status {
+  color: #005555;
+}
+
+.statContainer.yellow .title {
+  background-color: #005555;
+}
+
+.statContainer.yellow .status {
+  color: #005555;
+}
+
+.statContainer.yelloww .title {
+  background-color: #f3a254;
+}
+
+.statContainer.yelloww .status {
+  color: #f3a254;
+}
+
+.statContainer.fountainBlue .title {
+  background-color: #6abebf;
+}
+
+.statContainer.fountainBlue .status {
+  color: #6abebf;
+}
+
+.statContainer.lightBlue .title {
+  background-color: #52a1e5;
+}
+
+.statContainer.lightBlue .status {
+  color: #52a1e5;
+}
+
+
+@media (max-width: 1200px) {
   .stats .col {
-   
-    margin: 0;
-    padding: 3;
+    min-width: 20% !important;
   }
-  .statContainer {
-    margin: 5px;
-    width: 100%;
-    font-size: 13px;
-    border-radius: 3px;
-    background-color: #fff;
-    padding: 0;
-    overflow: hidden;
-  }
-  .statContainer .title {
-    padding: 5px 10px;
-    color: #fff;
-  }
-  .statContainer.blue .title {
-    background-color: #005555;
-  }
-  .statContainer.blue .status {
-    color: #005555;
-  }
-  
-  .statContainer.yellow .title {
-    background-color: #005555;
-  }
-  .statContainer.yellow .status {
-    color: #005555;
-  }
- 
-  .statContainer.yelloww .title {
-    background-color: #f3a254;
-  }
-  .statContainer.yelloww .status {
-    color: #f3a254;
-  }
-  
-  .statContainer.fountainBlue .title {
-    background-color: #6abebf;
-  }
-  .statContainer.fountainBlue .status {
-    color: #6abebf;
-  }
-  .statContainer.lightBlue .title {
-    background-color: #52a1e5;
-  }
-  .statContainer.lightBlue .status {
-    color: #52a1e5;
-  }
-  
-
-  @media (max-width: 1200px) {
-    .stats .col {
-      min-width: 20% !important;
-    }
-  }
-  
-  @media (max-width: 887px) {
-    .stats .col {
-      min-width: 25% !important;
-    }
-  }
-  @media (max-width: 768px) {
-    .stats .col {
-      min-width: 50% !important;
-    }
-  }
-  @media (max-width: 525px) {
-    .stats .col {
-      min-width: 100% !important;
-    }
-  }
-  
-.cardplace{
-    position: absolute;
-    left: 400px;
-    top: 198px;
-   
-}
-.header{
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    top: 100px;
-    color: #005555;
-    font-size: 33px;
-    letter-spacing: 1px;
-    font-family: 'Poppins';
-}
-.cardplace2{
-    position: absolute;
-    left: 258%;
-    bottom: 637px;
 }
 
-.boxhead{
-    font-size: 15px;
-    letter-spacing: 1px;
-    font-family: 'Poppins';
+@media (max-width: 887px) {
+  .stats .col {
+    min-width: 25% !important;
+  }
 }
-.h5stat{
-    font-size: 17px;
-    font-weight: bold;
-    font-family: 'Poppins';
+
+@media (max-width: 768px) {
+  .stats .col {
+    min-width: 50% !important;
+  }
 }
-.iconss{
-    color:white;
-    
+
+@media (max-width: 525px) {
+  .stats .col {
+    min-width: 100% !important;
+  }
+}
+
+.cardplace {
+  position: absolute;
+  left: 400px;
+  top: 198px;
+
+}
+
+.header {
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  color: #005555;
+  font-size: 33px;
+  letter-spacing: 1px;
+  font-family: 'Poppins';
+}
+
+.cardplace2 {
+  position: absolute;
+  left: 258%;
+  bottom: 637px;
+}
+
+.boxhead {
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: 'Poppins';
+}
+
+.h5stat {
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'Poppins';
+}
+
+.iconss {
+  color: white;
+
+}
+
+@media(max-width:1038px) {
+  .stats {
+    visibility: hidden;
+  }
+
+  .header {
+    visibility: hidden;
+  }
 }

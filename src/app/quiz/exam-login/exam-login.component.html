@@ -1,8 +1,8 @@
-<div class="info_box">
+<div class="info_box" *ngFor="let item of userService.mySingleBooking">
   <div class="info-title"><span>The Rules of Exam</span></div>
   <div class="info-list">
-    <div class="info">1. There are 50 questions</div>
-    <div class="info">2. You will have only <span> 60 minutes </span> to answer all questions</div>
+    <div class="info">1. There are <span> {{item.numofquestions}} questions </span> </div>
+    <div class="info">2. You will have only <span> {{item.examduration}} minutes </span> to answer all questions</div>
     <div class="info">3. If You exit the Exam you will start from the beginning.</div>
     <div class="info">4. The question mark for each one is 2 </div>
     <div class="info">5. To Start the Exam Please insert the <span> password </span> </div>

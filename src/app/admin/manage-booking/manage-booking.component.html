@@ -6,14 +6,14 @@
     <div class="middleinput row" style="    display: flex;
     justify-content: center;
     margin-top: 7px;">
-    
+
     <div class="divinput" style="padding-right: 18px;">
     <label for="site-search">Date From </label>
-    <br> 
+    <br>
     <input type="date"  matInput class="searchinput"  [value]="dateFrom" (change)="searchDateFrom($event)" >
    </div>
    <div class="divinput">
-    <label for="site-search">Date To </label> 
+    <label for="site-search">Date To </label>
     <br>
     <input type="date"  matInput class="searchinput"   [value]="dateTo" (change)="searchDateTo($event)">
   </div>
@@ -23,19 +23,14 @@
 <button mat-raised-button  class="searchbutton"  (click)="submit()">Search</button>
 
 </div>
-</form> 
-
-  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
-    (click)="openCreateDailog()">Add
-    Booking</button>
-  <!-- <cdk-virtual-scroll-viewport itemsize=200 appendOnly class="example-viewport"> -->
+</form>
   <table mat-table [dataSource]="admin.AllBookingArray" class="mat-elevation-z8 responsive">
     <tbody>
       <ng-container matColumnDef="bookingid">
         <th mat-header-cell *matHeaderCellDef> No. </th>
         <td mat-cell *matCellDef="let element"> {{element.bookingid}} </td>
       </ng-container>
-      
+
       <!-- |date: 'dd/MMM/yyyy hh:mm a' -->
       <ng-container matColumnDef="examdateuser">
         <th mat-header-cell *matHeaderCellDef> Exam Date </th>
@@ -47,22 +42,30 @@
         <td mat-cell *matCellDef="let element"> {{element.bookingdate|date: 'dd/MMM/yyyy hh:mm a'}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="exampassword">
-        <th mat-header-cell *matHeaderCellDef> Exam Password </th>
-        <td mat-cell *matCellDef="let element"> {{element.exampassword}} </td>
-      </ng-container>
+      <div hidden>
+        <ng-container hidden matColumnDef="exampassword">
+          <th mat-header-cell *matHeaderCellDef hidden> Exam Password </th>
+          <td mat-cell *matCellDef="let element" hidden> {{element.exampassword}} </td>
+        </ng-container>
+      </div>
 
       <ng-container matColumnDef="examid">
         <th mat-header-cell *matHeaderCellDef> Exam Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.examid}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.examname}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> User Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="userid">
         <th mat-header-cell *matHeaderCellDef> User No </th>
         <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
       </ng-container>
       <ng-container matColumnDef="statusid">
         <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.statusid}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.statusname}} </td>
       </ng-container>
 
 
@@ -91,75 +94,68 @@
   <h2 mat-dialog-title style="color:#005555"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update Booking
   </h2>
   <form class="mat-dialog-container">
-    <!-- <mat-form-field [formGroup]="updateForm">
-        <mat-label>booking id</mat-label>
-        <input type="number" matInput formControlName="bookingid" [(ngModel)]="pDataBookUpdata.bookingid">
-        <mat-error *ngIf="updateForm.controls['bookingid'].hasError('required')">
-          bookingid is <strong>required</strong>
-          </mat-error>
-      </mat-form-field> -->
     <br>
     <mat-form-field [formGroup]="updateForm">
       <mat-label>examdateuser</mat-label>
-      <input  matInput formControlName="examdateuser" [(ngModel)]="pDataBookUpdata.examdateuser">
+      <input type="datetime-local"  matInput formControlName="examdateuser" [(ngModel)]="pDataBookUpdata.examdateuser">
       <mat-error *ngIf="updateForm.controls['examdateuser'].hasError('required')">
         examdateuser is <strong>required</strong>
       </mat-error>
     </mat-form-field>
 
     <br>
+    <div>
     <mat-form-field [formGroup]="updateForm">
       <mat-label>bookingdate</mat-label>
-      <input  matInput formControlName="bookingdate" [(ngModel)]="pDataBookUpdata.bookingdate">
+      <input type="datetime-local" matInput formControlName="bookingdate" [(ngModel)]="pDataBookUpdata.bookingdate" readonly>
       <mat-error *ngIf="updateForm.controls['bookingdate'].hasError('required')">
         bookingdate is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <br>
-    <mat-form-field [formGroup]="updateForm">
-      <mat-label>exampassword</mat-label>
-      <input type="text" matInput formControlName="exampassword" [(ngModel)]="pDataBookUpdata.exampassword">
-      <mat-error *ngIf="updateForm.controls['exampassword'].hasError('required')">
-        exampassword is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+  </div>
+    <div hidden>
+      <mat-form-field [formGroup]="updateForm">
+        <mat-label>exampassword</mat-label>
+        <input type="text" matInput formControlName="exampassword" [(ngModel)]="pDataBookUpdata.exampassword">
+        <mat-error *ngIf="updateForm.controls['exampassword'].hasError('required')">
+          exampassword is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
     <br>
     <mat-form-field [formGroup]="updateForm">
       <mat-label>Exam Name</mat-label>
-      <!-- <input type="number" matInput formControlName="examid" [(ngModel)]="pDataBookUpdata.examid"> -->
-      <select matNativeControl matInput formControlName="examid" [(ngModel)]="pDataBookUpdata.examid">
-        <option type="number" *ngFor="let x of admin.exams" [ngValue]="x.examid" selected>{{x.name}}</option>
+      <select matNativeControl matInput formControlName="examid"
+      [(ngModel)]="pDataBookUpdata.examid" >
+        <option selected hidden>{{updateForm.controls['examid'].value}}</option>
+        <!-- <option type="number" [ngValue]="pDataBookUpdata.examid" selected hidden>{{pDataBookUpdata.examid}}</option> -->
+        <option type="number" *ngFor="let x of admin.exams" [ngValue]="x.examid" >
+          {{x.name}}</option>
       </select>
       <mat-error *ngIf="updateForm.controls['examid'].hasError('required')">
         Exam Name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
     <br>
-    <mat-form-field [formGroup]="updateForm">
+
+      <mat-form-field [formGroup]="updateForm">
       <mat-label>userid</mat-label>
-      <input type="number" matInput formControlName="userid" [(ngModel)]="pDataBookUpdata.userid">
+      <input type="number" matInput formControlName="userid" [(ngModel)]="pDataBookUpdata.userid" readonly>
       <mat-error *ngIf="updateForm.controls['userid'].hasError('required')">
         userid is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
+
     <br>
-    <!-- input field to status -->
-
-    <!-- <mat-form-field [formGroup]="updateForm">
-      <mat-label>statusid</mat-label>
-      <input type="number" matInput formControlName="statusid" [(ngModel)]="pDataBookUpdata.statusid">
-
-      <mat-error *ngIf="updateForm.controls['statusid'].hasError('required')">
-        statusid is <strong>required</strong>
-      </mat-error>
-    </mat-form-field> -->
-
     <!-- Select list code to status -->
     <mat-form-field [formGroup]="updateForm">
       <mat-label>Status</mat-label>
-      <select  matNativeControl formControlName="statusid" [(ngModel)]="pDataBookUpdata.statusid">
-        <!-- <option value="">{{pDataBookUpdata.statusid}}</option> -->
-        <option type="number" *ngFor="let x of statusIds" [ngValue]="x.statusid" selected>{{x.statusname}}</option>
+      <select  matNativeControl formControlName="statusid"
+      [(ngModel)]="pDataBookUpdata.statusid">
+        <option selected hidden>{{updateForm.controls['statusid'].value}}</option>
+        <option type="number" *ngFor="let x of statusIds" [ngValue]="x.statusid" >
+          {{x.statusname}}</option>
       </select>
       <mat-error *ngIf="updateForm.controls['statusid'].hasError('required')">
           Status is <strong>required</strong>

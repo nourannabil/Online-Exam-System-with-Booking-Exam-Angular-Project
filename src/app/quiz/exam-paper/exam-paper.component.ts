@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from 'src/app/Services/quiz.service';
+import { UserService } from 'src/app/Services/user.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-exam-paper',
@@ -9,19 +11,35 @@ import { QuizService } from 'src/app/Services/quiz.service';
 })
 export class ExamPaperComponent implements OnInit {
 
+  userObject = localStorage.getItem('user')! || '';
+  userInfo = JSON.parse(this.userObject);
+
+  certifiecateForm: FormGroup = new FormGroup({
+    title: new FormControl('PROFESSIONAL CERTIFICATE'),
+    description: new FormControl('In recognition of passing the'),
+    userid: new FormControl(parseInt(this.userInfo.Userid)),
+    bookingid: new FormControl()
+  })
+
+  FalidForm: FormGroup = new FormGroup({
+    title: new FormControl('Falid'),
+    description: new FormControl('In recognition of Falid the'),
+    userid: new FormControl(parseInt(this.userInfo.Userid)),
+    bookingid: new FormControl()
+  })
+
+  constructor(public Quiz: QuizService, public userService: UserService, public Route: Router) {
+  }
+
+  user: any;
   time: number = 0; //1000
-  timeOut: number = 10000; // duration
+  timeOut: number = 0; // duration
   timer: string = '';
   timer2: any;
   clock: string = '';
 
-  timeForLocalStorge: number = 0;
-
-  constructor(public Quiz: QuizService, public Route: Router) { }
 
   ngOnInit(): void {
-
-
     if (parseInt(localStorage.getItem('seconds')!) > 0) {
       this.Route.navigate(['']);
       localStorage.removeItem('seconds');
@@ -29,13 +47,22 @@ export class ExamPaperComponent implements OnInit {
       this.startTimer();
       this.endTime();
     }
-  }
 
-  // just for testing
-  // see() {
-  //   console.log(this.ExamService.Exam);
-  //   console.log(this.ExamService.newExam);
-  // }
+    this.user = localStorage.getItem('user');
+    this.user = JSON.parse(this.user);
+    console.log(this.user.Userid)
+    this.userService.MyBooking(this.user.Userid);
+
+    const bookingNum = this.userService.mySingleBooking.map((item: any) => {
+      const { bookingid } = item;
+      return { bookingid }
+    });
+
+    Object.keys(bookingNum).forEach((i: any) => {
+      this.certifiecateForm.controls['bookingid'].setValue(parseInt(bookingNum[i].bookingid))
+      this.FalidForm.controls['bookingid'].setValue(parseInt(bookingNum[i].bookingid))
+    });
+  }
 
   PreviousQuestion() {
     this.Quiz.QuestionNumber--;
@@ -49,11 +76,25 @@ export class ExamPaperComponent implements OnInit {
     this.Quiz.FinalSubmit();
     this.stopInterval();
 
-    if ((this.Quiz.result) * 2 >= 2) { // static date 80 for 50 question Or 8 for 20 question
-      this.Route.navigate(['quiz/pass']);
-    } else {
-      this.Route.navigate(['quiz/failed']);
-    }
+    const pass = this.userService.mySingleBooking.map((item: any) => {
+      const { passmark } = item;
+      return { passmark }
+    });
+
+    Object.keys(pass).forEach((i: any) => {
+      console.log(`${pass[i].passmark}`)
+      if ((this.Quiz.result) * 2 >= pass[i].passmark) {
+
+        this.userService.CreateCertifiecate(this.certifiecateForm.value);
+
+        this.Route.navigate(['quiz/pass']);
+      } else {
+
+        this.userService.CreateFalidCertifiecate(this.FalidForm.value);
+
+        this.Route.navigate(['quiz/failed']);
+      }
+    });
   }
 
 
@@ -61,7 +102,6 @@ export class ExamPaperComponent implements OnInit {
   startTimer() {
     this.timer2 = setInterval(() => {
       this.time++;
-      this.timeForLocalStorge++;
       localStorage.setItem('seconds', this.time.toString());
       this.displayOnWindow2();
       this.display();   // هاد ما بدي ياه بعدين فقط للاختبار
@@ -69,6 +109,20 @@ export class ExamPaperComponent implements OnInit {
         Math.floor((this.time % 60) + 1);
       return this.clock;
     }, 1000);
+
+    const RunTime = this.userService.mySingleBooking.map((item: any) => {
+      const { examduration } = item;
+      return { examduration }
+    });
+
+    Object.keys(RunTime).forEach((i: any) => {
+      console.log(`${RunTime[i].examduration}`);
+      console.log(`${RunTime[i].examduration * 60000}`);
+
+      this.timeOut = (RunTime[i].examduration * 60000);
+      // console.log(`this.timeOut ::: ${this.timeOut}`);
+    });
+
   }
 
   stopInterval() {
@@ -94,22 +148,7 @@ export class ExamPaperComponent implements OnInit {
       console.log(this.timeOut);
       console.log(this.clock);
 
-      var minutes = this.time // 10
-      var afterSomeMinutes = new Date(new Date().getTime() + minutes * 1000);
-      console.log(afterSomeMinutes);
-
-      var out = this.timeOut // 10000
-      var Out2 = new Date(new Date().getTime() + ((out / 1000) * 1000));
-      console.log(Out2);
-
-      var Today = new Date(new Date().getTime());
-      console.log(Today);
-
-      // if (((afterSomeMinutes.getTime() == Out2.getTime()))) {
-      //   this.submit();
-      //   this.stopInterval();
-      // }
-      if ((this.time == this.timeOut / 1000)) {
+      if ((this.time) == (this.timeOut / 1000)) {
         this.submit()
       }
     }, this.timeOut);

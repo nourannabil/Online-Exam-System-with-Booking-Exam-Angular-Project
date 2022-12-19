@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../Services/home.service';
 import { FormControl } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-course-exams',
@@ -10,16 +10,12 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class CourseExamsComponent implements OnInit {
 
-  constructor(public home:HomeService) { }
+  constructor(public home: HomeService) { }
   examName: FormControl = new FormControl('');
 
-
- courseExams=this.home.exams.filter((obj)=>obj.courseid==this.home.selectedCourse.Id)
-
+  courseExams = this.home.exams.filter((obj) => obj.courseid == this.home.selectedCourse.Id)
 
   ngOnInit(): void {
   }
 
-
- 
 }

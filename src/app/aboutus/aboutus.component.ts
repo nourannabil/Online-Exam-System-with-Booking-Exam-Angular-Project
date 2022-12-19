@@ -8,10 +8,11 @@ import { HomeService } from '../Services/home.service';
 })
 export class AboutusComponent implements OnInit {
 
-  constructor(private spinner:NgxSpinnerService,public home:HomeService) { }
+  constructor(private spinner: NgxSpinnerService, public home: HomeService) { }
 
   ngOnInit(): void {
-   this.home.getAboutInfo();
+    this.home.getAboutInfo();
+    localStorage.getItem('token');
   }
 
 }

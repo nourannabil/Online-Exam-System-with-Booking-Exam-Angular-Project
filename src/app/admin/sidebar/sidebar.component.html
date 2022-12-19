@@ -1,30 +1,51 @@
-<div class="grid">
-  <header class="header">
-    <i class="fa fa-bars header__menu"></i>
-    <div class="header__search">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a routerLink="/">Home</a></li>
-        <li class="active"><a routerLink="/exams">Exams</a></li>
-        <li class="active" (click)="LogOut()"><a>LogOut</a></li>
-      </ul>
-    </div>
-  </header>
+<input type="checkbox" id="side" name="" value="">
 
-  <aside class="sidenav">
-    <div class="sidenav__brand">
-      <a class="sidenav__brand-link" href="#">HNSs<span class="text-light"> Exam</span></a>
-    </div>
-    <div class="sidenav__profile">
-      <div class="sidenav__profile">
-        <img class="sidenav__profile-avatar" [src]="user.Image">
-        <div class="sidenav__profile-title text-light">
-          {{user.FirstName|titlecase}} {{user.LastName|titlecase}}</div>
+<div class="page-wrap">
+
+  <div class="page-content">
+    <label for="side" class="toggle">☰</label>
+  </div>
+  <div class="grid">
+    <header class="header">
+      <div class="header__search">
+        <ul class="nav navbar-nav navbar-right headerUl">
+          <li class="active"><a routerLink="/">Home</a></li>
+          <li class="active"><a routerLink="/exams">Exams</a></li>
+          <li class="active" (click)="LogOut()"><a>LogOut</a></li>
+        </ul>
       </div>
-    </div>
+    </header>
+    <div class="sidebar" style="overflow-y: auto; overflow-x: hidden;z-index:20;">
+      <div class="sidenav__brand">
+
+        <a class="sidenav__brand-link" style="font-family: 'Poppins';" href="#">
+          <img src="./assets/images/logo/logo1.png" alt="logo" class="logoimage">
+          HNSs<span class="text-light"> Exam</span></a>
+      </div>
+      <div class="sidenav__profile">
+        <div class="sidenav__profile">
+          <img class="sidenav__profile-avatar" src="../../../assets/images/{{user.Image}}" >
+          <div class="sidenav__profile-title username ">
+            {{user.FirstName|titlecase}} {{user.LastName|titlecase}}</div>
+        </div>
+      </div>
     <div class="row row--align-v-center row--align-h-center">
       <ul class="navList">
         <li class="navList__heading timeLine" routerLink="/admin/">TimeLine<i class="fa fa-file-alt"></i></li>
         <hr>
+        <li class="navList__heading">Profile</li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title" routerLink="/admin/adminProfile">My Profile</span>
+          </div>
+        </li>
+         <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-inbox" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title" routerLink="/admin/inbox">Inbox</span>
+          </div>
+        </li>
         <li class="navList__heading">Manage Exam<i class="fa fa-file-alt"></i></li>
         <li>
           <div class="navList__subheading row row--align-v-center">
@@ -95,7 +116,7 @@
         <li>
           <div class="navList__subheading row row--align-v-center">
             <span class="navList__subheading-icon"><i class="fa fa-credit-card"></i></span>
-            <span class="navList__subheading-title">Reports</span>
+            <span class="navList__subheading-title" routerLink="/admin/report">Reports</span>
           </div>
         </li>
         <li>
@@ -108,17 +129,23 @@
         <li>
           <div class="navList__subheading row row--align-v-center">
             <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-            <span class="navList__subheading-title" routerLink="/admin/role">Role</span>
+            <span class="navList__subheading-title" routerLink="/admin/users">User Info</span>
           </div>
         </li>
         <li>
           <div class="navList__subheading row row--align-v-center">
             <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-            <span class="navList__subheading-title" routerLink="/admin/users">User Info</span>
+            <span class="navList__subheading-title" routerLink="/admin/managelogins">User Login</span>
           </div>
         </li>
+        <li>
+          <div class="navList__subheading row row--align-v-center">
+            <span class="navList__subheading-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <span class="navList__subheading-title" routerLink="/admin/role">Role</span>
+          </div>
+        </li>
+
       </ul>
     </div>
-  </aside>
 
 </div>

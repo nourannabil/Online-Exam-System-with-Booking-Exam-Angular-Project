@@ -1,4 +1,3 @@
-
 <app-sidebar></app-sidebar>
 <div class="tbl">
   <!-- <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}">Add
@@ -27,9 +26,15 @@
         <td mat-cell *matCellDef="let element"> {{element.description2}} </td>
       </ng-container>
       <ng-container matColumnDef="description3">
-        <th mat-header-cell *matHeaderCellDef> third Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.description3}} </td>
+        <th mat-header-cell *matHeaderCellDef hidden>First Image </th>
+        <td mat-cell *matCellDef="let element"hidden>  
+        <img src="./assets/images/banner/slider33.jpg" [ngStyle]="{'width.px':250,'hight.px':200}"></td>
       </ng-container>
+      <!-- <ng-container matColumnDef="description3">
+        <th mat-header-cell *matHeaderCellDef >First Image </th>
+        <td mat-cell *matCellDef="let element">  
+        <img src="../../../assets/images/{{element.description3}}" [ngStyle]="{'width.px':250,'hight.px':200}"></td>
+      </ng-container> -->
 
       <ng-container matColumnDef="imagepath">
         <th mat-header-cell *matHeaderCellDef> Image </th>
@@ -42,8 +47,8 @@
       <ng-container matColumnDef="Options">
         <th mat-header-cell *matHeaderCellDef> Options </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary">Update</button>
-          <button mat-raised-button color="warn">Delete</button>
+          <button mat-raised-button color="primary"  (click)="openUpdateDialog(element)">Update</button>
+          <button mat-raised-button color="warn" (click)="openDeleteDialog(element.homeid)">Delete</button>
         </td>
       </ng-container>
 
@@ -53,4 +58,68 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+<!-- =====================================Delete Dialog===============================-->
 
+<ng-template #callDeleteDialog>
+  <h2 mat-dialog-title style="color:#005555"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Home</h2>
+  <form class="mat-dialog-container" style="width:452px !important;">
+    <h2 style="text-transform:capitalize;">Are you sure you want to delete this item ?</h2>
+    <button mat-dialog-close="yes" class="updatebutton" style="background-color:red; border-color:red;">Yes</button>
+    <button mat-dialog-close="no" class="updatebutton" style="left: 13px;">No</button>
+  </form>
+</ng-template>
+<!-- ===================================== END Delete Dialog===============================-->
+
+<!-- ===================================== Update Dialog=============================== -->
+<ng-template #callUpdateDailog>
+  <h2 mat-dialog-title style="color:#005555"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update Booking
+  </h2>
+  <form class="mat-dialog-container">
+    <!-- <mat-form-field [formGroup]="updateForm">
+        <mat-label>booking id</mat-label>
+        <input type="number" matInput formControlName="aboutid" [(ngModel)]="pAboutData.aboutid">
+        <mat-error *ngIf="updateForm.controls['aboutid'].hasError('required')">
+          aboutid is <strong>required</strong>
+          </mat-error>
+      </mat-form-field> -->
+    <br>
+    <mat-form-field [formGroup]="updateForm">
+      <mat-label>title</mat-label>
+      <input matInput formControlName="title" [(ngModel)]="pHomeData.title">
+      <mat-error *ngIf="updateForm.controls['title'].hasError('required')">
+        title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+    <mat-form-field [formGroup]="updateForm">
+      <mat-label>First description</mat-label>
+      <input matInput formControlName="description1" [(ngModel)]="pHomeData.description1">
+      <mat-error *ngIf="updateForm.controls['description1'].hasError('required')">
+        description1 is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field [formGroup]="updateForm">
+      <mat-label>description2</mat-label>
+      <input matInput formControlName="description2" [(ngModel)]="pHomeData.description2">
+      <mat-error *ngIf="updateForm.controls['description2'].hasError('required')">
+        description2 is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <br>
+    <!--  <input type="file" #file formControlName="description2" (change)="uploadFile(file.files) " [(ngModel)]="pAboutData.description2">-->
+    <br>
+    <input type="file" #file formControlName="imagepath" (change)="uploadFile(file.files) "
+     [(ngModel)]="pHomeData.imagepath" style="position: relative;left: 47px;">
+
+    <br>
+    <!-- pDataBookUpdata.statusid -->
+    <button (click)="saveUpdateData()" class="updatebutton">Update</button>
+    <button (click)="closeDialoge()" class="updatebutton" style="left: 13px;">Cancel</button>
+
+  </form>
+</ng-template>
+<!-- =====================================END Update Dialog=============================== -->

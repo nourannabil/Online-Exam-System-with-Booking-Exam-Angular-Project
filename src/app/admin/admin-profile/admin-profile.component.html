@@ -1,0 +1,44 @@
+<app-sidebar></app-sidebar>
+  <div class="container">
+  <div class="col-md-4">
+    <div class="profile-container">
+      <div class="profile-header row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <img src="../../../assets/images/{{userService.myProfile.imagepath}}" alt="" class="header-avatar">
+        </div>
+        <div class="col-md-12 col-sm-12 profile-info">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="header-fullname ">
+                {{user.FirstName|titlecase}} {{user.LastName|titlecase}}</div>
+            </div>
+            <div class="col-md-4">
+              <button class="btn-palegreen btn-sm pull-right btn-follow"
+                (click)="GoToEdit(userService.myProfile)">
+                Edit Profile</button>
+            </div>
+          </div>
+          <div class="header-information">
+            <strong class="stats-value pink">Username : </strong> {{user.Username}}
+            <br>
+            <br>
+            <strong class="stats-value pink">Email : </strong> {{user.Email}}
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+              <i class="glyphicon glyphicon-map-marker"></i>
+              {{userService.myProfile.address}}
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-8 inlinestats-col">
+              <strong class="stats-value pink">
+                Phonenumber: </strong>
+              <strong> 0{{userService.myProfile.phonenumber}}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

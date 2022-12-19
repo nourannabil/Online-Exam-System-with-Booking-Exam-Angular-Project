@@ -15,7 +15,7 @@
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="description">
+      <ng-container matColumnDef="description" style="width: 10px;">
         <th mat-header-cell *matHeaderCellDef> Description </th>
         <td mat-cell *matCellDef="let element"> {{element.description}} </td>
       </ng-container>
@@ -28,6 +28,11 @@
       <ng-container matColumnDef="examprice">
         <th mat-header-cell *matHeaderCellDef> Exam Price </th>
         <td mat-cell *matCellDef="let element"> {{element.examprice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numofquestions">
+        <th mat-header-cell *matHeaderCellDef> Num Of Questions </th>
+        <td mat-cell *matCellDef="let element"> {{element.numofquestions}} </td>
       </ng-container>
 
       <ng-container matColumnDef="passmark">
@@ -99,6 +104,15 @@
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Num. of Questions</mat-label>
+        <input type="number" matInput formControlName="numofquestions"
+         [(ngModel)]="previous_data.numofquestions">
+        <mat-error *ngIf="UpdateForm.controls['numofquestions'].hasError('required')">
+          Num. of Questions is required
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Pass Mark</mat-label>
         <input type="number" matInput formControlName="passmark" [(ngModel)]="previous_data.passmark">
         <mat-error *ngIf="UpdateForm.controls['passmark'].hasError('required')">
@@ -106,9 +120,15 @@
         </mat-error>
       </mat-form-field>
       <br>
+
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Course Id</mat-label>
-        <input type="number" matInput formControlName="courseid" [(ngModel)]="previous_data.courseid">
+        <select matNativeControl formControlName="courseid"
+        [(ngModel)]="previous_data.courseid">
+        <option selected hidden>{{UpdateForm.controls['courseid'].value}}</option>
+          <option type="number" *ngFor="let x of Home.courses"
+          [ngValue]="x.courseid" >{{x.name}}</option>
+        </select>
         <mat-error *ngIf="UpdateForm.controls['courseid'].hasError('required')">
           Course Id is required
         </mat-error>

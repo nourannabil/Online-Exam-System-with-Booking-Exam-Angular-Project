@@ -1,0 +1,99 @@
+<!-- <app-sidebar-user></app-sidebar-user>
+<form [formGroup]="CreateForm">
+  <div class="group">
+    <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+      <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+        <input type="text" matInput class="input" formControlName="feedback" required placeholder="Feedback" />
+      </div>
+      <mat-error *ngIf="CreateForm.controls['feedback'].hasError('required')">
+        feedback is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div hidden>
+    <div class="group">
+      <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+        <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+          <input type="number" matInput class="input" formControlName="statusid" />
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div hidden>
+    <div class="group">
+      <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+        <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+          <input type="number" matInput class="input" formControlName="userid" />
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div hidden>
+    <div class="group">
+      <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+        <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+          <input type="number" matInput class="input" formControlName="homeid" />
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+</form> -->
+
+
+<app-sidebar-user></app-sidebar-user>
+<div class="container">
+  <div class="col-md-4">
+    <div class="profile-container">
+      <div class="profile-header row">
+        <div class="col-md-12 col-sm-12 profile-info">
+          <div class="header-information">
+            <form [formGroup]="CreateForm">
+              <img style="width:30px;height:30px;" src="./assets/images/logo/logo1.png" alt="logo" class="logoimage">
+              <strong>Write Your Feedback</strong>
+              <div class="group">
+                <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                  <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                    <textarea type="text" matInput class="input" formControlName="feedback"></textarea>
+                  </div>
+                  <mat-error *ngIf="CreateForm.controls['feedback'].hasError('required')">
+                    feedback is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div hidden>
+                <div class="group">
+                  <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                    <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                      <input type="number" matInput class="input" formControlName="statusid" />
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div hidden>
+                <div class="group">
+                  <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                    <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                      <input type="number" matInput class="input" formControlName="userid" />
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div hidden>
+                <div class="group">
+                  <mat-form-field class="example-full-width mat-form-field-appearance-legacy">
+                    <div class="example-full-width mat-form-field-wrapper mat-form-field-infix ">
+                      <input type="number" matInput class="input" formControlName="homeid" />
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="group text-right ">
+                <button class="button updatebutton" type="submit" (click)="submit()" [disabled]="!CreateForm.valid">Done</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

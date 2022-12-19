@@ -17,6 +17,7 @@ export class CreateExamsComponent implements OnInit {
     description: new FormControl('', Validators.required),
     examduration: new FormControl('', Validators.required),
     examprice: new FormControl('', Validators.required),
+    numofquestions: new FormControl('', Validators.required),
     passmark: new FormControl('', Validators.required),
     courseid: new FormControl('', Validators.required),
     imagepath: new FormControl()

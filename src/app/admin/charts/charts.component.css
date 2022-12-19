@@ -33,3 +33,13 @@
     letter-spacing: 1px;
     font-family: 'Poppins';
 }
+.buttonPDF{
+    position: absolute;
+    left: 53%;
+    top: 186px;
+    background-color: #005555;
+    color: white;
+    height: 37px;
+    width: 134px;
+    border-radius: 13px;
+}

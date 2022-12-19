@@ -1,0 +1,84 @@
+<app-sidebar-user></app-sidebar-user>
+<div class="tbl">
+  <table mat-table [dataSource]="userService.PassCertifiecate" class="mat-elevation-z8">
+    <tbody>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.certificateid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Course Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.courseName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Exam Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.examName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Options">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef> Certifiecate Print </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#009688','margin-bottom.px': 2}"
+            (click)="Print(element.certificateid)">Print</button>
+        </td>
+      </ng-container>
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <!-- Certificate  -->
+  <div hidden class="container">
+    <div class="certificate-container">
+      <div *ngFor="let item of userService.mySingleCertifiecate">
+        <div id="table" class="certificate">
+          <div class="certificate-header">
+            <img src="../../../assets/images/logo1 (1).png" class="logo" alt="logo" style="color:#005555">
+          </div>
+          <div class="certificate-body">
+            <h2 class="certificate-title" style=" font-size:30px; font-weight:bold"><strong>HNSs Exams</strong></h2>
+            <h3>{{item.title}} </h3>
+            <h1>PROFESSIONAL {{item.examName}}</h1>
+            <p class="student-name">{{user.FirstName|titlecase}} {{user.LastName|titlecase}}</p>
+            <div class="certificate-content">
+              <div class="about-certificate">
+                <p>
+                  {{item.description}} {{item.examName}}
+                  conducted by <strong>HNSs Exams</strong>
+                </p>
+              </div>
+            </div>
+            <div class="certificate-footer text-muted row">
+              <div class="structure col-md-3" style="top: 20px;;left: 65px;position:relative;">
+                <div class="badge-one-border col-md-3">
+                  <div class="badge-one-content">
+                    <h3> HNSs<span> Exams</span></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 " style="top: 85px;left: 350px;position: relative">
+                <p>{{item.examdateuser|date}}</p>
+                <p class="signature">HNSs Exams</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="download()">Download PDF</button>
+  </div>
+</div>

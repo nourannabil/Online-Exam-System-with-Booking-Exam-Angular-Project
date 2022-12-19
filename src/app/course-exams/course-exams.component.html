@@ -1,39 +1,21 @@
- <app-navbar></app-navbar>
-
- <section id="pricing" class="pricing">
-    <div class="container">
-        <div class="pricing-details">
-            <div class="section-header text-center">
-                
-                
-  <h2 class="price-head"> {{home.selectedCourse.CourseName}} Exams</h2>
- 
-  <form>
-    <div class="middleinput" style="    display: flex;
-    justify-content: center;
-    margin-top: 7px;">
-    <mat-form-field class="example-full-width mat-form-field-appearance-legacy ">
-    <!-- <label for="site-search">Search the Exam Name:</label>  -->
-
-    <input type="search"  matInput class="searchinput" id="site-search" name="q" placeholder="Exam Name" [formControl]="examName">
- 
-</mat-form-field> 
-
-<div class="example-button-row"></div>
-<button mat-raised-button  class="searchbutton">Search</button>
-
-</div>
-</form> 
-
- <div class="pricing-content">
+<app-navbar></app-navbar>
+<!--pricing start -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="pricing-details">
+      <div class="section-header text-center">
+        <h2 class="price-head">our Exams</h2>
+      </div>
+      <div class="pricing-content">
         <div class="row">
-            <app-exams-cards *ngFor="let obj of courseExams" [examid]="obj.examid" [name]="obj.name" [description]="obj.description" [examprice]="obj.examprice" 
-            [imagepath]="obj.imagepath" [examduration]="obj.examduration" [passmark]="obj.passmark" [courseid]="obj.courseid"
-             ></app-exams-cards>
-        </div><!--/.row-->
-    </div><!--/.pricing-content-->
-</div>
-</div>
-</div>
+          <app-exams-cards *ngFor="let obj of courseExams" [examid]="obj.examid" [name]="obj.name"
+            [description]="obj.description" [examprice]="obj.examprice" [imagepath]="obj.imagepath"
+            [examduration]="obj.examduration" [passmark]="obj.passmark" [courseid]="obj.courseid"></app-exams-cards>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.pricing-content-->
+    </div>
+  </div>
 </section>
 <app-footer></app-footer>

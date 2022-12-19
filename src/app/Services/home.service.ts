@@ -26,7 +26,11 @@ export class HomeService {
   ExamTime: any[] = [];
   questionBank: any[] = [];
   CourseBank: any[] = [];
-
+  logins:any[]=[];
+  testimonialWithNames:any[]=[];
+  users:any[]=[];
+  acceptedTest:any[]=[];
+  acceptedTestimonialWithNames:any[]=[];
   contactForm: FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -77,10 +81,43 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
   }
+
+  GetAllUsers() {
+    //1.show spinner
+    //2.hit on api
+    //3.hide spinner
+    //4. resp =>toastr
+    this.spinner.show();
+    this.http.get('https://localhost:44324/api/user').subscribe((resp: any) => {
+      this.users = resp;
+      console.log(resp);
+      this.spinner.hide();
+      this.toastr.success('Data Retreived!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+
+    })
+  }
   gettestimonialinfo() {
     this.spinner.show();
     this.http.get('https://localhost:44324/api/testimonial').subscribe((resp: any) => {
       this.testimonialinfo = resp;
+
+
+        this.testimonialWithNames= this.testimonialinfo.map(test => ({
+          testimonialid: test.testimonialid,
+          feedback: test.feedback,
+          statusName: this.status.find(status => status.statusid === test.statusid).statusname,
+          username: this.users.find(user => user.userid === test.userid).fname,
+          // userimage:this.users.find(user => user.userid === test.userid).imagepath,
+          homeid: test.homeid,
+
+      }));
+      console.log("tets array this.testimonialWithNames");
+
+      console.log(this.testimonialWithNames);
+
       console.log(this.testimonialinfo);
       this.spinner.hide();
       this.toastr.success('Data Retrieved!')
@@ -89,6 +126,30 @@ export class HomeService {
       this.toastr.error(err.message, err.status)
     })
   }
+
+  getAcceptedTestimonial(){
+    this.spinner.show();
+    this.http.get('https://localhost:44324/api/Testimonial/GetAcceptTestimonial').subscribe((resp: any) => {
+      this.acceptedTest = resp;
+        this.acceptedTestimonialWithNames= this.acceptedTest.map(test => ({
+          testimonialid: test.testimonialid,
+          feedback: test.feedback,
+          username: this.users.find(user => user.userid === test.userid).fname,
+          userimage:this.users.find(user => user.userid === test.userid).imagepath,
+      }));
+      console.log("tets array this.testimonialWithNames");
+
+      console.log(this.acceptedTestimonialWithNames);
+
+      console.log(this.acceptedTest);
+      this.spinner.hide();
+      this.toastr.success('Data Retrieved!')
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+  }
+
 
   getAllCourses() {//setps to hit on  data from api
     //1.show spinner
@@ -104,7 +165,7 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.status)
+      this.toastr.error(err.message, err.statuse)
     })
   }
 
@@ -121,7 +182,9 @@ export class HomeService {
         imagepath: exam.imagepath,
         examduration: exam.examduration,
         examprice: exam.examprice,
+        numofquestions: exam.numofquestions,
         passmark: exam.passmark,
+        courseid: exam.courseid,
         coursename: this.courses.find(course => course.courseid === exam.courseid).name
       }));
 
@@ -130,9 +193,10 @@ export class HomeService {
       this.toastr.success('Data Retrieved!')
     }, err => {
       this.spinner.hide();
-      this.toastr.error(err.message, err.status)
+      this.toastr.error(err.message, err.statuse)
     })
   }
+
 
   getAllStatus() {
     this.spinner.show();
@@ -146,56 +210,6 @@ export class HomeService {
       this.toastr.error(err.message, err.statuse)
     })
   }
-
-  getAllAvailableTime() {
-    this.spinner.show();
-    this.http.get('https://localhost:44324/Api/available').subscribe((resp: any) => {
-      this.availableTime = resp;
-
-      this.ExamTime = this.availableTime.map(available => ({
-        avaliableid: available.avaliableid,
-        examstartdate: available.examstartdate,
-        examname: this.exams.find(exam => exam.examid === available.examid).name,
-        statusname: this.status.find(status => status.statusid === available.statusid).statusname
-      }));
-
-      console.log(this.availableTime);
-      this.spinner.hide();
-      this.toastr.success('Data Retrieved!')
-    }, err => {
-      this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
-    })
-  }
-
-  getAllQuestionBank() {
-    this.spinner.show();
-    this.http.get('https://localhost:44324/Api/QuestionBank').subscribe((resp: any) => {
-      this.questionBank = resp;
-
-      this.CourseBank = this.questionBank.map(bank => ({
-        questionid: bank.questionid,
-        questiontitle: bank.questiontitle,
-        correctanswer: bank.correctanswer,
-        answeroption1: bank.answeroption1,
-        answeroption2: bank.answeroption2,
-        answeroption3: bank.answeroption3,
-        answeroption4: bank.answeroption4,
-        questionmark: bank.questionmark,
-        coursename: this.courses.find(course => course.courseid === bank.courseid).name
-
-      }));
-
-      console.log(this.questionBank);
-      this.spinner.hide();
-      this.toastr.success('Data Retrieved!')
-    }, err => {
-      this.spinner.hide();
-      this.toastr.error(err.message, err.statuse)
-    })
-  }
-
-
 
   /////////////////////////////////////////////////////////////////////////////////
   getStatistics() {
@@ -237,8 +251,6 @@ export class HomeService {
       this.spinner.hide();
       this.toastr.error(err.message, err.status)
     })
-
-
   }
 
   getExamById(id: number) {
@@ -271,36 +283,93 @@ export class HomeService {
 
 //=================================Search On Exm Name in Home==========================
 
+
 SearchByExamName(name:string) {
-  console.log(name.length);
-  
-if(name.length>0){
+    console.log(name.length);
+    this.spinner.show();
+    this.http.get('https://localhost:44324/api/exam/GetExamByName/'+name).subscribe((resp: any) => {
+      this.exams = resp;
+      this.spinner.hide();
+      console.log(this.exams);
+    }, err => {
+      this.spinner.hide();
+      this.toastr.error(err.message, err.status)
+    })
+}
+
+// SearchByExamName(name:string) {
+//   console.log(name.length);
+
+// if(name.length>0){
+//   debugger
+//   this.spinner.show();
+//   this.http.get('https://localhost:44324/api/exam/GetExamByName/'+name).subscribe((resp: any) => {
+//     this.exams = resp;
+//     console.log(this.exams);
+//   }, err => {
+//     this.toastr.error(err.message, err.status)
+//   })
+// }else{
+//   debugger
+//   this.spinner.show();
+//   this.http.get('https://localhost:44324/api/exam/GetExamByName/ ').subscribe((resp: any) => {
+//     this.exams = resp;
+//     console.log(this.exams);
+//   }, err => {
+//     this.toastr.error(err.message, err.status)
+//   })
+
+// }}
+
+//=================================Booking Cycle=========================
+
+CreateBookingCycle(body: any) {
   debugger
+
   this.spinner.show();
-  this.http.get('https://localhost:44324/api/exam/GetExamByName/'+name).subscribe((resp: any) => {
-    this.exams = resp;
-    console.log(this.exams);
+  this.http.post('https://localhost:44324/api/bookingcycle/BookExam/', body).subscribe((resp: any) => {
+    console.log(resp);
+    this.spinner.hide();
+    this.toastr.success(' Thank You! Your Booking Is Created')
   }, err => {
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status)
+
+  })
+}
+
+
+//==============================contact us form ==========================
+CreateContactMessage(body:any){
+
+  this.spinner.show();
+  this.http.post('https://localhost:44324/api/ContactForm', body).subscribe((resp: any) => {
+    console.log(resp);
+    this.spinner.hide();
+    this.toastr.success(' Welcome! Your Message Is Arrived. We will take it into consideration ')
+  }, err => {
+    this.spinner.hide();
+    this.toastr.error(err.message, err.status)
+
+  })
+}
+
+//==============================get all visa==========================
+ 
+allvisas:any[]=[];
+getAllVisa() {
+  this.spinner.show();
+  this.http.get('https://localhost:44324/api/visa').subscribe((resp: any) => {
+    this.allvisas = resp;
+    console.log(this.allvisas);
+
+    this.spinner.hide();
+    this.toastr.success('Data Retrieved!')
+  }, err => {
+    this.spinner.hide();
     this.toastr.error(err.message, err.status)
   })
-}else{
-  debugger
-  this.spinner.show();
-  this.http.get('https://localhost:44324/api/exam/GetExamByName/ ').subscribe((resp: any) => {
-    this.exams = resp;
-    console.log(this.exams);
-  }, err => {
-    this.toastr.error(err.message, err.status)
-  })
-
-}}
-
-
-
-
-
-
-
+}
 
 
 
@@ -310,11 +379,7 @@ if(name.length>0){
   /* new - Contact us*/
   submit() {
     console.log(this.contactForm.value);
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000
-    )
+    this.CreateContactMessage(this.contactForm.value);
     this.contactForm.reset();
   }
 

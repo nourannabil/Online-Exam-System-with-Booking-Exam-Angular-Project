@@ -1,0 +1,120 @@
+<app-sidebar-user></app-sidebar-user>
+<div class="tbl">
+  <table mat-table [dataSource]="userService.myInvoice" class="mat-elevation-z8">
+    <tbody>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Pay Date </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.paydate|date:"MM/dd/yy"}} <br>
+          {{element.paydate|date:'h:mm:ss a'}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Exam Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.examprice|currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Card Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.cardnumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="option">
+        <th mat-header-cell *matHeaderCellDef> Download Invoice</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#009688','margin-bottom.px': 2}"
+            (click)="InvoiceInfo(element)">Print</button>
+        </td>
+      </ng-container>
+    </tbody>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <!-- Download Invoice Dialog-->
+  <div hidden>
+    <mat-dialog-content class="mat-typography">
+      <div id="table" class="container">
+        <div class="row">
+          <div class="span4">
+            <img style="width:30px;height:30px;" src="./assets/images/logo/logo1.png" alt="logo" class="logoimage">
+            <strong>HNSs</strong>
+            <address>
+              <strong>HNSs For Online Exams</strong><br>
+              Amman-Jordan<br>
+            </address>
+          </div>
+          <div class="span4 well">
+            <table class="invoice-head">
+              <tbody>
+                <tr style="display: inherit;">
+                  <td class="pull-right"><strong>Invoice #</strong></td>
+                  <td>{{Invoice_data.id}}</td>
+                </tr>
+                <tr style="display: inherit;">
+                  <td class="pull-right"><strong>Booking #</strong></td>
+                  <td>{{Invoice_data.bookingid}}</td>
+                </tr>
+                <tr style="display: inherit;">
+                  <td class="pull-right"><strong>Pay Date :</strong></td>
+                  <td>
+                    {{Invoice_data.paydate |date:"MM/dd/yy"}} <span>
+                      {{Invoice_data.paydate |date:'h:mm:ss a'}} </span>
+                  </td>
+                </tr>
+                <tr style="display: inherit;">
+                  <td class="pull-right"><strong>User Name :</strong></td>
+                  <td>{{user.FirstName|titlecase}} {{user.LastName|titlecase}}</td>
+                </tr>
+                <tr style="display: inherit;">
+                  <td class="pull-right"><strong>User Email :</strong></td>
+                  <td>{{user.Email}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span8">
+            <h2>Invoice</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span8 well invoice-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Exam Name</th>
+                  <th>Exam Time</th>
+                  <th>Exam Price</th>
+                  <th>Card Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{Invoice_data.name}}</td>
+                  <td>{{Invoice_data.examdateuser|date:"MM/dd/yy"}} <span>
+                      {{Invoice_data.examdateuser|date:'h:mm:ss a'}}</span>
+                  </td>
+                  <td>{{Invoice_data.examprice|currency}}</td>
+                  <td>{{Invoice_data.cardnumber}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span3">
+            <strong>Phone :</strong> +962786543293
+          </div>
+          <div class="span3">
+            <strong>Email :</strong>
+            <span> exam.booking@outlook.com</span>
+          </div>
+        </div>
+      </div>
+    </mat-dialog-content>
+    <button (click)="download()"></button>
+  </div>

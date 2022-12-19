@@ -1,0 +1,82 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+  <div class="col-md-4">
+    <div class="profile-container">
+      <div class="profile-header row">
+        <div mat-dialog-content>
+          <form class="example-form mat-dialog-container" [formGroup]="UpdateForm">
+            <div hidden>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input type="text" matInput formControlName="userid" [(ngModel)]="userService.myProfile.userid">
+              </mat-form-field>
+            </div>
+            <br>
+            <input type="file" #file formControlName="imagepath" [(ngModel)]="userService.myProfile.imagepath"
+            (change)="uploadFile(file.files)">
+          <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput formControlName="fname" [(ngModel)]="userService.myProfile.fname">
+              <mat-error *ngIf="UpdateForm.controls['fname'].hasError('required')">
+                First Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input type="text" matInput formControlName="lname" [(ngModel)]="userService.myProfile.lname">
+              <mat-error *ngIf="UpdateForm.controls['lname'].hasError('required')">
+                Last Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Phone number</mat-label>
+              <input type="number" matInput formControlName="phonenumber"
+                [(ngModel)]="userService.myProfile.phonenumber">
+              <mat-error *ngIf="UpdateForm.controls['phonenumber'].hasError('minlength')">
+                must be <strong>10 numbers </strong>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" [(ngModel)]="userService.myProfile.email">
+              <mat-error *ngIf="UpdateForm.controls['email'].hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="UpdateForm.controls['email'].hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Address</mat-label>
+              <input type="text" matInput formControlName="address" [(ngModel)]="userService.myProfile.address">
+            </mat-form-field>
+            <br>
+
+          </form>
+          <form>
+            <mat-form-field class="example-full-width" appearance="fill" [formGroup]="editLogin" style="position: relative;left: 141px;top: 3px;">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" [(ngModel)]="this.admin.userPass[0].password">
+              <mat-error *ngIf="editLogin.controls['password'].hasError('required')">
+                  Password is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="editLogin.controls['password'].hasError('minlength')">
+                  Password must be at least 8 charecters
+                </mat-error>
+
+            </mat-form-field>
+          </form>
+        </div>
+        <div mat-dialog-actions class="text-center" >
+          <button mat-button mat-dialog-close style="position: relative;top: -4px ;left: -2px;" class="updatebutton" (click)="Cancel()">Cancel</button>
+          <button mat-button mat-dialog-close style="position: relative;top: -4px ;left: -2px;" cdkFocusInitial class="updatebutton" [disabled]="!UpdateForm.valid"
+            (click)="SaveData()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

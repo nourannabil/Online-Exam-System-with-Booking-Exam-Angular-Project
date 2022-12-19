@@ -34,6 +34,8 @@ const routes: Routes = [
     path: 'examinfo',
     component: EaxamInfoCardComponent
   },
+
+
   //////////////////////////////////////
   {
     path: 'exams',

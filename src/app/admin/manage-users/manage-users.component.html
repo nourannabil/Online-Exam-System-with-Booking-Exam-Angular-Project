@@ -82,7 +82,7 @@
                   </mat-error>
               </mat-form-field>
               <br>
-            
+            <!-- <div hidden>
               <mat-form-field [formGroup]="createForm" >
                   <mat-label>Phone Number</mat-label>
                   <input  type="number" matInput formControlName="phonenumber">
@@ -90,13 +90,13 @@
                     Phone Number is <strong>required</strong>
                     </mat-error>
                     <mat-error *ngIf="createForm.controls['phonenumber'].hasError('minlength')">
-                        Phone Number must be  <strong>10 numbers</strong>
+                        Phone Number must be<strong>10 numbers</strong>
                         </mat-error>
                         <mat-error *ngIf="createForm.controls['phonenumber'].hasError('maxlength')">
                             Phone Number must be  <strong>10 numbers</strong>
                             </mat-error>
                 </mat-form-field>
-                <br>
+                <br></div> -->
                 <mat-form-field [formGroup]="createForm">
                   <mat-label>Email</mat-label>
                   <input type="email" matInput formControlName="email">
@@ -163,10 +163,14 @@
     <br>
     <mat-form-field [formGroup]="updateForm">
       <mat-label>phonenumber</mat-label>
-      <input type="number" matInput formControlName="phonenumber" [(ngModel)]="pDataUser.phonenumber">
+      <input type="number" matInput formControlName="phonenumber" [(ngModel)]="pDataUser.phonenumber" readonly>
       <mat-error *ngIf="updateForm.controls['phonenumber'].hasError('required')">
         phonenumber is <strong>required</strong>
       </mat-error>
+  
+        <mat-error *ngIf="updateForm.controls['phonenumber'].hasError('maxlength')">
+            Phone Number must be  <strong>10 numbers</strong>
+            </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field [formGroup]="updateForm">

@@ -2,9 +2,9 @@
 <!-- ========================================Get All CERTIFICATE Table ======================================= -->
 
 <div class="tbl">
-  <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
-    (click)="openCreateDialog()">Add Certificate</button>
-  <table mat-table [dataSource]="admin.certificates" class="mat-elevation-z8 responsive">
+  <!-- <button mat-raised-button [ngStyle]="{'color':'#fff','background-color':'#188048','margin-bottom.px': 2}"
+    (click)="openCreateDialog()">Add Certificate</button> -->
+  <table mat-table [dataSource]="admin.certificateswithname" class="mat-elevation-z8 responsive">
     <tbody>
       <ng-container matColumnDef="certificateid">
         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -21,20 +21,24 @@
         <td mat-cell *matCellDef="let element"> {{element.description}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="imagepath">
-        <th mat-header-cell *matHeaderCellDef>Second Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.imagepath}} </td>
+      <ng-container matColumnDef="imagepath" hidden>
+        <th mat-header-cell *matHeaderCellDef hidden>Second Description </th>
+        <td mat-cell *matCellDef="let element" hidden> {{element.imagepath}} </td>
       </ng-container>
 
       <ng-container matColumnDef="userid">
         <th mat-header-cell *matHeaderCellDef> User No. </th>
         <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
       </ng-container>
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> User Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
       <ng-container matColumnDef="bookingid">
         <th mat-header-cell *matHeaderCellDef> Booking No. </th>
         <td mat-cell *matCellDef="let element"> {{element.bookingid}} </td>
       </ng-container>
-  
+
       <ng-container matColumnDef="Options">
         <th mat-header-cell *matHeaderCellDef> Options </th>
         <td mat-cell *matCellDef="let element">
@@ -57,7 +61,7 @@
 
 <ng-template #CallCreateDialog>
     <mat-dialog-content class="mat-typography">
-  
+
         <h2 mat-dialog-title style="color:#005555"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Certificate</h2>
           <form class="mat-dialog-container">
               <mat-form-field [formGroup]="createForm">
@@ -76,7 +80,7 @@
                   </mat-error> -->
               </mat-form-field>
               <br>
-            
+
               <mat-form-field [formGroup]="createForm" >
                   <mat-label>Second Description</mat-label>
                   <input  type="text" matInput formControlName="imagepath">
@@ -104,10 +108,10 @@
 
          <button  (click)="saveData()" class="updatebutton">Create</button>
          <button class="updatebutton" (click)="closeDialoge()"  style="left: 13px;">Cancel</button>
-        
+
         </form>
-      </mat-dialog-content> 
-      
+      </mat-dialog-content>
+
 
 </ng-template>
 <!-- ======================================== END Create CERTIFICATE ======================================= -->
@@ -134,7 +138,7 @@
           title is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-  
+
       <br>
       <mat-form-field [formGroup]="updateForm">
         <mat-label>description</mat-label>
@@ -144,6 +148,7 @@
         </mat-error>
       </mat-form-field>
       <br>
+      <div hidden>
       <mat-form-field [formGroup]="updateForm">
         <mat-label>Second Description</mat-label>
         <input type="text" matInput formControlName="imagepath" [(ngModel)]="pDataCertificateUpdata.imagepath">
@@ -151,10 +156,11 @@
           Second Description is <strong>required</strong>
         </mat-error>
       </mat-form-field>
+    </div>
       <br>
       <mat-form-field [formGroup]="updateForm">
         <mat-label>userid</mat-label>
-        <input type="number" matInput formControlName="userid" [(ngModel)]="pDataCertificateUpdata.userid">
+        <input type="number" matInput formControlName="userid" [(ngModel)]="pDataCertificateUpdata.userid" readonly>
         <mat-error *ngIf="updateForm.controls['userid'].hasError('required')">
           userid is <strong>required</strong>
         </mat-error>
@@ -162,17 +168,17 @@
       <br>
       <mat-form-field [formGroup]="updateForm">
         <mat-label>bookingid</mat-label>
-        <input type="number" matInput formControlName="bookingid" [(ngModel)]="pDataCertificateUpdata.bookingid">
+        <input type="number" matInput formControlName="bookingid" [(ngModel)]="pDataCertificateUpdata.bookingid" readonly>
         <mat-error *ngIf="updateForm.controls['bookingid'].hasError('required')">
           bookingid is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-     
+
       <br>
-      
+
       <button (click)="saveUpdateData()" class="updatebutton">Update</button>
       <button (click)="closeDialoge()" class="updatebutton" style="left: 13px;">Cancel</button>
-  
+
     </form>
   </ng-template>
 

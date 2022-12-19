@@ -13,7 +13,7 @@ import { CreateExamsComponent } from '../create-exams/create-exams.component';
 })
 export class ManageExamsComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'description', 'examduration', 'examprice', 'passmark', 'coursename', 'symbol', 'Options'];
+  displayedColumns: string[] = ['position', 'name', 'description', 'examduration', 'examprice','numofquestions' ,'passmark', 'coursename', 'symbol', 'Options'];
   dataSource = '';
 
   constructor(public Home: HomeService, private dialog: MatDialog, public Admin: AdminService) { }
@@ -24,6 +24,7 @@ export class ManageExamsComponent implements OnInit {
     description: new FormControl('', Validators.required),
     examduration: new FormControl('', Validators.required),
     examprice: new FormControl('', Validators.required),
+    numofquestions: new FormControl('', Validators.required),
     passmark: new FormControl('', Validators.required),
     courseid: new FormControl('', Validators.required),
     imagepath: new FormControl()
@@ -49,6 +50,7 @@ export class ManageExamsComponent implements OnInit {
       description: obj.description,
       examduration: obj.examduration,
       examprice: obj.examprice,
+      numofquestions: obj.numofquestions,
       passmark: obj.passmark,
       courseid: obj.courseid,
       imagepath: obj.imagepath

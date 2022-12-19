@@ -59,3 +59,55 @@ body {
     bottom: -22px;
     left: 135px;
   }
+  .createbutton{
+    background-color: #005555;
+      color: white;
+      /* width: 78px;
+      height: 32px; */
+      width: 90px;
+      height: 39px;
+      font-size: 16px;
+      border: 1px solid #005555;
+      border-radius: 8px;
+      position: relative;
+      left: -29px;
+    
+  }
+  .mat-dialog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    /* width: 100%; */
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    width: 625px !important;
+    overflow-x: none !important;
+    text-align: center !important;
+    height: 353px !important;
+}
+
+mat-form-field{
+display: inline-block;
+position: relative;
+text-align: left;
+width: 332px;
+padding: 2px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  /* padding: 0.4375em 0; */
+  padding: 9px !important;
+}
+.okbut{
+  background-color: #005555;
+  border-color: #005555;
+  color: white;
+  width: 85px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 9px;
+}

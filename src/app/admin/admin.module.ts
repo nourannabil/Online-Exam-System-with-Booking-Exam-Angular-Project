@@ -23,6 +23,13 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { ChartsComponent } from './charts/charts.component';
 import { CreateCoursesComponent } from './create-courses/create-courses.component';
 import { CreateExamsComponent } from './create-exams/create-exams.component';
+import { ManageLoginComponent } from './manage-login/manage-login.component';
+import { ReportComponent } from './report/report.component';
+import { InboxComponent } from './inbox/inbox.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminEditprofileComponent } from './admin-editprofile/admin-editprofile.component';
+
+
 @NgModule({
   declarations: [
     ManageCoursesComponent,
@@ -43,6 +50,11 @@ import { CreateExamsComponent } from './create-exams/create-exams.component';
     ChartsComponent,
     CreateCoursesComponent,
     CreateExamsComponent,
+    ManageLoginComponent,
+    ReportComponent,
+    InboxComponent,
+    AdminProfileComponent,
+    AdminEditprofileComponent,
   
   ],
   imports: [
@@ -50,7 +62,8 @@ import { CreateExamsComponent } from './create-exams/create-exams.component';
     AdminRoutingModule,
     SharedModule,
     MatDialogModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+
   ]
 })
 export class AdminModule { }

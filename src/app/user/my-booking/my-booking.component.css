@@ -1,0 +1,90 @@
+.mat-raised-button {
+  margin-left: 7px;
+}
+
+.mat-header-cell {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  text-align: center;
+}
+
+.mat-table {
+  text-align: center;
+}
+
+.tbl {
+  position: absolute;
+  top: 25%;
+  left: 28%;
+}
+
+table {
+  width: 150%;
+  margin-bottom: 50px;
+}
+
+@media(max-width:576px) {
+  .tbl {
+    position: absolute;
+    top: 27%;
+    left: -2%;
+  }
+
+  table {
+    width: 66%;
+  }
+}
+
+@media (min-width:577px) and (max-width:749px) {
+  .tbl {
+    position: absolute;
+    top: 25%;
+    left: 8%;
+  }
+
+  table {
+    width: 105%;
+  }
+}
+
+@media (min-width:750px) and (max-width:1035px) {
+  .tbl {
+    position: absolute;
+    top: 25%;
+    left: 31%;
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+.mat-dialog-container {
+  display: block;
+  padding: 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  transform: none;
+  color: #005555 !important;
+  text-align: center !important;
+}
+
+.updatebutton {
+  background-color: #005555;
+  color: white;
+  width: 78px;
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid #005555;
+  border-radius: 8px;
+  position: relative;
+  left: -15px;
+
+}

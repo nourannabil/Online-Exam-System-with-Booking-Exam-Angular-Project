@@ -35,6 +35,14 @@
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Num. Of Questions</mat-label>
+      <input type="number" matInput formControlName="numofquestions">
+      <mat-error *ngIf="CreateForm.controls['numofquestions'].hasError('required')">
+        Num. Of Questions is required
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Pass Mark</mat-label>
       <input type="number" matInput formControlName="passmark">
       <mat-error *ngIf="CreateForm.controls['passmark'].hasError('required')">
@@ -44,7 +52,10 @@
     <br>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Course Id</mat-label>
-      <input type="number" matInput formControlName="courseid">
+      <select matNativeControl formControlName="courseid" >
+        <option type="number" *ngFor="let x of Home.courses"
+        [ngValue]="x.courseid" >{{x.name}}</option>
+      </select>
       <mat-error *ngIf="CreateForm.controls['courseid'].hasError('required')">
         Course Id is required
       </mat-error>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -9,26 +9,18 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class PassComponent implements OnInit {
 
-  certifiecateForm: FormGroup = new FormGroup({
-    title: new FormControl('PROFESSIONAL CERTIFICATE'),
-    description: new FormControl('In recognition of passing the'),
-    userid: new FormControl(2),
-    bookingid: new FormControl(109)
-  })
 
-  constructor(public User: UserService) { }
+  constructor(public userService: UserService, public Route: Router) { }
 
+  user: any;
   ngOnInit(): void {
+    this.user = localStorage.getItem('user');
+    this.user = JSON.parse(this.user);
+    // console.log(parseInt(this.userInfo.Userid))
   }
 
   SeeCertificate() {
-    console.log("Certificate made form SeeCertificate");
-    this.Create();
+    this.Route.navigate(['user/myCertificate'])
   }
 
-  Create() {
-    console.log("Certificate made form Create Form")
-    this.User.CreateCertifiecate(this.certifiecateForm.value);
-    //  عشان  يكبس على زر و يطبع الشهادة  MyCertifiecate هون بدي اخليه يروح على ال
-  }
 }
