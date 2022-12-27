@@ -66,10 +66,14 @@
     <form class="mat-dialog-container">
       <mat-form-field [formGroup]="bookingForm">
         <mat-label>Card Number</mat-label>
-        <input type="text" matInput formControlName="cardnumber">
+        <input type="text" matInput formControlName="cardnumber" >
         <mat-error *ngIf="bookingForm.controls['cardnumber'].hasError('required')">
           Card Number is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="bookingForm.controls['cardnumber'].hasError('pattern')">
+          Card Number must be only numbers
+        </mat-error>
+        <!--  -->
       </mat-form-field>
       <br>
       <mat-form-field [formGroup]="bookingForm">

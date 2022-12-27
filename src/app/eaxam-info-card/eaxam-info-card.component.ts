@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EaxamInfoCardComponent implements OnInit {
   bookingForm: FormGroup = new FormGroup({
-    cardnumber: new FormControl('', Validators.required),
+    cardnumber: new FormControl('',[ Validators.required ,Validators.pattern("^[0-9]*$")]),
     cvc: new FormControl('', Validators.required),
     expirydate: new FormControl('', Validators.required),
     examdateuser: new FormControl('', Validators.required),
@@ -28,7 +28,7 @@ export class EaxamInfoCardComponent implements OnInit {
   @ViewChild('sorry') sorry!: TemplateRef<any>
 
   ngOnInit(): void {
-    
+
     this.home.getAllAvailable();
     this.home.getAllVisa();
     var date = new Date().getTime()
@@ -40,7 +40,7 @@ export class EaxamInfoCardComponent implements OnInit {
     //   ":" + dateFormat.getMinutes() +
     //   ":" + (dateFormat.getSeconds()));
     this.date = (dateFormat.getFullYear() +
-    "-" + (dateFormat.getMonth() + 1));
+      "-" + (dateFormat.getMonth() + 1));
     console.log(this.date);
 
   }
@@ -72,91 +72,86 @@ export class EaxamInfoCardComponent implements OnInit {
     this.dialog.open(this.sorry)
   }
   saveBooking() {
-   
+
     var dateFormat = new Date(this.bookingForm.controls['expirydate'].value);
-    if(dateFormat.getUTCDate()>=10){
+    if (dateFormat.getUTCDate() >= 10) {
       var visaExpiryDate = (dateFormat.getFullYear() +
-      "-" + (dateFormat.getMonth() + 1) +
-      "-" + dateFormat.getUTCDate()+
-      "T00" +
-      ":00" +
-      ":00"
+        "-" + (dateFormat.getMonth() + 1) +
+        "-" + dateFormat.getUTCDate() +
+        "T00" +
+        ":00" +
+        ":00"
       );
       console.log("more than 10");
-      
+
     }
-    else{
+    else {
       var visaExpiryDate = (dateFormat.getFullYear() +
-      "-" + (dateFormat.getMonth() + 1) +
-      "-0" + dateFormat.getUTCDate()+
-      "T00" +
-      ":00" +
-      ":00"
+        "-" + (dateFormat.getMonth() + 1) +
+        "-0" + dateFormat.getUTCDate() +
+        "T00" +
+        ":00" +
+        ":00"
       );
-      
+
       console.log("less than 10");
     }
 
-    
-  console.log("visaExpiryDate", visaExpiryDate);
-  var visabook=this.home.allvisas.filter((X)=>X.cardnumber==this.bookingForm.controls['cardnumber'].value
-  && X.cvc==this.bookingForm.controls['cvc'].value && X.expirydate==visaExpiryDate)
 
-  console.log("visabook",visabook);
-  console.log("exam price",this.home.examById.examprice);
-  
-  
+    console.log("visaExpiryDate", visaExpiryDate);
+    var visabook = this.home.allvisas.filter((X) => X.cardnumber == this.bookingForm.controls['cardnumber'].value
+      && X.cvc == this.bookingForm.controls['cvc'].value && X.expirydate == visaExpiryDate)
 
-   if(visabook.length>0){
-    console.log("visabalance",visabook[0].balance);
-    if(visabook[0].balance>=this.home.examById.examprice){
-          const examnum = this.bookingForm.controls['examid'].value
-    this.dialog.closeAll();
-    const token = localStorage.getItem('token');
-    if (token) {
-      let user: any = localStorage.getItem('user');
-      if (user) {
-        console.log(user.Userid);
+    console.log("visabook", visabook);
+    console.log("exam price", this.home.examById.examprice);
 
-        user = JSON.parse(user);
-        if (user.Roleid == 1) {
-          this.toastr.error('Hi Admin')
-          this.dialog.closeAll();
-          // this.router.navigate(['examinfo'])
-        } else if (user.Roleid == 2) {
-          const bookpar = {
-            cardnumber: this.bookingForm.controls['cardnumber'].value,
-            cvc: this.bookingForm.controls['cvc'].value,
-            expirydate: this.bookingForm.controls['expirydate'].value,
-            examdateuser: this.bookingForm.controls['examdateuser'].value,
-            examid: examnum,
-            userid: parseInt(user.Userid)
+    if (visabook.length > 0) {
+
+      console.log("visabalance", visabook[0].balance);
+      if (visabook[0].balance >= this.home.examById.examprice) {
+        const examnum = this.bookingForm.controls['examid'].value
+        this.dialog.closeAll();
+        const token = localStorage.getItem('token');
+        if (token) {
+          let user: any = localStorage.getItem('user');
+          if (user) {
+            console.log(user.Userid);
+
+            user = JSON.parse(user);
+            if (user.Roleid == 1) {
+              this.toastr.error('Hi Admin')
+              this.dialog.closeAll();
+              // this.router.navigate(['examinfo'])
+            } else if (user.Roleid == 2) {
+              const bookpar = {
+                cardnumber: this.bookingForm.controls['cardnumber'].value,
+                cvc: this.bookingForm.controls['cvc'].value,
+                expirydate: this.bookingForm.controls['expirydate'].value,
+                examdateuser: this.bookingForm.controls['examdateuser'].value,
+                examid: examnum,
+                userid: parseInt(user.Userid)
+              }
+
+              this.home.CreateBookingCycle(bookpar);
+              console.log(examnum);
+              console.log(bookpar);
+
+
+            }
           }
-
-          this.home.CreateBookingCycle(bookpar);
-          console.log(examnum);
-          console.log(bookpar);
-
-
+        } else {
+          this.router.navigate(['security/login'])
         }
       }
-    } else {
-      this.router.navigate(['security/login'])
+      else {
+        this.toastr.warning("Sorry! Your Visa Balance Not Enough For Exam Price")
+      }
+
     }
+    else {
+      this.toastr.warning("Sorry! Make sure from your visa")
+
     }
-    else{
-      this.toastr.warning("Sorry! Your Visa Balance Not Enough For Exam Price")
-    }
-
-   }
-   else{
-    this.toastr.warning("Sorry! Make sure from your visa")
-
-   }
-
-
-
-
   }
 
 }
