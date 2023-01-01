@@ -21,16 +21,16 @@ export class AdminEditprofileComponent implements OnInit {
     imagepath: new FormControl(),
   })
   editLogin: FormGroup = new FormGroup({
-    loginid:new FormControl('',Validators.required),
-    username:new FormControl('',Validators.required),
-    password:new FormControl('',[Validators.required, Validators.minLength(8)]),
-    roleid:new FormControl('',Validators.required),
-    userid:new FormControl('',Validators.required),
+    loginid: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    roleid: new FormControl('', Validators.required),
+    userid: new FormControl('', Validators.required),
 
 
   })
 
-  constructor(public userService: UserService, private Route: Router,public admin:AdminService) { }
+  constructor(public userService: UserService, private Route: Router, public admin: AdminService) { }
 
   user: any
 
@@ -41,20 +41,21 @@ export class AdminEditprofileComponent implements OnInit {
     this.userService.MyProfile(this.user.Userid);
     this.admin.GetPass();
     this.UpdateForm.controls['imagepath'].setValue(this.userService.preuserdata[0].imagepath)
-    
+
   }
   SaveData() {
-    
+
     this.user.display_image = this.UpdateForm.controls['imagepath'].value;
     this.admin.GetPass();
 
-    this.admin.userPass[0].password=this.editLogin.controls['password'].value;
+    this.admin.userPass[0].password = this.editLogin.controls['password'].value;
     console.log("userPass");
     console.log(this.admin.userPass[0]);
 
     console.log(this.UpdateForm.value);
     this.admin.UpdateLogins(this.admin.userPass[0])
     this.userService.EditProfile(this.UpdateForm.value)
+    this.Route.navigate(['admin/adminProfile'])
   }
 
   uploadFile(file: any) {

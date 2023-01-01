@@ -1042,14 +1042,20 @@ export class AdminService {
 
   //===================edit password===========================
 
+  // this GetPass will give me the object for one user
   user: any;
   userPass: any = {};
   GetPass() {
     this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
+    // this.userPass ==>
+    //  رح تحتوي على الاوبجكت كامل من جدول اللوغن الخاص بهاد اليوزير
+    // يلي موجود حاليا  ,  باللوكال ستورج
+    // ولكن رح يكون على شكل ارري فيها اوبجكت واحد فقط مش اوبجكت
     this.userPass = this.logins.filter((x) => x.userid == this.user.Userid)
     console.log("userPassObject From Admin");
     console.log(this.userPass);
+    console.log(typeof this.userPass);
   }
 
 
