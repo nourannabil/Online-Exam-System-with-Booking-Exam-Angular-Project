@@ -30,17 +30,8 @@ const routes: Routes = [
   }, {
     path: 'test',
     component: TestimonialComponent
-  },{
-    path: 'examinfo',
-    component: EaxamInfoCardComponent
   },
-
-
   //////////////////////////////////////
-  {
-    path: 'exams',
-    component: ExamsComponent
-  },
   {
     path: 'courses',
     component: CoursesComponent
@@ -48,8 +39,13 @@ const routes: Routes = [
   {
     path: 'courseexams',
     component: CourseExamsComponent
+  }, {
+    path: 'exams',
+    component: ExamsComponent
+  }, {
+    path: 'examinfo',
+    component: EaxamInfoCardComponent
   },
-
   //////For Another Modules//////////////
   {
     path: 'security',
@@ -62,47 +58,13 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => AdminModule,
-    canActivate:[AuthorizationGuard]
+    canActivate: [AuthorizationGuard]
   },
   {
     path: 'user',
     loadChildren: () => UserModule,
-    canActivate:[AuthorizationGuard]
+    canActivate: [AuthorizationGuard]
   },
-  {
-    path: 'contactinfo',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'aboutinfo',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'homeinfo',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'testimonialinfo',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'bookinginfo',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'certificate',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'role',
-    loadChildren: () => AdminModule
-  },
-  {
-    path: 'users',
-    loadChildren: () => AdminModule
-  },
-
-
 ];
 
 @NgModule({
